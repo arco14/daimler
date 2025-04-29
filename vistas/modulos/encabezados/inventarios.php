@@ -1,0 +1,1 @@
+<script src="vistas/js/inventarios.js"></script>
