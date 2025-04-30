@@ -6,6 +6,7 @@ include( "router.php");
 ?>
 <!DOCTYPE html>
 <html>
+
 <head lang="es">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -13,7 +14,7 @@ include( "router.php");
     <!-- Favicon-->
     <link rel="icon" href="vistas/img/lazlogo.png" type="image/x-icon">
 
-     <?php include( "encabezados.php"); 
+    <?php include( "encabezados.php"); 
 
       if(isset($_GET["ruta"]))
     {
@@ -24,6 +25,7 @@ include( "router.php");
     }
     ?>
 </head>
+
 <body class="theme-red">
     <?php
     $validacion=1;
@@ -45,5 +47,5 @@ include "modulos/login.php";
 }
     ?>
 </body>
-</html>
 
+</html>

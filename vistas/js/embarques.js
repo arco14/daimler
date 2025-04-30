@@ -1,16 +1,54 @@
 window.addEventListener('DOMContentLoaded', async () => {
-    //? VARIABLES
+    //? ------------------- VARIABLES---------------- //
     const url = 'http://localhost:3000/api/'
-    //? FUNCIONES 
+    let idRow
+
+    //? ------------------- COMPONENTES ---------------- //
+    const dataTipoCatalogo = {
+        Stored: 'PA_DAI_CapCatalogos',
+        Opcion: 'CC',
+        Usuario: 'christian.acosta',
+        ClaveCatalogo: 'MOV'
+    }
+    generarCatalogo('DAIMLER', dataTipoCatalogo, 'tipo', 'selectTipo', 'Selecciona tipo de catalogo')
+    const dataTallas = {
+        Stored: 'PA_DAI_CapCatalogos',
+        Opcion: 'CC',
+        Usuario: 'christian.acosta',
+        ClaveCatalogo: 'TALL'
+    }
+    generarCatalogo('DAIMLER', dataTallas, 'tallas', 'selectTalla', 'Selecciona una talla')
+    const dataPrendas = {
+        Stored: 'PA_DAI_CapCatalogos',
+        Opcion: 'CP',
+        Usuario: 'christian.acosta',
+    }
+    generarCatalogo('DAIMLER', dataPrendas, 'prendas', 'selectPrendas', 'Selecciona una prenda')
+    //? ------------------- FUNCIONES ---------------- //
+    async function generarCatalogo(strEndpoint, jsonData, divPadre, idComponente, strTexto) {
+        const res = await loadAPI(`${url}${strEndpoint}`, 'POST', jsonData, '', false)
+        const data = res.response[0] || []
+        console.log(data)
+        $(`#${divPadre} .dropdown-menu .inner`).html("")
+        $(`#${idComponente}`).html("")
+        $(`#${divPadre} .filter-option`).text(`${strTexto}`)
+        $(`#${divPadre} .dropdown-menu .inner`).append(`<li data-original-index="0" idEmpleado="0" class=" active"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">${strTexto}</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>`)
+        $(`#${idComponente}`).append(`<option value="0">${strTexto}</option>`)
+        $.each(data, function (i, item) {
+            $(`#${idComponente}`).append(`<option value="${item.Id}">${item.NOMBRE}</option>`)
+            const index = parseInt(i) + 1
+            $(`#${divPadre} .dropdown-menu .inner`).append(`<li data-original-index="${index}" idEmpleado="${item.Id}"><a tabindex="${index}" data-tokens="null"><span class="text">${item.NOMBRE}</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>`)
+
+        })
+    }
     async function generarGrid(opcion) {
         const dataDaimler = {
             Stored: 'PA_DAI_CapEmbarque',
             Opcion: opcion,
             Usuario: 'cruz.gonzalez',
         }
-        const resDataDaimler = await loadAPI(`${url}DAIMLER`, 'POST', dataDaimler, '', false)
-        const embarque = resDataDaimler.response[0] || []
-        console.log(embarque)
+        const consultaEmbarques = await loadAPI(`${url}DAIMLER`, 'POST', dataDaimler, '', false)
+        const embarque = consultaEmbarques.response[0] || []
         if ($.fn.DataTable.isDataTable('#tablaEmbarques')) {
             $('#tablaEmbarques').DataTable().clear().destroy()
         }
@@ -53,7 +91,7 @@ window.addEventListener('DOMContentLoaded', async () => {
                                             class='btn btn-warning btn-circle waves-effect waves-circle waves-float edit-btnEmbarque'>
                                         <i class='material-icons'>edit</i>
                                     </button>
-                                    <button type='button' id='datosEmbarque' class='btn btn-danger btn-circle waves-effect waves-circle waves-float'>
+                                    <button type='button' data-id='${row.ID}' class='btn btn-danger btn-circle waves-effect waves-circle waves-float delete-btnEmbarque'>
                                         <i class='material-icons'>close</i>
                                     </button>
                                 </div>
@@ -93,30 +131,39 @@ window.addEventListener('DOMContentLoaded', async () => {
         })
     }
     generarGrid('C')
-    //? ACCIONES
-    $('#guardar').click(async () => {
+    //? ------------------- LIMPIAR---------------- //
+    $('#add').click(() => {
+        idRow = 0
+        $('#embarque').val('')
+        $('#fecha').val('')
+        $('#comentarios').val('')
+    })
+    //? ------------------- GUARDAR---------------- //
+    $('#btnGuardar').click(async () => {
         const nombre = $('#embarque').val()
         const fecha = $('#fecha').val()
         const comentarios = $('#comentarios').val()
-        const dataEmbarque = {
-            Stored: 'PA_DAI_CapEmbarque',
-            Opcion: 'G',
-            Embarque: {
-                Id: 0,
-                Embarque: nombre,
-                Usuario: nombre,
-                Fecha: fecha,
-                Comentario: comentarios
-            },
-        }
-        console.log(dataEmbarque)
-        const resDataDaimler = await loadAPI(`${url}DAIMLER`, 'POST', dataEmbarque, '', true)
-        console.log(resDataDaimler)
-        generarGrid('C')
-        $('#modalEmbarque').modal('hide')
+        const idEmpleado = $('#selectEmpleados').val()
+        console.log(idEmpleado)
+        // const gurdarEmbarque = {
+        //     Stored: 'PA_DAI_CapEmbarque',
+        //     Opcion: 'G',
+        //     Embarque: {
+        //         Id: idRow,
+        //         Embarque: nombre,
+        //         Usuario: nombre,
+        //         Fecha: fecha,
+        //         Comentario: comentarios
+        //     },
+        // }
+        // console.log(gurdarEmbarque)
+        // await loadAPI(`${url}DAIMLER`, 'POST', gurdarEmbarque, '', true)
+        // generarGrid('C')
+        // $('#modalEmbarque').modal('hide')
     })
-    $(document).on('click', '.edit-btnEmbarque', function() {
-        const id = $(this).data('id')
+    //? ------------------- EDITAR---------------- //
+    $(document).on('click', '.edit-btnEmbarque', function () {
+        idRow = $(this).data('id')
         const nombre = $(this).data('nombre')
         const usuario = $(this).data('usuario')
         const fecha = $(this).data('fecha')
@@ -127,5 +174,31 @@ window.addEventListener('DOMContentLoaded', async () => {
         $('#usuario').val(usuario)
         $('#fecha').val(fechaFormateada)
         $('#comentarios').val(comentario)
+    })
+    //? ------------------- ELIMINAR---------------- //
+    $(document).on('click', '.delete-btnEmbarque', function () {
+        const id = $(this).data('id')
+        Swal.fire({
+            icon: 'question',
+            title: 'Deseas eliminar el registro?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'SI',
+            denyButtonText: 'NO'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const eliminarEmbarque = {
+                    Stored: 'PA_DAI_CapEmbarque',
+                    Opcion: 'D',
+                    Embarque: {
+                        Id: id,
+                    }
+                }
+                await loadAPI(`${url}DAIMLER`, 'POST', eliminarEmbarque, '', true)
+                generarGrid('C')
+            } else if (result.isDenied) {
+                alert('No se elimino el registro')
+            }
+        })
     })
 })
