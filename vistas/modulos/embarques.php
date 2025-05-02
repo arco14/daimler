@@ -1,3 +1,11 @@
+<style>
+    #tablaEmbarquesDetalle_wrapper {
+        height: 500px;
+        overflow-y: scroll;
+        margin-top: 2rem;
+        padding: 1rem;
+    }
+</style>
 <section class="content" style="padding: 0 2rem;">
     <div class="container-fluid">
         <div class="block-header">
@@ -10,10 +18,6 @@
                 <button id="add" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modalEmbarque">
                     <i class="material-icons">add</i>
                 </button>
-                <button id="add" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modalEntregaManual"
-                    style="padding: .8rem 1rem;" title="Entrega Manual">
-                    Entrega Manual
-                </button>
             </div>
             <div class="col-12">
                 <div class="card">
@@ -25,21 +29,20 @@
                                 <table class="table table-bordered text-center" id="tablaEmbarques" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
+                                            <th>Tipo Catálogo</th>
                                             <th>Usuario</th>
                                             <th>Fecha</th>
                                             <th>Comentarios</th>
-                                            <th style="width:78px">Acciones</th>
-
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Nombre</th>
+                                            <th>Tipo Catálogo</th>
                                             <th>Fecha</th>
                                             <th>Usuario</th>
                                             <th>Comentarios</th>
-                                            <th style="width:78px">Acciones</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -77,7 +80,6 @@
                     </div> -->
                     <div class="form-group">
                         <div class="form-line" id="tipo">
-                            <label for="selectTipo">Tipo</label>
                             <select class="form-control show-tick" required id="selectTipo" name="selectTipo">
                             </select>
                         </div>
@@ -87,6 +89,12 @@
                             <label for="fecha">Fecha</label>
                             <input type="date" class="form-control" name="fecha" id="fecha" placeholder="Fecha"
                                 required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <label for="usuario">Usuario</label>
+                            <input type="text" class="form-control" id="usuario" placeholder="Usuario" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -109,7 +117,7 @@
 
 <div class="modal fade" id="modalEntregaManual" tabindex="-1" role="dialog">
     <div class="demo-masked-input">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header ">
                     <h4 class="modal-title text-center" id="defaultModalLabel">Entrega Manual</h4>
@@ -135,9 +143,27 @@
                             <input type="number" class="form-control" id="cantidad" min="1" max="100000" />
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
                     <button type="button" class="btn btn-success waves-effect" id="btnGuardarEntrega">GUARDAR</button>
+                    <table class="table table-bordered text-center" id="tablaEmbarquesDetalle" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Prendas</th>
+                                <th>Talla</th>
+                                <th>Cantidad</th>
+                                <th style="width:78px">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Prendas</th>
+                                <th>Talla</th>
+                                <th>Cantidad</th>
+                                <th style="width:78px">Acciones</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer" style="display: flex; justify-content: end;">
                     <button type="button" class="btn btn-danger waves-effect pull-left " id="cerrarModal"
                         data-dismiss="modal">CERRAR</button>
                 </div>
