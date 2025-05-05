@@ -146,7 +146,6 @@ window.addEventListener('DOMContentLoaded', async () => {
                 Id: id
             }
         }
-        console.log(dataDaimler)
         const consultaEmbarquesDetalle = await loadAPI(`${url}DAIMLER`, 'POST', dataDaimler, '', false)
         if (consultaEmbarquesDetalle !== undefined) {
             const embarque = consultaEmbarquesDetalle.response[0] || []
@@ -246,7 +245,6 @@ window.addEventListener('DOMContentLoaded', async () => {
                 Tipo_Catalogo: tipoCatalogo,
             },
         }
-        console.log(gurdarEmbarque)
         await loadAPI(`${url}DAIMLER`, 'POST', gurdarEmbarque, '', true)
         generarGrid('C')
         $('#modalEmbarque').modal('hide')
@@ -299,7 +297,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     $(document).on('click', '.add-btnEmbarque', function () {
         idRow = 0
         idMov = $(this).data('id')
-        console.log(idMov)
         $('#modalEntregaManual').modal('show')
         $('#selectPrendas').val(0)
         $('#selectTalla').val(0)
@@ -321,14 +318,12 @@ window.addEventListener('DOMContentLoaded', async () => {
                 Cantidad: cantidad
             },
         }
-        console.log(guardarEmbarqueDetalle)
         await loadAPI(`${url}DAIMLER`, 'POST', guardarEmbarqueDetalle, '', true)
         generarGridDetalle('CD', idMov)
     })
     //? ------------------- EDITAR DETALLE ---------------- //
     $(document).on('click', '.edit-btnDetalle', function () {
         const idMov = $(this).data('id')
-        console.log(idMov)
         idRow = idMov
         const prenda = $(this).data('idprenda')
         const talla = $(this).data('idtalla')
