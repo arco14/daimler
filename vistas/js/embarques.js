@@ -82,7 +82,9 @@ window.addEventListener('DOMContentLoaded', async () => {
                     defaultContent: '',
                     render: function (row) {
                         return `<div style='display: flex gap: 1rem'>
-                                    <button type='button' data-id='${row.ID}' class='btn btn-info btn-circle waves-effect waves-circle waves-float add-btnEmbarque' title='Agregar Detalle'>
+                                    <button type='button' 
+                                            data-id='${row.ID}'
+                                            class='btn btn-info btn-circle waves-effect waves-circle waves-float add-btnEmbarque' title='Agregar Detalle'>
                                         <i class='material-icons'>add</i>
                                     </button>
                                     <button type='button' 
@@ -144,6 +146,7 @@ window.addEventListener('DOMContentLoaded', async () => {
                 Id: id
             }
         }
+        console.log(dataDaimler)
         const consultaEmbarquesDetalle = await loadAPI(`${url}DAIMLER`, 'POST', dataDaimler, '', false)
         if (consultaEmbarquesDetalle !== undefined) {
             const embarque = consultaEmbarquesDetalle.response[0] || []
@@ -171,17 +174,16 @@ window.addEventListener('DOMContentLoaded', async () => {
                             return `<div style='display: flex gap: 1rem'>
                                         <button type='button' 
                                                 data-id = '${row.ID}'
-                                                data-idTipoCatalogo = '${row.ID_TIPO_CATALOGO}'  
-                                                data-tipoCatalogo = '${row.TIPO_CATALOGO}'  
-                                                data-usuario = '${row.USUARIO}' 
-                                                class='btn btn-warning btn-circle waves-effect waves-circle waves-float edit-btnEmbarque' title='Editar Maestro'>
+                                                data-idPrenda = '${row.ID_PRENDA}'  
+                                                data-idTalla = '${row.ID_TALLA}'  
+                                                data-cantidad = '${row.CANTIDAD}' 
+                                                class='btn btn-warning btn-circle waves-effect waves-circle waves-float edit-btnDetalle' title='Editar Detalle'>
                                             <i class='material-icons'>edit</i>
                                         </button>
-                                        <button type='button' data-id='${row.ID}' class='btn btn-danger btn-circle waves-effect waves-circle waves-float delete-btnEmbarque' title='Eliminar'>
+                                        <button type='button' data-id='${row.ID}' class='btn btn-danger btn-circle waves-effect waves-circle waves-float delete-btnDetalle' title='Eliminar'>
                                             <i class='material-icons'>close</i>
                                         </button>
-                                    </div>
-                        `
+                                    </div>`
                         }
                     },
                 ],
@@ -297,6 +299,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     $(document).on('click', '.add-btnEmbarque', function () {
         idRow = 0
         idMov = $(this).data('id')
+        console.log(idMov)
         $('#modalEntregaManual').modal('show')
         $('#selectPrendas').val(0)
         $('#selectTalla').val(0)
@@ -321,5 +324,45 @@ window.addEventListener('DOMContentLoaded', async () => {
         console.log(guardarEmbarqueDetalle)
         await loadAPI(`${url}DAIMLER`, 'POST', guardarEmbarqueDetalle, '', true)
         generarGridDetalle('CD', idMov)
+    })
+    //? ------------------- EDITAR DETALLE ---------------- //
+    $(document).on('click', '.edit-btnDetalle', function () {
+        const idMov = $(this).data('id')
+        console.log(idMov)
+        idRow = idMov
+        const prenda = $(this).data('idprenda')
+        const talla = $(this).data('idtalla')
+        const cantidad = $(this).data('cantidad')
+        $('#modalEntregaManual').modal('show')
+        $('#selectPrendas').val(prenda).change()
+        $('#selectTalla').val(talla).change()
+        $('#cantidad').val(cantidad)
+    })
+    //? ------------------- ELIMINAR DETALLE ---------------- //
+    $(document).on('click', '.delete-btnDetalle', function () {
+        const id = $(this).data('id')
+        idMov = $(this).data('idMov')
+        Swal.fire({
+            icon: 'question',
+            title: 'Deseas eliminar el registro?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'SI',
+            denyButtonText: 'NO'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const eliminarEmbarque = {
+                    Stored: 'PA_DAI_CapEmbarque',
+                    Opcion: 'Dd',
+                    Embarque: {
+                        Id: id,
+                    }
+                }
+                await loadAPI(`${url}DAIMLER`, 'POST', eliminarEmbarque, '', true)
+                generarGridDetalle('CD', idMov)
+            } else if (result.isDenied) {
+                alert('No se elimino el registro')
+            }
+        })
     })
 })
