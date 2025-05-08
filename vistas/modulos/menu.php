@@ -53,7 +53,7 @@
             </li>
             <li>
                 <a href="index.php?ruta=Embarques">
-                    <i class="material-icons">insert_chart</i>
+                    <i class="material-icons">view_cozy</i>
                     <span>Embarques</span>
                 </a>
             </li>
