@@ -35,9 +35,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         $(`#${divPadre} .dropdown-menu .inner`).append(`<li data-original-index='0' idEmpleado='0' class=' active'><a tabindex='0' class='' style='' data-tokens='null'><span class='text'>${strTexto}</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>`)
         $(`#${idComponente}`).append(`<option value='0'>${strTexto}</option>`)
         $.each(data, function (i, item) {
-            $(`#${idComponente}`).append(`<option value='${item.Id}'>${item.NOMBRE}</option>`)
+            $(`#${idComponente}`).append(`<option value='${item.Id}'>${item.CLAVE}</option>`)
             const index = parseInt(i) + 1
-            $(`#${divPadre} .dropdown-menu .inner`).append(`<li data-original-index='${index}' idEmpleado='${item.Id}'><a tabindex='${index}' data-tokens='null'><span class='text'>${item.NOMBRE}</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>`)
+            $(`#${divPadre} .dropdown-menu .inner`).append(`<li data-original-index='${index}' idEmpleado='${item.Id}'><a tabindex='${index}' data-tokens='null'><span class='text'>${item.CLAVE}</span><span class='glyphicon glyphicon-ok check-mark'></span></a></li>`)
 
         })
     }
@@ -57,6 +57,14 @@ window.addEventListener('DOMContentLoaded', async () => {
             responsive: true,
             dom: 'Bfrtip',
             columns: [{
+                    data: 'ID',
+                    defaultContent: '',
+                    visible: false
+                }, {
+                    data: 'ID_TIPO_CATALOGO',
+                    defaultContent: '',
+                    visible: false
+                }, {
                     data: 'TIPO_CATALOGO',
                     defaultContent: ''
                 },

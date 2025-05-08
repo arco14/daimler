@@ -29,6 +29,8 @@
                                 <table class="table table-bordered text-center" id="tablaEmbarques" width="100%">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
+                                            <th>Id Tipo Catálogo</th>
                                             <th>Tipo Catálogo</th>
                                             <th>Usuario</th>
                                             <th>Fecha</th>
@@ -38,6 +40,8 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>Id</th>
+                                            <th>Id Tipo Catálogo</th>
                                             <th>Tipo Catálogo</th>
                                             <th>Fecha</th>
                                             <th>Usuario</th>
