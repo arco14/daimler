@@ -350,7 +350,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     //? ------------------- ELIMINAR DETALLE ---------------- //
     $(document).on('click', '.delete-btnDetalle', function () {
         const id = $(this).data('id')
-        idMov = $(this).data('idMov')
         Swal.fire({
             icon: 'question',
             title: 'Deseas eliminar el registro?',
