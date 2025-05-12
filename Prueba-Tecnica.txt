@@ -1,0 +1,12 @@
+Requerimientos Funcionales
+    - CRUD para clientes, categorías y productos, ventas y detalle_venta.
+    - Registrar una venta (seleccionando cliente y productos).
+    - Control de stock al realizar ventas.
+    - Calcular el total de cada venta automáticamente.
+    - Mostrar el historial de ventas por cliente.
+    - Generar una tabla resumen con productos más vendidos (opcional).
+Reglas y Condiciones
+    - Usar MySQL como base de datos.
+    - Usar al menos un Stored Procedure
+    - Usar cualquier lenguaje de backend: PHP, Node.js, C#.
+    - Documentar codigo (en cosas necesarias)
