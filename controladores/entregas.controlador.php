@@ -35,7 +35,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
             $conector = new WindowsPrintConnector($impresora);
             $printer = new Printer($conector);
             $printer -> setJustification(Printer::JUSTIFY_CENTER);
-            $printer -> text("Entrega Sudadera 2024"."\n");//Nombre de la empresa
+            $printer -> text("Entrega Anual 2025"."\n");//Nombre de la empresa
             $printer -> text($arrayMaestro[0]->FECHA."\n");//Fecha de la factura
             $printer -> text($arrayMaestro[0]->USUARIO."\n");//Fecha de la factura
             $printer -> feed(1); //Alimentamos el papel 1 vez
@@ -62,6 +62,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
                 $printer -> setEmphasis(false); 
             }
             $printer -> feed(1); //Alimentamos el papel 1 vez
+
             $printer -> setJustification(Printer::JUSTIFY_LEFT);
             $printer->text("COMENTARIOS: ".$arrayMaestro[0]->COMENTARIOS."\n");
             $printer -> feed(1); //Alimentamos el papel 1 vez
@@ -84,7 +85,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
             $conector = new WindowsPrintConnector($impresora);
             $printer = new Printer($conector);
             $printer -> setJustification(Printer::JUSTIFY_CENTER);
-            $printer -> text("Entrega Sudadera 2024"."\n");//Nombre de la empresa
+            $printer -> text("Entrega Anual 2025"."\n");//Nombre de la empresa
             $printer -> text($arrayMaestro[0]->FECHA."\n");//Fecha de la factura
             $printer -> text($arrayMaestro[0]->USUARIO."\n");//Fecha de la factura
             $printer -> feed(1); //Alimentamos el papel 1 vez

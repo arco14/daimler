@@ -10,7 +10,7 @@ class ModeloReportes
         $stmt=Conexion::conectar()->prepare( $query);
         $stmt->bindParam(":jsonParametros", $jsonParametros,PDO::PARAM_STR);	
         if($stmt->execute())
-        {
+        {   
             return($stmt-> fetchAll());
         }else
         {

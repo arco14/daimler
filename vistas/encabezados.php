@@ -91,7 +91,7 @@
  <script src="vistas/plugins/jquery-sparkline/jquery.sparkline.js"></script>-->
 <!-- Validation Plugin Js -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- <script src="vistas/plugins/sweetalert/sweetalert2.all.js"></script>  -->
+<script src="vistas/plugins/sweetalert/sweetalert2.all.js"></script> 
 
 <!-- Alertas 
  <script src="vistas/plugins/sweetalert/sweetalert.min.js"></script> 

@@ -1,20 +1,27 @@
 $( document ).ready(function() {
 
-
-    /*$_SESSION["iniciarSesion"]="ok";
+   /* $_SESSION["iniciarSesion"]="ok";
  					$_SESSION["id"]=$respuesta["id"];
  					$_SESSION["nombre"]=$respuesta["nombre"];
- 					$_SESSION["usuario"]=$respuesta["usuario"];*/
-
+ 					$_SESSION["usuario"]=$respuesta["usuario"];
+*/
 
      document.title = 'Entregas';
-    var userActive = $('#nombreUsuario').text()
-    if ( userActive!='' && userActive != undefined){
-        $("#panelUsuario").hide();
+   
+      var userActive = $('#nombreUsuario').text()
 
+
+
+      //console.log(userActive);
+   if ( userActive =="" || userActive =='' ){
+        $("#panelUsuario").show();
+        $("#guardarEntrega").hide();   
+   
         
     }else{
-        $("#guardarEntrega").hide();
+
+      $("#panelUsuario").hide();
+        $("#guardarEntrega").show();
     }
  
     var strCodigoOP='';
@@ -322,7 +329,10 @@ $( document ).ready(function() {
         datos= new FormData();
         datos.append("data",  jsonParametros);
         datos.append("action","consulta");
-        consultarExistencia(datos,"#paqueteCamisaMangaCortaExistencia");
+        if ($("#paqueteCamisaMangaCorta").attr("idPrenda") != undefined){
+         consultarExistencia(datos,"#paqueteCamisaMangaCortaExistencia");
+        }
+
 
         $("#paquetePlayera").val(intId);
         $("#playera li" ).removeClass( "selected" );
@@ -333,8 +343,11 @@ $( document ).ready(function() {
         datos= new FormData();
         datos.append("data",  jsonParametros);
         datos.append("action","consulta");
-        consultarExistencia(datos,"#paquetePlayeraExistencia");
+           if ($("#paquetePlayera").attr("idPrenda") != undefined){
+             consultarExistencia(datos,"#paquetePlayeraExistencia");
 
+        }
+       
     });
     $(document).on("change","#paqueteCamisaMangaCorta",function(){
         intId=$("#paqueteCamisaMangaCorta").val();

@@ -5,8 +5,7 @@
             <img src="vistas/img/user.jpg" width="48" height="48" alt="User" />
         </div>
         <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nombreUsuario">
-                <?php  if(isset($_SESSION["usuario"])) echo $_SESSION["usuario"]    ?></div>
+            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nombreUsuario"><?php  if(isset($_SESSION["usuario"])) echo $_SESSION["usuario"]?></div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="true">keyboard_arrow_down</i>
@@ -27,13 +26,13 @@
     <div class="menu">
         <ul class="list">
             <li class="header">NAVEGACION</li>
-            <li>
-                <a href="index.php?ruta=empleados">
+         <!--   <li>
+        <        <a href="index.php?ruta=empleados">
                     <i class="material-icons">group</i>
                     <span>Empleados</span>
                 </a>
-            </li>
-            <!--<li>
+            </li>-->
+            <li>
                         <a href="index.php?ruta=inventarios">
                             <i class="material-icons">assignment_turned_in</i>
                             <span>Inventario</span>
@@ -44,9 +43,9 @@
                             <i class="material-icons">event</i>
                             <span>Entregas</span>
                         </a>
-                    </li>-->
+                    </li>
             <li>
-                <a href="index.php?ruta=reporteTomaTallas">
+                <a href="index.php?ruta=reporteEntregas">
                     <i class="material-icons">insert_chart</i>
                     <span>Reportes</span>
                 </a>

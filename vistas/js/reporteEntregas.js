@@ -402,16 +402,16 @@ $(document).on("click","#guardarAjuste",function(){
             processData:false,
             dataType:"json",
             success:function(respuesta_datos){
-               /* $('#tituloHC').text(respuesta_datos[0][0][0]);
+                $('#tituloHC').text(respuesta_datos[0][0][0]);
                 $('#tituloRegistrados').text(respuesta_datos[0][0][1]);
                 $('#tituloRegistradosDia').text(respuesta_datos[0][0][2]);
-                $('#tituloPorcentaje').text(respuesta_datos[0][0][3] +'%'); */
+                $('#tituloPorcentaje').text(respuesta_datos[0][0][3] +'%'); 
 
-                $('#tituloHC').text('5,112');
+              /*  $('#tituloHC').text('5,112');
                 $('#tituloRegistrados').text('5,112');
                 $('#tituloRegistradosDia').text('0');
                 $('#tituloPorcentaje').text('99.45%'); 
-
+                   */ 
             }
         });   
 

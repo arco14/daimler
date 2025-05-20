@@ -1,5 +1,6 @@
 ﻿<?php 
 session_start();
+
 ?>
 <?php 
 include( "router.php"); 
