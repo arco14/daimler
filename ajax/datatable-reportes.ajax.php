@@ -30,6 +30,7 @@ class TablasReportes{
              $datosJson ='{"data":[';
         for($i=0; $i<count($reporte);$i++){
             $datosJson .= '[
+            "'.$reporte[$i]["NUMERO_ENTREGA"].'",
             "'.$reporte[$i]["AREA"].'",
             "'.$reporte[$i]["HC"].'",
             "'.$reporte[$i]["REGISTRADOS"].'",
@@ -49,6 +50,7 @@ class TablasReportes{
              $datosJson ='{"data":[';
         for($i=0; $i<count($reporte);$i++){
             $datosJson .= '[
+            "'.$reporte[$i]["NUMERO_ENTREGA"].'",
             "'.$reporte[$i]["AREA"].'",
             "'.$reporte[$i]["PUESTO"].'",
             "'.$reporte[$i]["HC"].'",
@@ -88,6 +90,7 @@ class TablasReportes{
              $datosJson ='{"data":[';
         for($i=0; $i<count($reporte);$i++){
             $datosJson .= '[
+            "'.$reporte[$i]["NUMERO_"].'",
             "'.$reporte[$i]["NUMERO_EMPLEADO"].'",
             "'.$reporte[$i]["NOMBRE"].'",
             "'.$reporte[$i]["AREA"].'",

@@ -31,7 +31,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
         $arrayDetalle=json_decode($_POST["arrayDetalle"]);
 
         for($p=0; $p<2;$p++){
-            $impresora = "EPSON TM-T20II Receipt5";      
+            $impresora = "EPSON TM-T20II";      
             $conector = new WindowsPrintConnector($impresora);
             $printer = new Printer($conector);
             $printer -> setJustification(Printer::JUSTIFY_CENTER);
@@ -81,7 +81,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
 
         for($p=0; $p<2;$p++){
-            $impresora = "EPSON TM-T20II";      
+            $impresora = "EPSON TM-T20II 2";      
             $conector = new WindowsPrintConnector($impresora);
             $printer = new Printer($conector);
             $printer -> setJustification(Printer::JUSTIFY_CENTER);

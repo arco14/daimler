@@ -133,6 +133,7 @@
                                     <table class="table table-bordered text-center" id="tablaResumen" width="100%">
                                         <thead>
                                             <tr>
+                                                <th>Numero Entrega</th>
                                                 <th>Area</th>
                                                 <th>Puesto</th>
                                                 <th>HC</th>
@@ -143,6 +144,7 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
+                                                <th>Numero Entrega</th>
                                                 <th>Area</th>
                                                 <th>Puesto</th>
                                                 <th>HC</th>

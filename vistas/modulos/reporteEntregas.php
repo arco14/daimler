@@ -167,6 +167,7 @@
                                     <table class="table table-bordered text-center" id="tablaFaltantes" width="100%">
                                     <thead>
                                         <tr>
+                                            <th>Numero Entrega</th>
                                             <th>Numero Empleado</th>
                                             <th>Nombre</th>
                                             <th>Area</th>
@@ -176,6 +177,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>Numero Entrega</th>
                                             <th >Numero Empleado</th>
                                             <th>Nombre</th>
                                             <th>Area</th>
@@ -190,6 +192,7 @@
                                     <table class="table table-bordered text-center" id="tablaResumen" width="100%">
                                         <thead>
                                             <tr>
+                                                <th>Numero Entrega</th>
                                                 <th>Area</th>
                                                 <th>HC</th>
                                                 <th>Registrados</th>  
@@ -199,6 +202,7 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
+                                                <th>Numero Entrega</th>
                                                 <th>Area</th>
                                                 <th>HC</th>
                                                 <th>Registrados</th>  
@@ -214,10 +218,10 @@
                                     <table class="table table-bordered text-center" id="tablaResumenEspecialidades" width="100%">
                                         <thead>
                                             <tr>
+                                                <th>Numero Entrega</th>
                                                 <th>Area</th>
                                                 <th>Puesto</th>
                                                 <th>HC</th>
-
                                                 <th>Registrados</th>  
                                                 <th>Faltantes</th> 
                                                 <th>Porcentaje</th> 
@@ -225,6 +229,7 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
+                                                <th>Numero Entrega</th>
                                                 <th>Area</th>
                                                 <th>Puesto</th>
                                                 <th>HC</th>
