@@ -90,7 +90,6 @@ class TablasReportes{
              $datosJson ='{"data":[';
         for($i=0; $i<count($reporte);$i++){
             $datosJson .= '[
-            "'.$reporte[$i]["NUMERO_"].'",
             "'.$reporte[$i]["NUMERO_EMPLEADO"].'",
             "'.$reporte[$i]["NOMBRE"].'",
             "'.$reporte[$i]["AREA"].'",
