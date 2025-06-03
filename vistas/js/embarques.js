@@ -361,7 +361,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             if (result.isConfirmed) {
                 const eliminarEmbarque = {
                     Stored: 'PA_DAI_CapEmbarque',
-                    Opcion: 'Dd',
+                    Opcion: 'DD',
                     Embarque: {
                         Id: id,
                     }
