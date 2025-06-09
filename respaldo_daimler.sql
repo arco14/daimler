@@ -10465,7 +10465,7 @@ INSERT INTO `dai_existencias` (`EXI_Id`, `PRE_Id`, `EXI_Cantidad`, `CAT_Talla`) 
 	(78, 9, 6, 23),
 	(79, 10, 0, 9),
 	(80, 10, 0, 10),
-	(81, 10, -5, 11),
+	(81, 10, 0, 11),
 	(82, 10, 13, 12),
 	(83, 10, 0, 52),
 	(84, 10, 0, 18),
@@ -10517,28 +10517,28 @@ INSERT INTO `dai_existencias` (`EXI_Id`, `PRE_Id`, `EXI_Cantidad`, `CAT_Talla`) 
 	(130, 15, 3, 21),
 	(131, 15, 6, 22),
 	(132, 15, 4, 23),
-	(133, 16, 0, 9),
-	(134, 16, 0, 10),
-	(135, 16, 0, 11),
-	(136, 16, 2, 12),
+	(133, 16, 211, 9),
+	(134, 16, 114, 10),
+	(135, 16, 40, 11),
+	(136, 16, 150, 12),
 	(137, 16, 0, 52),
-	(138, 16, 0, 18),
-	(139, 16, 0, 21),
-	(140, 16, 0, 22),
-	(141, 16, 0, 23),
-	(142, 17, 0, 9),
-	(143, 17, 0, 10),
-	(144, 17, 0, 11),
-	(145, 17, 3, 12),
+	(138, 16, 72, 18),
+	(139, 16, 27, 21),
+	(140, 16, 5, 22),
+	(141, 16, 5, 23),
+	(142, 17, 287, 9),
+	(143, 17, 165, 10),
+	(144, 17, 69, 11),
+	(145, 17, 225, 12),
 	(146, 17, 0, 52),
-	(147, 17, 0, 18),
-	(148, 17, 0, 21),
+	(147, 17, 106, 18),
+	(148, 17, 47, 21),
 	(149, 17, 0, 22),
 	(150, 17, 0, 23),
 	(151, 18, 0, 9),
 	(152, 18, 0, 10),
 	(153, 18, 0, 11),
-	(154, 18, -2, 12),
+	(154, 18, 0, 12),
 	(155, 18, 0, 52),
 	(156, 18, 0, 18),
 	(157, 18, 0, 21),
@@ -10547,7 +10547,7 @@ INSERT INTO `dai_existencias` (`EXI_Id`, `PRE_Id`, `EXI_Cantidad`, `CAT_Talla`) 
 	(160, 19, 0, 9),
 	(161, 19, 0, 10),
 	(162, 19, 0, 11),
-	(163, 19, -3, 12),
+	(163, 19, 0, 12),
 	(164, 19, 0, 52),
 	(165, 19, 0, 18),
 	(166, 19, 0, 21),
@@ -10625,23 +10625,23 @@ INSERT INTO `dai_existencias` (`EXI_Id`, `PRE_Id`, `EXI_Cantidad`, `CAT_Talla`) 
 	(238, 27, 0, 21),
 	(239, 27, 0, 22),
 	(240, 27, 0, 23),
-	(241, 29, 7, 9),
-	(242, 29, 0, 10),
-	(243, 29, 0, 11),
-	(244, 29, 2, 12),
-	(245, 29, 0, 52),
-	(246, 29, 0, 18),
-	(247, 29, 0, 21),
-	(248, 29, 0, 22),
+	(241, 29, 96, 9),
+	(242, 29, 25, 10),
+	(243, 29, 19, 11),
+	(244, 29, 83, 12),
+	(245, 29, 4, 52),
+	(246, 29, 24, 18),
+	(247, 29, 26, 21),
+	(248, 29, 3, 22),
 	(249, 29, 0, 23),
-	(250, 30, 3, 9),
-	(251, 30, 0, 10),
-	(252, 30, 0, 11),
-	(253, 30, 3, 12),
-	(254, 30, 0, 52),
-	(255, 30, 0, 18),
-	(256, 30, 0, 21),
-	(257, 30, 0, 22),
+	(250, 30, 71, 9),
+	(251, 30, 30, 10),
+	(252, 30, 14, 11),
+	(253, 30, 85, 12),
+	(254, 30, 3, 52),
+	(255, 30, 34, 18),
+	(256, 30, 24, 21),
+	(257, 30, 3, 22),
 	(258, 30, 0, 23),
 	(259, 31, 0, 9),
 	(260, 31, 0, 10),
@@ -10652,13 +10652,13 @@ INSERT INTO `dai_existencias` (`EXI_Id`, `PRE_Id`, `EXI_Cantidad`, `CAT_Talla`) 
 	(265, 31, 0, 21),
 	(266, 31, 0, 22),
 	(267, 31, 0, 23),
-	(268, 32, 0, 9),
-	(269, 32, 0, 10),
-	(270, 32, 0, 11),
-	(271, 32, 0, 12),
-	(272, 32, 0, 52),
-	(273, 32, 0, 18),
-	(274, 32, 0, 21),
+	(268, 32, 41, 9),
+	(269, 32, 29, 10),
+	(270, 32, 7, 11),
+	(271, 32, 37, 12),
+	(272, 32, 5, 52),
+	(273, 32, 22, 18),
+	(274, 32, 6, 21),
 	(275, 32, 0, 22),
 	(276, 32, 0, 23),
 	(277, 1, 968, 13),
@@ -10679,15 +10679,15 @@ INSERT INTO `dai_existencias` (`EXI_Id`, `PRE_Id`, `EXI_Cantidad`, `CAT_Talla`) 
 	(292, 7, 25, 28),
 	(293, 7, 0, 29),
 	(294, 7, 0, 30),
-	(295, 33, 5, 13),
-	(296, 33, 20, 19),
-	(297, 33, 0, 24),
-	(298, 33, 0, 25),
-	(299, 33, 0, 26),
-	(300, 33, 0, 27),
-	(301, 33, 0, 28),
-	(302, 33, 0, 29),
-	(303, 33, 0, 30),
+	(295, 33, 119, 13),
+	(296, 33, 222, 19),
+	(297, 33, 34, 24),
+	(298, 33, 71, 25),
+	(299, 33, 119, 26),
+	(300, 33, 15, 27),
+	(301, 33, 36, 28),
+	(302, 33, 22, 29),
+	(303, 33, 15, 30),
 	(304, 35, 80, 9),
 	(305, 35, 80, 10),
 	(306, 35, 24, 11),
@@ -10820,9 +10820,9 @@ CREATE TABLE IF NOT EXISTS `dai_movimientos` (
   `MOV_NumeroEntrega` int(11) DEFAULT NULL,
   `MOV_Activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`MOV_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13468 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13469 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler.dai_movimientos: ~3,295 rows (aproximadamente)
+-- Volcando datos para la tabla daimler.dai_movimientos: ~3,296 rows (aproximadamente)
 INSERT INTO `dai_movimientos` (`MOV_Id`, `MOV_Fecha`, `MOV_FechaHora`, `MOV_Documento`, `MOV_Usuario`, `MOV_Entrada`, `CAT_Tipo`, `EMP_Id`, `PAQ_Id`, `MOV_UsuarioRetorna`, `MOV_NumeroEntrega`, `MOV_Activo`) VALUES
 	(9891, '2025-05-12', '2025-05-12 11:50:51', 'Embarque 1 10/may/2025', 'cruz', b'1', 54, NULL, NULL, NULL, NULL, b'1'),
 	(9893, '2025-05-13', '2025-05-13 09:17:03', '', 'antonio', b'0', 55, 272263, 2, NULL, NULL, NULL),
@@ -14389,7 +14389,8 @@ INSERT INTO `dai_movimientos` (`MOV_Id`, `MOV_Fecha`, `MOV_FechaHora`, `MOV_Docu
 	(13464, '2025-06-02', '2025-06-02 09:29:23', '', 'Diego', b'0', 55, 272532, 3, NULL, NULL, NULL),
 	(13465, '2025-06-02', '2025-06-02 09:29:34', '', 'Diego', b'0', 55, 272516, 3, NULL, NULL, NULL),
 	(13466, '2025-06-03', '2025-06-03 12:47:12', 'Ajuste de salida de existencia', 'Christian', b'0', 60, NULL, NULL, NULL, NULL, b'1'),
-	(13467, '2025-06-04', '2025-06-04 11:01:24', 'Ajuste de entrada de existencia', 'Christian', b'1', 59, NULL, NULL, NULL, NULL, b'1');
+	(13467, '2025-06-04', '2025-06-04 11:01:24', 'Ajuste de entrada de existencia', 'Christian', b'1', 59, NULL, NULL, NULL, NULL, b'1'),
+	(13468, '2025-06-09', '2025-06-09 09:18:32', 'Embarque 3 379929 06/06/2025', 'Christian', b'1', 54, NULL, NULL, NULL, NULL, b'1');
 
 -- Volcando estructura para tabla daimler.dai_movimientos_detalle
 CREATE TABLE IF NOT EXISTS `dai_movimientos_detalle` (
@@ -14400,9 +14401,9 @@ CREATE TABLE IF NOT EXISTS `dai_movimientos_detalle` (
   `MOD_Cantidad` bigint(20) DEFAULT NULL,
   `MOD_Activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`MOD_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31542 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31591 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler.dai_movimientos_detalle: ~9,158 rows (aproximadamente)
+-- Volcando datos para la tabla daimler.dai_movimientos_detalle: ~9,207 rows (aproximadamente)
 INSERT INTO `dai_movimientos_detalle` (`MOD_Id`, `MOV_Id`, `PRE_Id`, `CAT_Talla`, `MOD_Cantidad`, `MOD_Activo`) VALUES
 	(20566, 9891, 1, 24, 600, b'1'),
 	(20567, 9891, 1, 25, 1800, b'1'),
@@ -24640,7 +24641,56 @@ INSERT INTO `dai_movimientos_detalle` (`MOD_Id`, `MOV_Id`, `PRE_Id`, `CAT_Talla`
 	(31535, 13466, 3, 11, 51, b'1'),
 	(31537, 13466, 6, 52, 2, b'1'),
 	(31538, 13467, 3, 52, 1, b'1'),
-	(31541, 13467, 36, 12, 270, b'1');
+	(31541, 13467, 36, 12, 270, b'1'),
+	(31542, 13468, 30, 52, 3, b'1'),
+	(31543, 13468, 30, 11, 14, b'1'),
+	(31544, 13468, 30, 10, 30, b'1'),
+	(31545, 13468, 30, 9, 68, b'1'),
+	(31546, 13468, 30, 12, 82, b'1'),
+	(31547, 13468, 30, 18, 34, b'1'),
+	(31548, 13468, 30, 21, 24, b'1'),
+	(31549, 13468, 30, 22, 3, b'1'),
+	(31550, 13468, 29, 52, 4, b'1'),
+	(31551, 13468, 29, 11, 19, b'1'),
+	(31552, 13468, 29, 10, 25, b'1'),
+	(31553, 13468, 29, 9, 89, b'1'),
+	(31554, 13468, 29, 12, 81, b'1'),
+	(31555, 13468, 29, 18, 24, b'1'),
+	(31556, 13468, 29, 21, 26, b'1'),
+	(31557, 13468, 29, 22, 3, b'1'),
+	(31558, 13468, 33, 24, 34, b'1'),
+	(31559, 13468, 33, 25, 71, b'1'),
+	(31560, 13468, 33, 13, 114, b'1'),
+	(31561, 13468, 33, 19, 202, b'1'),
+	(31562, 13468, 33, 26, 119, b'1'),
+	(31563, 13468, 33, 27, 15, b'1'),
+	(31564, 13468, 33, 28, 36, b'1'),
+	(31565, 13468, 33, 29, 22, b'1'),
+	(31566, 13468, 33, 30, 15, b'1'),
+	(31567, 13468, 32, 52, 5, b'1'),
+	(31568, 13468, 32, 11, 7, b'1'),
+	(31569, 13468, 32, 10, 29, b'1'),
+	(31570, 13468, 32, 9, 41, b'1'),
+	(31571, 13468, 32, 12, 37, b'1'),
+	(31572, 13468, 32, 18, 22, b'1'),
+	(31573, 13468, 32, 21, 6, b'1'),
+	(31574, 13468, 17, 21, 47, b'1'),
+	(31575, 13468, 17, 11, 69, b'1'),
+	(31576, 13468, 17, 10, 165, b'1'),
+	(31577, 13468, 17, 9, 287, b'1'),
+	(31578, 13468, 17, 12, 222, b'1'),
+	(31579, 13468, 17, 18, 106, b'1'),
+	(31580, 13468, 16, 11, 40, b'1'),
+	(31581, 13468, 16, 10, 114, b'1'),
+	(31582, 13468, 16, 9, 211, b'1'),
+	(31583, 13468, 16, 12, 148, b'1'),
+	(31584, 13468, 16, 18, 72, b'1'),
+	(31585, 13468, 16, 21, 27, b'1'),
+	(31586, 13468, 16, 22, 5, b'1'),
+	(31587, 13468, 16, 23, 5, b'1'),
+	(31588, 13467, 19, 12, 3, b'1'),
+	(31589, 13467, 18, 12, 2, b'1'),
+	(31590, 13467, 10, 11, 5, b'1');
 
 -- Volcando estructura para tabla daimler.dai_paquetes_entrega
 CREATE TABLE IF NOT EXISTS `dai_paquetes_entrega` (
@@ -26717,14 +26767,39 @@ BEGIN
                ;
     
     END IF;
-    
+    /* REPORTE ENTREGADOS CANTIDAD POR TALLAS */
     If(strOpcion = "CNE") Then 
 		Select 
 			CAL_Id 			  As Id,
             CAL_NumeroEntrega As NUMERO_ENTREGA
 		From dai_entregas_calendario
         Group By CAL_NumeroEntrega;
-    End If; 
+    End If;
+    If (strOpcion = "CRT") Then
+		Select  JSON_UNQUOTE(JSON_EXTRACT( jsonParametros,'$.FECHA_INICIAL')),
+				JSON_UNQUOTE(JSON_EXTRACT( jsonParametros,'$.FECHA_FINAL'))
+		INTO  dteFechaInicio, dateFechaFin;
+		SELECT
+			PRE.PRE_Nombre AS PRENDA, 
+			TALL.CAT_Clave AS TALLA,
+			SUM(MOV_DET.MOD_Cantidad) AS CANTIDAD_TOTAL
+		FROM dai_movimientos_detalle MOV_DET
+			JOIN dai_prendas PRE 
+				ON MOV_DET.PRE_Id = PRE.PRE_Id
+			JOIN dai_movimientos MOV 
+				ON MOV.MOV_Id = MOV_DET.MOV_Id
+			JOIN dai_empleados EMP 
+				ON EMP.EMP_Id = MOV.EMP_Id
+			JOIN dai_catalogos TALL 
+				ON TALL.CAT_Id = MOV_DET.CAT_Talla
+		WHERE 
+              CAST(EMP.EMP_FechaUltimaEntrega AS DATE) BETWEEN dteFechaInicio AND dateFechaFin
+			  AND EMP.EST_Id <> 1
+			  AND MOV.MOV_Entrada = 0
+			  AND MOV.CAT_Tipo = 55
+		GROUP BY PRE.PRE_Nombre, TALL.CAT_Nombre
+		ORDER BY PRE.PRE_Nombre, TALL.CAT_Nombre;
+    End If;
 END//
 DELIMITER ;
 

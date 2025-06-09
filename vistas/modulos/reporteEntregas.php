@@ -1,3 +1,10 @@
+<style>
+    .control-fechas {
+        width: 50%;
+        display: flex;
+        gap: 1rem;
+    }
+</style>
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
@@ -78,6 +85,8 @@
                                         data-toggle="tab">REGISTRADOS</a></li>
                                 <li role="presentation" id="tabInventarios"><a href="#tab_4"
                                         data-toggle="tab">INVENTARIOS</a></li>
+                                <li role="presentation" id="tabEntregadosCanTallas"><a href="#tab_7" data-toggle="tab"
+                                        class="text-uppercase">Entregados cantidad por tallas</a></li>
 
 
                             </ul>
@@ -137,7 +146,7 @@
                                                 <th>Numero Empleado</th>
                                                 <th>Nombre</th>
                                                 <th>Area</th>
-                                                <th>Puesto</th>
+                                                <th>CANTIDAD_TOTAL</th>
 
                                                 <th>Comentario</th>
                                                 <th>Camisa</th>
@@ -246,10 +255,51 @@
                                             </tr>
                                         </tfoot>
                                     </table>
-
-
                                 </div>
-
+                                <div role="tabpanel" class="tab-pane fade in" id="tab_7">
+                                    <div class="control-fechas">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="fecha">Fecha Inicial</label>
+                                                <input type="date" class="form-control p-0" name="fecha"
+                                                    id="fechaInicial" placeholder="Fecha" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label for="fecha">Fecha Final</label>
+                                                <input type="date" class="form-control p-0" name="fecha" id="fechaFinal"
+                                                    placeholder="Fecha" required>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="form-group">
+                                            <div class="form-line" id="numEntrega" style="padding-top: 2.5rem;">
+                                                <select class="form-control show-tick" required id="selectNumEntrega"
+                                                    name="selectNumEntrega">
+                                                </select>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <button id="btnConsultar" class="btn btn-success py-0"
+                                        style="margin-bottom: 2rem;">Consultar</button>
+                                    <table class="table table-bordered text-center" id="tabEntregadosCanTall"
+                                        width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>PRENDAS</th>
+                                                <th>TALLAS</th>
+                                                <th>CANTIDAD</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>PRENDAS</th>
+                                                <th>TALLAS</th>
+                                                <th style="text-align: right;">CANTIDAD</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
