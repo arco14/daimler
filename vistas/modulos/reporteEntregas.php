@@ -83,6 +83,8 @@
                                         data-toggle="tab">RESUMEN_FACTURA</a></li>
                                 <li role="presentation" id="tabRegistrados"><a href="#tab_3"
                                         data-toggle="tab">REGISTRADOS</a></li>
+                                <!-- <li role="presentation" id="tabRegistradosEstatus"><a href="#tab_10"
+                                        data-toggle="tab">REGISTRADOS POR ESTATUS</a></li> -->
                                 <li role="presentation" id="tabInventarios"><a href="#tab_4"
                                         data-toggle="tab">INVENTARIOS</a></li>
                                 <li role="presentation" id="tabEntregadosCanTallas"><a href="#tab_7" data-toggle="tab"
@@ -176,6 +178,44 @@
                                                 <th>Pantalon Brigada</th>
                                                 <th>Sudadera</th>
                                                 <th>Total</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade in" id="tab_10">
+                                    <table class="table table-bordered text-center" id="tablaRegEstatus" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Numero Empleado</th>
+                                                <th>Nombre</th>
+                                                <th>Area</th>
+                                                <th>PUESTO</th>
+                                                <th>Camisa</th>
+                                                <th>Pantalon Mezc</th>
+                                                <th>Pantalon Gab</th>
+                                                <th>Playera</th>
+                                                <th>Camisa Brigada</th>
+                                                <th>Pantalon Brigada</th>
+                                                <th>Polo</th>
+                                                <th>Total</th>
+                                                <th>Estatus</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Numero Empleado</th>
+                                                <th>Nombre</th>
+                                                <th>Area</th>
+                                                <th>PUESTO</th>
+                                                <th>Camisa</th>
+                                                <th>Pantalon Mezc</th>
+                                                <th>Pantalon Gab</th>
+                                                <th>Playera</th>
+                                                <th>Camisa Brigada</th>
+                                                <th>Pantalon Brigada</th>
+                                                <th>Polo</th>
+                                                <th>Total</th>
+                                                <th>Estatus</th>
                                             </tr>
                                         </tfoot>
                                     </table>

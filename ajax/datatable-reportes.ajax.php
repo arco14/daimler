@@ -176,6 +176,34 @@ class TablasReportes{
             } ';
             echo $datosJson ;
     }
+    public function mostrarRegistradosEstatus()
+    {
+        $jsonPrametros= json_encode('{"Opcion": "CRR", "Usuario": "cruz.gonzalez"}');
+        $reporte=ControladorReportes::ctrConsultarOperativa('PA_DAIConReportesEntrega',$jsonPrametros);
+             $datosJson ='{"data":[';
+        for($i=0; $i<count($reporte);$i++){
+            $datosJson .= '[   
+            "'.$reporte[$i]["NUMERO_EMPLEADO"].'",
+            "'.$reporte[$i]["NOMBRE"].'",
+            "'.$reporte[$i]["AREA"].'",
+            "'.$reporte[$i]["PUESTO"].'",
+            "'.$reporte[$i]["COMENTARIOS"].'",
+            "'.$reporte[$i]["CAMISA"].'",
+            "'.$reporte[$i]["PANTALON_MEZC"].'",
+            "'.$reporte[$i]["PANT_GAB"].'",
+            "'.$reporte[$i]["PLAYERA"].'",
+            "'.$reporte[$i]["CAMISA_BGD"].'",
+            "'.$reporte[$i]["PANT_BGD"].'",
+              "'.$reporte[$i]["POLO"].'",
+            "'.$reporte[$i]["TOTAL"].'" 
+            "'.$reporte[$i]["ESTATUS"].'"         
+            ],';
+        }
+            $datosJson=substr($datosJson, 0,-1);
+            $datosJson .=   ']
+            } ';
+            echo $datosJson ;
+    }
 }
 
 if(isset($_POST["action"])){
@@ -212,6 +240,10 @@ if(isset($_POST["action"])){
             case 'consultaRegistradosEntrega':
                     $activarRegistrados=new TablasReportes();
                     $activarRegistrados->mostrarRegistradosEntrega();
+                break; 
+            case 'consultaRegistradosEstatus':
+                    $activarRegistrados=new TablasReportes();
+                    $activarRegistrados->mostrarRegistradosEstatus();
                 break;               
 			default:
 			
