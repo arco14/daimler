@@ -10,7 +10,7 @@
     try {
         session_destroy();
         echo "Session eliminada correctamente";
-        header('Location: /admin-jumaco/');
+        header('Location: /daimler26/');
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
     }

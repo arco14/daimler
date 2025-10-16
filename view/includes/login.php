@@ -12,7 +12,7 @@
     }
 
     .imgJumaco {
-        width: 450px;
+        width: 400px;
         height: 100px;
     }
 

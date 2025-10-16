@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     //? FUNCTIONS
     async function sendDataApi(user, password) {
         const login = {
-            Stored: 'PA_dai_ConMenu',
+            Stored: 'PA_CORE_ConMenu',
             Opcion: "VU",
             Usuario: user,
             Password: password

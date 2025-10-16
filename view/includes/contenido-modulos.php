@@ -21,10 +21,13 @@
         <a class="nav-link bg-light" href="#" data-widget="iframe-fullscreen"><i class="fas fa-expand"></i></a>
     </div>
     <div class="tab-content">
-        <div class="tab-empty text-center d-flex flex-column">
-            <h3 class="h1" style="color: #0960AE; font-size: 9rem;">Sistema</h3>
-            <h4 style="color: #0960AE; font-size: 7rem;">Daimler</h4>
-            <p style="font-size: 2rem;"><span style="font-size: 3rem;">👈</span>Selecciona un modulo, del menú de opciones</p>
+        <div class="tab-empty text-center">
+            <div class="d-flex flex-column">
+                <h3 class="h1" style="color: #0960AE; font-size: 9rem;">Sistema</h3>
+                <h4 style="color: #0960AE; font-size: 7rem;">Daimler</h4>
+                <p style="font-size: 2rem;"><span style="font-size: 3rem;">👈</span>Selecciona un modulo, del menú de
+                    opciones!</p>
+            </div>
         </div>
         <div class="tab-loading">
             <div class="text-center">
