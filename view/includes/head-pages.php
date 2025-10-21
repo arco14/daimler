@@ -3,7 +3,7 @@
     $userActive = $_SESSION['userActive'];
     $userToken = $_SESSION['token'];
     if (!isset($userActive) || !isset($userToken)) {
-        header("Location: /admin-jumaco");
+        header("Location: /admin-daimler26");
         exit(); 
     }
     include_once '../../scripts/devExpress.php';

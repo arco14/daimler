@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         if (res !== undefined) {
                             passwordInput.option('value', '')
                             $('#modalUpdatePassword').modal('hide')
-                            window.location.href = '/admin-jumaco'
+                            window.location.href = '/admin-daimler26'
                         }
                     } else {
                         const detalle = res.response[1][0].strDetalle

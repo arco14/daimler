@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', () => {
                                     false,
                                     100,
                                     true,
-                                    `gridSatateCore-${options.data.Id}`, {
+                                    `gridSatateSubCore-${options.data.Id}`, {
                                         editing: {
                                             mode: 'form',
                                             useIcons: true,
@@ -185,7 +185,7 @@ window.addEventListener('DOMContentLoaded', () => {
             true,
             masterDetail,
             false,
-            500, true, `gridSatate-${idPrograma}`, {
+            500, true, `gridSatateCore-${idPrograma}`, {
                 onCellPrepared(e) {
                     if (e.rowType === 'header' && e.column.caption === 'Fecha Modifica' || e.rowType === 'header' && e.column.caption === 'Usuario Modifica') {
                         e.cellElement.css('background-color', '#d4edda')
@@ -290,7 +290,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 strValidationGroup: 'catalogo'
             })
         } else if (response !== undefined && strTipoCatalogo === 'catalogo') {
-            $('#add').modal('hide')
+            // $('#add').modal('hide')
         } else {
             return
         }
