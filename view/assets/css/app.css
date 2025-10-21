@@ -22,7 +22,7 @@ html::-webkit-scrollbar {
 ::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb,
 html::-webkit-scrollbar-thumb {
-    background: #f6b186;
+    background: #094c86;
     border-radius: 9px;
     border: 1px solid transparent;
     -webkit-transition: .5s ease-out;
@@ -205,7 +205,7 @@ td.dx-datagrid-action {
 }
 
 .dx-selection>td {
-    background: #f79253 !important;
+    background: #0960AE !important;
     color: #fff !important
 }
 
@@ -824,7 +824,7 @@ input[type=file] {
     /* padding-right: 35px; */ /* espacio para el ícono */
 }
 .eye-icon {
-    color: #f79253;
+    color: #0960AE;
     position: absolute;
     right: 10px;
     top: 50%;

@@ -23,8 +23,8 @@
         </button>
     </div>
     <div id="dropDownMod" class="dropdown">
-        <button class="btn dropdown-toggle text-white" type="button" id="triggerId" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" style="background: #FF914D;">
+        <button class="btn btn-primary dropdown-toggle text-white" type="button" id="triggerId" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             Consultar
         </button>
         <div class="dropdown-menu dropdownConsult" aria-labelledby="triggerId">

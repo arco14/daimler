@@ -14375,14 +14375,14 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:focus,
 [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:hover {
-    background-color: #6e51f7;
+    background-color: #0960AE;
     color: #fff
 }
 
 [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link.active,
 [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link.active:focus,
 [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link.active:hover {
-    background-color: #6e51f7;
+    background-color: #0960AE;
     color: #ffffff
 }
 
