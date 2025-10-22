@@ -29,10 +29,6 @@
                                     <div class="row">
                                         <div class="form-group col-sm-12 col-md-6">
                                             <div class="form-group">
-                                                <label>Id CRM</label>
-                                                <div id="textBoxIdCrm"></div>
-                                            </div>
-                                            <div class="form-group">
                                                 <label>SKU CRM</label>
                                                 <div id="textBoxSKU"></div>
                                             </div>
@@ -53,10 +49,6 @@
                                             <div class="form-group">
                                                 <label>Color</label>
                                                 <div id="lookUpColor"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Sub Color</label>
-                                                <div id="lookUpSubColor"></div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Genero</label>

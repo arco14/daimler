@@ -43,7 +43,7 @@ const arrayPrendas = [{
     caption: 'Fecha',
     dataType: 'datetime',
     format: 'dd/mm/yyy HH:mm:ss'
-},{ 
+}, {
     dataField: 'ACTIVO',
     caption: 'Activo',
     dataType: 'boolean',

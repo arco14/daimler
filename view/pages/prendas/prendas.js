@@ -21,7 +21,6 @@ window.addEventListener("DOMContentLoaded", () => {
             Usuario: userActive
         }
         const resData = await loadAPI(`${url}OPERACIONES`, 'POST', data, token, false)
-        console.log(resData)
         if (resData === undefined) {
             loadDataGrid(
                 '#dataGridPrendas',
@@ -60,16 +59,25 @@ window.addEventListener("DOMContentLoaded", () => {
         idComponente,
         displayExpr,
         valueExpr,
-        claveTipoCatalogo
+        claveTipoCatalogo,
+        blnVacio = false,
+        IdRelCatalogo,
+        IdTipo
     }) {
-        const jsonData = {
-            Stored: usarCatalogoEstandar ? 'PA_CORE_CapCatalogos' : strStored,
-            Opcion: usarCatalogoEstandar ? 'CC' : strOption,
-            Usuario: userActive,
-            ...(usarCatalogoEstandar && {
-                ClaveCatalogo: claveTipoCatalogo
-            }),
-        }
+        let jsonData
+        blnVacio
+            ?
+            jsonData = false :
+            jsonData = {
+                Stored: usarCatalogoEstandar ? 'PA_CORE_CapCatalogos' : strStored,
+                Opcion: usarCatalogoEstandar ? 'CC' : strOption,
+                Usuario: userActive,
+                ...(usarCatalogoEstandar && {
+                    ClaveCatalogo: claveTipoCatalogo,
+                    IdRelacionCatalogos: IdRelCatalogo,
+                    IdTipoCatalogo: IdTipo
+                }),
+            }
         loadLookup({
             strUrl: url,
             strEndpoint,
@@ -87,7 +95,6 @@ window.addEventListener("DOMContentLoaded", () => {
         const data = await loadAPI(`${url}${strEndpoint}`, 'POST', json, token, false)
         if (data !== undefined) {
             const arrayData = data.response[0]
-            console.log(arrayData)
             let dataSublist
             if (blnSublist) {
                 const responseSublist = await loadAPI(`${url}${strEndpointSublist}`, 'POST', jsonSublist, token, false)
@@ -100,31 +107,22 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     //? COMPONENTES
-    loadTextBox('#textBoxIdCrm', '', true, 'ID CRM', true, false)
     generarCatalogos({
         usarCatalogoEstandar: true,
         claveTipoCatalogo: 'TIPO',
         strEndpoint: 'DAIMLER',
         idComponente: '#lookUpTipoArticulo',
         displayExpr: 'NOMBRE',
-        valueExpr: 'Id'
+        valueExpr: 'Id',
     })
     loadTextBox('#textBoxSKU', '', true, 'SKU CRM', true, false)
     generarCatalogos({
-        usarCatalogoEstandar: true,
-        claveTipoCatalogo: 'CATE',
-        strEndpoint: 'DAIMLER',
         idComponente: '#lookUpCategoria',
-        displayExpr: 'NOMBRE',
-        valueExpr: 'Id'
+        blnVacio: true
     })
     generarCatalogos({
-        usarCatalogoEstandar: true,
-        claveTipoCatalogo: 'EST',
-        strEndpoint: 'DAIMLER',
         idComponente: '#lookUpEstilo',
-        displayExpr: 'NOMBRE',
-        valueExpr: 'Id'
+        blnVacio: true
     })
     generarCatalogos({
         usarCatalogoEstandar: true,
@@ -132,15 +130,7 @@ window.addEventListener("DOMContentLoaded", () => {
         strEndpoint: 'DAIMLER',
         idComponente: '#lookUpColor',
         displayExpr: 'NOMBRE',
-        valueExpr: 'Id'
-    })
-    generarCatalogos({
-        usarCatalogoEstandar: true,
-        claveTipoCatalogo: 'SUB_COL',
-        strEndpoint: 'DAIMLER',
-        idComponente: '#lookUpSubColor',
-        displayExpr: 'NOMBRE',
-        valueExpr: 'Id'
+        valueExpr: 'Id',
     })
     generarCatalogos({
         usarCatalogoEstandar: true,
@@ -148,7 +138,39 @@ window.addEventListener("DOMContentLoaded", () => {
         strEndpoint: 'DAIMLER',
         idComponente: '#lookUpGenero',
         displayExpr: 'NOMBRE',
-        valueExpr: 'Id'
+        valueExpr: 'Id',
     })
+   
     generarSelectBox('DAIMLER', jsonDataTallas, '', '', false, '#selectTextBoxTallasCantidad', 'Id', 'Cantidad', 'CLAVE', false, 'CANTIDAD', false, 'textBox', '', '', 'ListBox')
+    //? Anidar lookUps
+    $('#lookUpTipoArticulo').dxLookup({
+        onValueChanged(e) {
+            const idRelacion = e.value
+            generarCatalogos({
+                usarCatalogoEstandar: true,
+                claveTipoCatalogo: idRelacion === 158 ? 'TOPS' : 'PANTS',
+                strEndpoint: 'DAIMLER',
+                idComponente: '#lookUpEstilo',
+                displayExpr: 'NOMBRE',
+                valueExpr: 'Id',
+            })
+            generarCatalogos({
+                usarCatalogoEstandar: true,
+                IdTipo: 6,
+                IdRelCatalogo: idRelacion,
+                strEndpoint: 'DAIMLER',
+                idComponente: '#lookUpCategoria',
+                displayExpr: 'NOMBRE',
+                valueExpr: 'Id',
+            })
+            const jsonDataTallas = {
+                Stored: 'PA_CORE_CapCatalogos',
+                Opcion: 'CC',
+                Usuario: userActive,
+                IdTipoCatalogo: 8,
+                IdRelacionCatalogos: idRelacion
+            }
+            generarSelectBox('DAIMLER', jsonDataTallas, '', '', false, '#selectTextBoxTallasCantidad', 'Id', 'Cantidad', 'CLAVE', false, 'CANTIDAD', false, 'textBox', '', '', 'ListBox')
+        }
+    })
 })

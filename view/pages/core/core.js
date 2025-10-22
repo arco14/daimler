@@ -64,7 +64,6 @@ window.addEventListener('DOMContentLoaded', () => {
             Usuario: userActive
         }
         const resData = await loadAPI(`${url}DAIMLER`, 'POST', data, token, false)
-        console.log(resData)
         const dataCatalogos = resData.response[0]
         async function masterDetail(container, options) {
             idTipo = options.data.Id
@@ -126,7 +125,7 @@ window.addEventListener('DOMContentLoaded', () => {
                                                     ACTIVO: data.ACTIVO
                                                 }
                                             }
-                                            const response = await loadAPI(`${url}CORE`, 'POST', guardarCatalogo, token, true)
+                                            const response = await loadAPI(`${url}DAIMLER`, 'POST', guardarCatalogo, token, true)
                                             if (response.success) {
                                                 generateGrid('CTT')
                                             } else {
@@ -390,11 +389,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 denyButtonText: 'NO'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    const response = await loadAPI(`${url}CORE`, 'POST', jsonData, token, true)
+                    const response = await loadAPI(`${url}DAIMLER`, 'POST', jsonData, token, true)
                     if (response !== undefined && strMotivo === '#textAreaMotivoEliCatalogo') {
                         const dataGridCat = $("#dataGridCat").dxDataGrid("instance")
                         if (dataGridCat) {
-                            const newData = await loadAPI(`${url}CORE`, "POST", {
+                            const newData = await loadAPI(`${url}DAIMLER`, "POST", {
                                 Stored: "PA_CORE_CapCatalogos",
                                 Opcion: "CI",
                                 Usuario: userActive,
