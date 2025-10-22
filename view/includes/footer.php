@@ -3,7 +3,7 @@
         <b>Version</b> <span class="text-bold" style="color: #0960AE">1.0</span>
     </div>
     <strong>Copyright <span id="dateCopyRight"></span> <a class="text-bold text-decoration-none" style="color: #0960AE">
-            &copy; DAIMLER.</a></strong>
+            &copy; Lazlotex.</a></strong>
     </div>
     <!-- ./wrapper -->
     <!-- Bootstrap 5 -->

@@ -23,8 +23,8 @@
     <div class="tab-content">
         <div class="tab-empty text-center">
             <div class="d-flex flex-column">
-                <h3 class="h1" style="color: #0960AE; font-size: 9rem;">Sistema</h3>
-                <h4 style="color: #0960AE; font-size: 7rem;">Daimler</h4>
+                <h3 class="h1" style="color: #0960AE; font-size: 8rem;">Entrega</h3>
+                <h4 style="color: #0960AE; font-size: 6rem;">Uniformes Daimler</h4>
                 <p style="font-size: 2rem;"><span style="font-size: 3rem;">👈</span>Selecciona un modulo, del menú de
                     opciones!</p>
             </div>

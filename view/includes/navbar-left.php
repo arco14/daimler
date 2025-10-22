@@ -10,8 +10,8 @@
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <div class="brand-link">
-        <h3 class="pt-1 text-center">
-            <span class="brand-text font-weight-light" style="color: #0960AE;">DAI</span>MLER
+        <h3 class="pt-1 text-center text-uppercase">
+            <span class="brand-text font-weight-light" style="color: #0960AE;">Laz</span>lotex
         </h3>
     </div>
     <div class="sidebar">
