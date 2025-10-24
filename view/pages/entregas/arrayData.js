@@ -1,13 +1,17 @@
 const userActive = $('#userActive').val()
 //? DATAGRID 📚
 const arrayEntregas = [{
+    dataField: 'ENTREGA',
+    caption: 'Entrega',
+    dataType: 'string',
+},{
+    dataField: 'Id',
+    caption: 'ID',
+    dataType: 'number',
+}, {
     dataField: 'NOMBRE',
     caption: 'Nombre',
     dataType: 'string',
-}, {
-    dataField: 'BADGE',
-    caption: 'Badge',
-    dataType: 'number',
 }, {
     dataField: 'AREA',
     caption: 'Area',
@@ -21,33 +25,32 @@ const arrayEntregas = [{
     caption: 'Turno',
     dataType: 'number',
 }, {
-    dataField: 'ENTREGA',
-    caption: 'Entrega',
-    dataType: 'string',
-}, {
     dataField: 'ESTILO',
     caption: 'Estilo',
-    dataType: 'string',
+    dataType: 'string'
 }, {
-    dataField: 'CATEGORIA',
-    caption: 'Categoría',
-    dataType: 'string',
+    dataField: 'COLOR',
+    caption: 'Color',
+    dataType: 'string'
 }, {
-    dataField: 'SUBCATEGORIA',
-    caption: 'Sub Categoría',
-    dataType: 'string',
+    dataField: 'TIPO_PAQUETE',
+    caption: 'Tipo Paquete',
+    dataType: 'string'
 }, {
-    dataField: 'FECHA_ENTREGA',
-    caption: 'Fecha Entrega',
-    dataType: 'datetime',
-    format: "dd/mm/yyyy HH:MM:SS"
+    dataField: 'TALLA',
+    caption: 'Talla',
+    dataType: 'string'
 }, {
-    dataField: 'ESTATUS',
-    caption: 'Estatus',
-    dataType: 'string',
+    dataField: 'CANTIDAD',
+    caption: 'Cantidad',
+    dataType: 'string'
 }, {
     dataField: 'COMENTARIOS',
     caption: 'Comentarios',
+    dataType: 'string',
+}, {
+    dataField: 'ESTATUS',
+    caption: 'Estatus',
     dataType: 'string',
 }, {
     dataField: 'USUARIO',
@@ -104,4 +107,9 @@ const jsonDataTallas = {
     Opcion: 'CC',
     Usuario: userActive,
     ClaveCatalogo: 'TALL'
+}
+const jsonOrdenCompra = {
+    Stored: 'PA_DAI_OrdenesCompra',
+    Opcion: 'C',
+    Usuario: userActive
 }

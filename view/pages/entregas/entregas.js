@@ -14,6 +14,17 @@ window.addEventListener("DOMContentLoaded", () => {
     $('#btnAdd').addClass('d-none')
 
     //? FUNCIONES 
+    async function tallasPaquete(id) {
+        const jsonTallaCantidad = {
+            Stored: 'PA_DAI_Paquetes',
+            Opcion: 'CI',
+            Paquetes: {
+                Id: id
+            }
+        }
+        resData = await loadAPI(`${url}DAIMLER`, 'POST', jsonTallaCantidad, token, false)
+        console.log(resData)
+    }
     async function generateGrid(option) {
         //? JSON DATA
         const data = {
@@ -27,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
             loadDataGrid(
                 '#dataGridEntregas',
                 [],
-                'multiple',
+                'single',
                 20,
                 arrayEntregas,
                 'Entregas',
@@ -53,7 +64,7 @@ window.addEventListener("DOMContentLoaded", () => {
             loadDataGrid(
                 '#dataGridEntregas',
                 resData.response[0],
-                'multiple',
+                'single',
                 20,
                 arrayEntregas,
                 'Entregas',
@@ -147,7 +158,30 @@ window.addEventListener("DOMContentLoaded", () => {
                         console.log(data)
                         if (arrayDataRows.length > 0) {
                             idRow = data.ID
-                            $('#addTitle').html(`<b>Número:</b> <span style="color: #0960AE;">${data.NUMERO_EMPLEADO}</span> <br> <b>Empleado: </b><span style="color: #0960AE;">${data.NOMBRE}</span>`)
+                            $('#addTitle').html(`<b>Entrega: </b><span class="infoEmpleado">E1</span><br>
+                                                 <div class="d-flex" style="gap: 0.3rem">
+                                                    <b>Número:</b> <span class="infoEmpleado">${data.NUMERO_EMPLEADO}</span>
+                                                    <b>Empleado: </b><span class="infoEmpleado">${data.NOMBRE}</span><br>
+                                                 </div>
+                                                 <div class="d-flex" style="gap: 0.3rem;">
+                                                    <b>Area:</b><span class="infoEmpleado">${data.AREA}</span>
+                                                    <b>Puesto:</b><span class="infoEmpleado">${data.PUESTO}</span>
+                                                    <b>Turno:</b><span class="infoEmpleado">${data.TURNO}</span>
+                                                </div>`)
+                            $('#textBoxEstiloTops').dxTextBox({
+                                value: data.ESTILO_TOPS
+                            })
+                            $('#textBoxPaqueteTops').dxTextBox({
+                                value: data.PAQUETE_TOPS
+                            })
+                            //? TALLAS TOPS
+
+                            $('#textBoxEstiloPants').dxTextBox({
+                                value: data.ESTILO_PANTS
+                            })
+                            $('#textBoxPaquetePants').dxTextBox({
+                                value: data.PAQUETE_PANTS
+                            })
                             $('#btnUpdate').removeClass('d-none').prop('disabled', false)
                         } else {
                             $('#btnDelete').addClass('d-none').prop('disabled', true)
@@ -175,16 +209,25 @@ window.addEventListener("DOMContentLoaded", () => {
         idComponente,
         displayExpr,
         valueExpr,
-        claveTipoCatalogo
+        claveTipoCatalogo,
+        blnVacio = false,
+        IdRelCatalogo,
+        IdTipo
     }) {
-        const jsonData = {
-            Stored: usarCatalogoEstandar ? 'PA_CORE_CapCatalogos' : strStored,
-            Opcion: usarCatalogoEstandar ? 'CC' : strOption,
-            Usuario: userActive,
-            ...(usarCatalogoEstandar && {
-                ClaveCatalogo: claveTipoCatalogo
-            }),
-        }
+        let jsonData
+        blnVacio
+            ?
+            jsonData = false :
+            jsonData = {
+                Stored: usarCatalogoEstandar ? 'PA_CORE_CapCatalogos' : strStored,
+                Opcion: usarCatalogoEstandar ? 'CC' : strOption,
+                Usuario: userActive,
+                ...(usarCatalogoEstandar && {
+                    ClaveCatalogo: claveTipoCatalogo,
+                    IdRelacionCatalogos: IdRelCatalogo,
+                    IdTipoCatalogo: IdTipo
+                }),
+            }
         loadLookup({
             strUrl: url,
             strEndpoint,
@@ -198,49 +241,19 @@ window.addEventListener("DOMContentLoaded", () => {
             blnReadOnly: false,
         })
     }
-    async function generarSelectBox(strEndpoint, json, strEndpointSublist, jsonSublist, blnSoloLista, strComponente, strKeyExpr, strPlaceholder, strSearchExpr, blnSeleccionados, strValueTextBox, blnSublist, strTipoComponente, strDisplayExprSub, strKeyExprSub, strGetter) {
-        const data = await loadAPI(`${url}${strEndpoint}`, 'POST', json, token, false)
-        if (data !== undefined) {
-            const arrayData = data.response[0]
-            console.log(arrayData)
-            let dataSublist
-            if (blnSublist) {
-                const responseSublist = await loadAPI(`${url}${strEndpointSublist}`, 'POST', jsonSublist, token, false)
-                dataSublist = responseSublist.response[0]
-            }
-            loadSelectTextBox(blnSoloLista, strComponente, arrayData, strKeyExpr, strPlaceholder, strSearchExpr, blnSeleccionados, strValueTextBox, dataSublist, strTipoComponente, strDisplayExprSub, strKeyExprSub, strGetter)
-        } else {
-            return
-        }
-    }
 
     //? COMPONENTES
     generarCatalogos({
-        usarCatalogoEstandar: true,
-        claveTipoCatalogo: 'EST',
+        strStored: 'PA_DAI_OrdenesCompra',
+        strOption: 'C',
         strEndpoint: 'DAIMLER',
-        idComponente: '#lookUpEstilo',
+        idComponente: '#lookUpEntrega',
         displayExpr: 'NOMBRE',
         valueExpr: 'Id'
     })
-    generarCatalogos({
-        usarCatalogoEstandar: true,
-        claveTipoCatalogo: 'CATE',
-        strEndpoint: 'DAIMLER',
-        idComponente: '#lookUpCategoria',
-        displayExpr: 'NOMBRE',
-        valueExpr: 'Id'
-    })
-    generarCatalogos({
-        usarCatalogoEstandar: true,
-        claveTipoCatalogo: 'SUBC',
-        strEndpoint: 'DAIMLER',
-        idComponente: '#lookUpSubCategoria',
-        displayExpr: 'NOMBRE',
-        valueExpr: 'Id'
-    })
-    generarSelectBox('DAIMLER', jsonDataTallas, '', '', false, '#selectTextBoxTallasCantidad', 'Id', 'Cantidad', 'CLAVE', false, 'CANTIDAD', false, 'textBox', '', '', 'ListBox')
-    loadTextArea('#textAreaObservaciones', 100, 'Observaciones', false, false)
+    loadSwitch("#swPredeterminada", false, false, false, false)
+    loadTextArea('#textAreaComentariosEntrega', 100, 'Comentarios Entrega', false, false)
+    loadButton('#btnGuardar', 'Guardar', 'success', true, true, false)
 
     //? ACCIONES
 })

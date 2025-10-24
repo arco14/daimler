@@ -146,31 +146,34 @@ window.addEventListener("DOMContentLoaded", () => {
     $('#lookUpTipoArticulo').dxLookup({
         onValueChanged(e) {
             const idRelacion = e.value
-            generarCatalogos({
-                usarCatalogoEstandar: true,
-                claveTipoCatalogo: idRelacion === 158 ? 'TOPS' : 'PANTS',
-                strEndpoint: 'DAIMLER',
-                idComponente: '#lookUpEstilo',
-                displayExpr: 'NOMBRE',
-                valueExpr: 'Id',
-            })
-            generarCatalogos({
-                usarCatalogoEstandar: true,
-                IdTipo: 6,
-                IdRelCatalogo: idRelacion,
-                strEndpoint: 'DAIMLER',
-                idComponente: '#lookUpCategoria',
-                displayExpr: 'NOMBRE',
-                valueExpr: 'Id',
-            })
-            const jsonDataTallas = {
-                Stored: 'PA_CORE_CapCatalogos',
-                Opcion: 'CC',
-                Usuario: userActive,
-                IdTipoCatalogo: 8,
-                IdRelacionCatalogos: idRelacion
-            }
-            generarSelectBox('DAIMLER', jsonDataTallas, '', '', false, '#selectTextBoxTallasCantidad', 'Id', 'Cantidad', 'CLAVE', false, 'CANTIDAD', false, 'textBox', '', '', 'ListBox')
+            console.log(idRelacion)
+            if(idRelacion !== null || idRelacion !== '') {
+                generarCatalogos({
+                    usarCatalogoEstandar: true,
+                    claveTipoCatalogo: idRelacion === 158 ? 'TOPS' : 'PANTS',
+                    strEndpoint: 'DAIMLER',
+                    idComponente: '#lookUpEstilo',
+                    displayExpr: 'NOMBRE',
+                    valueExpr: 'Id',
+                })
+                generarCatalogos({
+                    usarCatalogoEstandar: true,
+                    IdTipo: 6,
+                    IdRelCatalogo: idRelacion,
+                    strEndpoint: 'DAIMLER',
+                    idComponente: '#lookUpCategoria',
+                    displayExpr: 'NOMBRE',
+                    valueExpr: 'Id',
+                })
+                const jsonDataTallas = {
+                    Stored: 'PA_CORE_CapCatalogos',
+                    Opcion: 'CC',
+                    Usuario: userActive,
+                    IdTipoCatalogo: 8,
+                    IdRelacionCatalogos: idRelacion
+                }
+                generarSelectBox('DAIMLER', jsonDataTallas, '', '', false, '#selectTextBoxTallasCantidad', 'Id', 'Cantidad', 'CLAVE', false, 'CANTIDAD', false, 'textBox', '', '', 'ListBox')
+            } 
         }
     })
 })

@@ -1,8 +1,13 @@
+<style>
+    .infoEmpleado {
+        color: #0960AE;
+    }
+</style>
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="false"
     data-focus="false">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content card-primary card-outline">
-            <div class="modal-header dragable_touch">
+            <div class="modal-header dragable_touch pl-4">
                 <p id="addTitle" class="modal-title"></p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times</span>
@@ -29,39 +34,85 @@
                     </nav>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" role="tabpanel" id="v-pills-detalle">
-                            <div class="row">
-                                <div class="form-group col-sm-12 col-md-6 mt-3">
-                                    <div class="form-group mt-3">
-                                        <label>Estilos:</label>
-                                        <div id="lookUpEstilo"></div>
+                            <div class="row px-3">
+                                <div class="form-group col-sm-12 col-md-3">
+                                    <!-- <div class="form-group border">
+                                        <label>Area:</label>
+                                        <div id="lookUpArea"></div>
                                     </div>
-                                    <div class="form-group mt-3">
-                                        <label>Categoría:</label>
-                                        <div id="lookUpCategoria"></div>
+                                    <div class="form-group border">
+                                        <label>Puesto:</label>
+                                        <div id="lookUpPuesto"></div>
                                     </div>
-                                    <div class="form-group mt-3">
-                                        <label>Sub Categoría:</label>
-                                        <div id="lookUpSubCategoria"></div>
-                                    </div>
+                                    <div class="form-group border">
+                                        <label>Turno:</label>
+                                        <div id="lookUpTurno"></div>
+                                    </div> -->
+                                    <!-- <div class="form-group border">
+                                        <label>Entrega:</label>
+                                        <div id="textBoxEntrega"></div>
+                                    </div> -->
+                                    <fieldset class="border rounded pb-3 px-2 m-0">
+                                        <legend class="float-none w-auto p-2">Entrega Predeterminada</legend>
+                                        <div class="form-group">
+                                            <div class="d-flex justify-content-end">
+                                                <div id="swPredeterminada"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Estilo Tops</label>
+                                                <div id="textBoxEstiloTops"></div>
+                                            </div>
+                                            <div class="form-group mb-1">
+                                                <label>Paquete</label>
+                                                <div id="textBoxPaqueteTops"></div>
+                                            </div>
+                                            <div class="d-flex" style="gap: 0.5rem;">
+                                                <div class="form-group">
+                                                    <label>Talla</label>
+                                                    <div id="textBoxTopsTalla"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Cantidad</label>
+                                                    <div id="textBoxTopsCantidad"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mt-3 mb-1">
+                                                <label>Estilo Pants</label>
+                                                <div id="textBoxEstiloPants"></div>
+                                            </div>
+                                            <div class="form-group mb-1">
+                                                <label>Paquete</label>
+                                                <div id="textBoxPaquetePants"></div>
+                                            </div>
+                                            <div class="d-flex mt-2" style="gap: 0.5rem;">
+                                                <div class="form-group">
+                                                    <label>Talla</label>
+                                                    <div id="textBoxPantsTalla"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Cantidad</label>
+                                                    <div id="textBoxPantsCantidad"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                                <div class="form-group col-sm-12 col-md-6 mt-3">
-                                    <div class="d-flex justify-content-between">
-                                        <label>Tallas:</label>
-                                    </div>
-                                    <div class="list-container">
-                                        <div id="searchBox"></div>
-                                    </div>
-                                    <div class="list-container list-selectBox border rounded p-2 mt-2">
-                                        <div id="selectTextBoxTallasCantidad"></div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label>Observaciones:</label>
-                                        <div id="textAreaObservaciones"></div>
+                                <div class="form-group col-sm-12 col-md-9">
+                                    <fieldset class="border rounded pb-3 px-2 m-0">
+                                        <legend class="float-none w-auto p-2">Tops</legend>
+                                    </fieldset>
+                                    <fieldset class="border rounded pb-3 px-2 m-0">
+                                        <legend class="float-none w-auto p-2">Pants</legend>
+                                    </fieldset>
+                                    <div class="form-group mt-3">
+                                        <label>Comentarios:</label>
+                                        <div id="textAreaComentariosEntrega"></div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="tab-pane fade" role="tabpanel" id="v-pills-historial">
+                            Historial Entregas
                         </div>
                         <div class="tab-pane fade" role="tabpanel" id="v-pills-datosControl">
                             <div class="row p-3">

@@ -18,11 +18,11 @@ window.addEventListener("DOMContentLoaded", () => {
     async function generateGrid(option) {
         //? JSON DATA
         const data = {
-            Stored: 'PA_OPE_CapDesarrollos',
+            Stored: 'PA_DAI_Empleados',
             Opcion: option,
             Usuario: userActive
         }
-        const resData = await loadAPI(`${url}OPERACIONES`, 'POST', data, token, false)
+        const resData = await loadAPI(`${url}DAIMLER`, 'POST', data, token, false)
         console.log(resData)
         if (resData === undefined) {
             loadDataGrid(
