@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap 4 CSS -->
     <link rel="stylesheet" href="../../assets/bootstrap/v4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/devExtreme/css/dx.common.css">
+    <!-- <link rel="stylesheet" href="../../assets/devExtreme/css/dx.common.css"> -->
     <span id="theme-devExpress">
         <link rel="stylesheet" href="../../assets/devExtreme/css/dx.light.css">
     </span>

@@ -2,6 +2,11 @@
     .infoEmpleado {
         color: #0960AE;
     }
+    .contenedorTops {
+        height: 300px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
 </style>
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="false"
     data-focus="false">
@@ -35,23 +40,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" role="tabpanel" id="v-pills-detalle">
                             <div class="row px-3">
-                                <div class="form-group col-sm-12 col-md-3">
-                                    <!-- <div class="form-group border">
-                                        <label>Area:</label>
-                                        <div id="lookUpArea"></div>
-                                    </div>
-                                    <div class="form-group border">
-                                        <label>Puesto:</label>
-                                        <div id="lookUpPuesto"></div>
-                                    </div>
-                                    <div class="form-group border">
-                                        <label>Turno:</label>
-                                        <div id="lookUpTurno"></div>
-                                    </div> -->
-                                    <!-- <div class="form-group border">
-                                        <label>Entrega:</label>
-                                        <div id="textBoxEntrega"></div>
-                                    </div> -->
+                                <!-- <div id="cargaAutomatica" class="form-group col-sm-12 col-md-2">
                                     <fieldset class="border rounded pb-3 px-2 m-0">
                                         <legend class="float-none w-auto p-2">Entrega Predeterminada</legend>
                                         <div class="form-group">
@@ -66,15 +55,13 @@
                                                 <label>Paquete</label>
                                                 <div id="textBoxPaqueteTops"></div>
                                             </div>
-                                            <div class="d-flex" style="gap: 0.5rem;">
-                                                <div class="form-group">
-                                                    <label>Talla</label>
-                                                    <div id="textBoxTopsTalla"></div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Cantidad</label>
-                                                    <div id="textBoxTopsCantidad"></div>
-                                                </div>
+                                            <div class="d-flex align-items-center mt-3" style="gap: 0.5rem;">
+                                                <label class="mb-0">ML</label>
+                                                <div id="textBoxTopsTallaML"></div>
+                                                <label class="mb-0">MC</label>
+                                                <div id="textBoxTopsTallaMC"></div>
+                                                <label class="mb-0">Playera</label>
+                                                <div id="textBoxTopsTallaPLY"></div>
                                             </div>
                                             <div class="form-group mt-3 mb-1">
                                                 <label>Estilo Pants</label>
@@ -84,25 +71,49 @@
                                                 <label>Paquete</label>
                                                 <div id="textBoxPaquetePants"></div>
                                             </div>
-                                            <div class="d-flex mt-2" style="gap: 0.5rem;">
-                                                <div class="form-group">
-                                                    <label>Talla</label>
-                                                    <div id="textBoxPantsTalla"></div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Cantidad</label>
-                                                    <div id="textBoxPantsCantidad"></div>
-                                                </div>
+                                            <div class="d-flex align-items-center mt-3" style="gap: 0.5rem;">
+                                                <label class="mb-0">Talla</label>
+                                                <div id="textBoxPantsTalla"></div>
                                             </div>
                                         </div>
                                     </fieldset>
-                                </div>
-                                <div class="form-group col-sm-12 col-md-9">
-                                    <fieldset class="border rounded pb-3 px-2 m-0">
+                                </div> -->
+                                <div id="cargaManual" class="form-group col-12">
+                                    <fieldset class="border rounded p-4 m-0 contenedorTops">
                                         <legend class="float-none w-auto p-2">Tops</legend>
+                                        <div class="row px-3">
+                                            <div id="dataGridCargaManual"></div>
+                                            <!-- <div class="col-sm-12 col-md-4">
+                                                <label>Estilo</label>
+                                                <div id="lookUpEstiloTops"></div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4">
+                                                <label>Color</label>
+                                                <div id="lookUpColores"></div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4">
+                                                <label>Paquete</label>
+                                                <div id="lookUpPaquete"></div>
+                                            </div>
+                                            <div id="agregarCarga" class="col-12 d-flex justify-content-end mt-2">
+                                                <div id="btnAgregarRenglon"></div>
+                                            </div> -->
+                                            <!-- <div id="cargaTallaManual">
+                                            </div> -->
+                                        </div>
                                     </fieldset>
                                     <fieldset class="border rounded pb-3 px-2 m-0">
                                         <legend class="float-none w-auto p-2">Pants</legend>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-4">
+                                                <label>Estilo</label>
+                                                <div id="lookUpEstiloPants"></div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4">
+                                                <label>Paquete</label>
+                                                <div id="lookUpPaquetePants"></div>
+                                            </div>
+                                        </div>
                                     </fieldset>
                                     <div class="form-group mt-3">
                                         <label>Comentarios:</label>
