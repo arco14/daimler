@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const url = CONFIG.API_URL
     const token = $('#userToken').val()
     const userActive = $('#userActive').val()
-    let idRow, idPrograma
+    let idRow, idPrograma, blnDblClickGrid
 
     //? VALIDAR QUE EL CONTENIDO ESTE DENTRO DEL IFRAME 🔍
     if (window.self !== window.top) {
@@ -21,9 +21,9 @@ window.addEventListener("DOMContentLoaded", () => {
             Usuario: userActive
         }
         const resData = await loadAPI(`${url}DAIMLER`, 'POST', data, token, false)
-        console.log(resData)
         async function masterDetail(container, options) {
             const idTipo = options.data.Id
+
             function createTab(title, gridId, gridData, arrayData, gridName) {
                 return {
                     title,
@@ -88,7 +88,7 @@ window.addEventListener("DOMContentLoaded", () => {
         loadDataGrid(
             '#dataGridPrendas',
             resData === undefined ? [] : resData.response[0],
-            'multiple',
+            'single',
             20,
             arrayPrendas,
             'Prendas',
@@ -107,6 +107,65 @@ window.addEventListener("DOMContentLoaded", () => {
                     selectTextOnEditStart: true,
                     startEditAction: 'click',
                     confirmDelete: false
+                },
+                async onSelectionChanged(e) {
+                    arrayDataRows = e.selectedRowsData
+                    const data = e.selectedRowsData[0]
+                    if (arrayDataRows.length > 0) {
+                        idRow = data.Id
+                        $('#textBoxSKU').dxTextBox({
+                            value: data.SKU
+                        })
+                        $('#lookUpTipoArticulo').dxLookup({
+                            value: data.ID_TIPO_ARTICULO
+                        })
+                        $('#lookUpCategoria').dxLookup({
+                            value: data.ID_CATEGORIA
+                        })
+                        $('#numberBoxPrecio').dxNumberBox({
+                            value: data.PRECIO
+                        })
+                        $('#lookUpEstilo').dxLookup({
+                            value: data.ID_ESTILO
+                        })
+                        $('#lookUpColor').dxLookup({
+                            value: data.ID_COLOR
+                        })
+                        $('#lookUpGenero').dxLookup({
+                            value: data.ID_GENERO
+                        })
+                        $('#swSerigrafia').dxSwitch({
+                            value: data.SERIGRAFIA
+                        })
+                        $('#textBoxSerigrafia').dxTextBox({
+                            value: data.SERIGRAFIA_LEYENDA
+                        })
+                        const jsonData = {
+                            Stored: 'PA_DAI_Prendas',
+                            Opcion: 'CI',
+                            Usuario: userActive,
+                            Prendas: {
+                                Id: idRow
+                            }
+                        }
+                        const res = await loadAPI(`${url}DAIMLER`, 'POST', jsonData, token, false)
+                        const dataTallas = res.response[1]
+                        let tallas = []
+                        for (i = 0; i < dataTallas.length; i++) {
+                            tallas.push(dataTallas[i].Id)
+                        }
+                        $('#selectTextBoxTallas').dxList({
+                            selectedItemKeys: tallas
+
+                        })
+                    }
+                },
+                onRowDblClick(e) {
+                    if (blnDblClickGrid) {
+                        e.event.preventDefault()
+                    } else {
+                        $('#add').modal('show')
+                    }
                 }
             }
         )
@@ -201,10 +260,11 @@ window.addEventListener("DOMContentLoaded", () => {
                 Prendas_Tallas: selectedTallas
             }
         }
-        console.log(jsonGuardarPrendas)
         const response = await loadAPI(`${url}DAIMLER`, 'POST', jsonGuardarPrendas, token, true)
-        console.log(response)
-        // if(response !== undefined)
+        if (response !== undefined) {
+            generateGrid('C')
+            $('#add').modal('hide')
+        }
     }
 
     //? COMPONENTES
@@ -241,8 +301,6 @@ window.addEventListener("DOMContentLoaded", () => {
         displayExpr: 'NOMBRE',
         valueExpr: 'Id',
     })
-
-    generarSelectBox('DAIMLER', jsonDataTallas, '', '', true, '#selectTextBoxTallas', 'Id', 'Cantidad', 'CLAVE', false, '', false, '', '', '', 'ListBox')
     loadButton('#btnGuardar', 'Guardar', 'success', true, true, false)
     loadNumberBox('#numberBoxPrecio', 'requerido', true, '$ #0.##', '$ #0.##', false, 999999999, 1, true)
     loadSwitch('#swSerigrafia', false, false, false, false)
@@ -252,7 +310,6 @@ window.addEventListener("DOMContentLoaded", () => {
     $('#lookUpTipoArticulo').dxLookup({
         onValueChanged(e) {
             const idRelacion = e.value
-            console.log(idRelacion)
             if (idRelacion !== null || idRelacion !== '') {
                 generarCatalogos({
                     usarCatalogoEstandar: true,
@@ -282,10 +339,9 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         }
     })
-    //? Validar si lleva serigria 
+    //? Validar si lleva serigrafia 
     $('#swSerigrafia').dxSwitch({
         onValueChanged(e) {
-            console.log(e)
             e.value ?
                 $('#textBoxSerigrafia').dxTextBox({
                     readOnly: false
@@ -304,6 +360,16 @@ window.addEventListener("DOMContentLoaded", () => {
         $(".nav-link").first().addClass("active")
         const dataGrid = $('#dataGridPrendas').dxDataGrid('instance')
         dataGrid.clearSelection()
+        $('#textBoxSKU').dxTextBox('option', 'value', '')
+        $('#lookUpTipoArticulo').dxLookup('option', 'value', '')
+        $('#lookUpCategoria').dxLookup('option', 'value', '')
+        $('#lookUpEstilo').dxLookup('option', 'value', '')
+        $('#lookUpColor').dxLookup('option', 'value', '')
+        $('#lookUpGenero').dxLookup('option', 'value', '')
+        $('#numberBoxPrecio').dxNumberBox('option', 'value', 0)
+        $('#swSerigrafia').dxSwitch('option', 'value', '')
+        $('#textBoxSerigrafia').dxTextBox('option', 'value', '')
+        generarSelectBox('DAIMLER', jsonDataTallas, '', '', true, '#selectTextBoxTallas', 'Id', 'Cantidad', 'CLAVE', false, '', false, '', '', '', 'ListBox')
     })
     $('#frmPrendas').on('submit', (e) => {
         e.preventDefault()
