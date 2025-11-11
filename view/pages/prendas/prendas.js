@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const url = CONFIG.API_URL
     const token = $('#userToken').val()
     const userActive = $('#userActive').val()
-    let idRow, dataGrid, arrayDataRows, blnDblClickGrid, idPrograma
+    let idRow, idPrograma
 
     //? VALIDAR QUE EL CONTENIDO ESTE DENTRO DEL IFRAME 🔍
     if (window.self !== window.top) {
@@ -16,38 +16,100 @@ window.addEventListener("DOMContentLoaded", () => {
     async function generateGrid(option) {
         //? JSON DATA
         const data = {
-            Stored: 'PA_OPE_CapDesarrollos',
+            Stored: 'PA_DAI_Prendas',
             Opcion: option,
             Usuario: userActive
         }
-        const resData = await loadAPI(`${url}OPERACIONES`, 'POST', data, token, false)
-        if (resData === undefined) {
-            loadDataGrid(
-                '#dataGridPrendas',
-                [],
-                'multiple',
-                20,
-                arrayPrendas,
-                'Prendas',
-                false,
-                null,
-                false,
-                500,
-                true,
-                `gridPrendas-${idPrograma}`, {
-                    editing: {
-                        mode: 'popup',
-                        useIcons: true,
-                        allowAdding: false,
-                        allowUpdating: false,
-                        allowDeleting: false,
-                        selectTextOnEditStart: true,
-                        startEditAction: 'click',
-                        confirmDelete: false
+        const resData = await loadAPI(`${url}DAIMLER`, 'POST', data, token, false)
+        console.log(resData)
+        async function masterDetail(container, options) {
+            const idTipo = options.data.Id
+            function createTab(title, gridId, gridData, arrayData, gridName) {
+                return {
+                    title,
+                    template: () => {
+                        const $container = $(`<div id="${gridId}" class="p-4">`)
+                        loadDataGrid(
+                            $container,
+                            gridData,
+                            'none',
+                            20,
+                            arrayData,
+                            gridName,
+                            false,
+                            null,
+                            false,
+                            100,
+                            true,
+                            `gridState-${idTipo}`, {
+                                editing: {
+                                    mode: 'form',
+                                    useIcons: true,
+                                    allowAdding: false,
+                                    allowUpdating: false,
+                                    allowDeleting: false,
+                                    selectTextOnEditStart: true,
+                                    startEditAction: 'click',
+                                    confirmDelete: false
+                                }
+                            }
+                        )
+                        return $container
                     }
                 }
-            )
-        } else {}
+            }
+            if (options.data.Id === null) {
+                return
+            } else {
+                const jsonData = {
+                    Stored: 'PA_DAI_Prendas',
+                    Opcion: 'CI',
+                    Usuario: userActive,
+                    Prendas: {
+                        Id: idTipo
+                    }
+                }
+                const resDataTallas = await loadAPI(`${url}DAIMLER`, 'POST', jsonData, token, false)
+                if (resDataTallas === undefined || resDataTallas === '' || resDataTallas === null) {
+                    return
+                } else {
+                    const tabs = $("<div>").dxTabPanel({
+                        dataSource: [
+                            createTab("Tallas", `gridTallas-${options.data.Id}`, resDataTallas.response[0], arrayTallas, "Ruta-Tallas")
+                        ],
+                        deferRendering: false,
+                        showNavButtons: true,
+                        loop: false
+                    })
+                    container.append(tabs)
+                }
+            }
+        }
+        loadDataGrid(
+            '#dataGridPrendas',
+            resData === undefined ? [] : resData.response[0],
+            'multiple',
+            20,
+            arrayPrendas,
+            'Prendas',
+            true,
+            masterDetail,
+            false,
+            500,
+            true,
+            `gridPrendas-${idPrograma}`, {
+                editing: {
+                    mode: 'popup',
+                    useIcons: true,
+                    allowAdding: false,
+                    allowUpdating: false,
+                    allowDeleting: false,
+                    selectTextOnEditStart: true,
+                    startEditAction: 'click',
+                    confirmDelete: false
+                }
+            }
+        )
     }
     generateGrid('C')
 
@@ -106,6 +168,45 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    async function guardar() {
+        const skuCrm = $('#textBoxSKU').dxTextBox('option', 'value')
+        const tipoArticulo = $('#lookUpTipoArticulo').dxLookup('option', 'value')
+        const categoria = $('#lookUpCategoria').dxLookup('option', 'value')
+        const estilo = $('#lookUpEstilo').dxLookup('option', 'value')
+        const color = $('#lookUpColor').dxLookup('option', 'value')
+        const genero = $('#lookUpGenero').dxLookup('option', 'value')
+        const precio = $('#numberBoxPrecio').dxNumberBox('option', 'value')
+        const serigrafia = $('#swSerigrafia').dxSwitch('option', 'value')
+        const serigrafiaLeyenda = $('#textBoxSerigrafia').dxTextBox('option', 'value')
+        const selectedTallas = getFinalDataListBox()
+            .filter(item => item.selected)
+            .map(item => ({
+                TALLAS: item.Id
+            }))
+        const jsonGuardarPrendas = {
+            Stored: 'PA_DAI_Prendas',
+            Opcion: 'G',
+            Usuario: userActive,
+            Prendas: {
+                Id: idRow,
+                SKU_CRM: skuCrm,
+                TIPO_ARTICULO: tipoArticulo,
+                CATEGORIA: categoria,
+                ESTILO: estilo,
+                COLOR: color,
+                GENERO: genero,
+                PRECIO: precio,
+                SERIGRAFIA: serigrafia,
+                SERIGRAFIA_LEYENDA: serigrafiaLeyenda,
+                Prendas_Tallas: selectedTallas
+            }
+        }
+        console.log(jsonGuardarPrendas)
+        const response = await loadAPI(`${url}DAIMLER`, 'POST', jsonGuardarPrendas, token, true)
+        console.log(response)
+        // if(response !== undefined)
+    }
+
     //? COMPONENTES
     generarCatalogos({
         usarCatalogoEstandar: true,
@@ -140,14 +241,19 @@ window.addEventListener("DOMContentLoaded", () => {
         displayExpr: 'NOMBRE',
         valueExpr: 'Id',
     })
-   
-    generarSelectBox('DAIMLER', jsonDataTallas, '', '', false, '#selectTextBoxTallasCantidad', 'Id', 'Cantidad', 'CLAVE', false, 'CANTIDAD', false, 'textBox', '', '', 'ListBox')
+
+    generarSelectBox('DAIMLER', jsonDataTallas, '', '', true, '#selectTextBoxTallas', 'Id', 'Cantidad', 'CLAVE', false, '', false, '', '', '', 'ListBox')
+    loadButton('#btnGuardar', 'Guardar', 'success', true, true, false)
+    loadNumberBox('#numberBoxPrecio', 'requerido', true, '$ #0.##', '$ #0.##', false, 999999999, 1, true)
+    loadSwitch('#swSerigrafia', false, false, false, false)
+    loadTextBox('#textBoxSerigrafia', '', true, 'Texto serigrafía', false, true)
+
     //? Anidar lookUps
     $('#lookUpTipoArticulo').dxLookup({
         onValueChanged(e) {
             const idRelacion = e.value
             console.log(idRelacion)
-            if(idRelacion !== null || idRelacion !== '') {
+            if (idRelacion !== null || idRelacion !== '') {
                 generarCatalogos({
                     usarCatalogoEstandar: true,
                     claveTipoCatalogo: idRelacion === 158 ? 'TOPS' : 'PANTS',
@@ -172,8 +278,35 @@ window.addEventListener("DOMContentLoaded", () => {
                     IdTipoCatalogo: 8,
                     IdRelacionCatalogos: idRelacion
                 }
-                generarSelectBox('DAIMLER', jsonDataTallas, '', '', false, '#selectTextBoxTallasCantidad', 'Id', 'Cantidad', 'CLAVE', false, 'CANTIDAD', false, 'textBox', '', '', 'ListBox')
-            } 
+                generarSelectBox('DAIMLER', jsonDataTallas, '', '', true, '#selectTextBoxTallas', 'Id', 'Cantidad', 'CLAVE', false, '', false, '', '', '', 'ListBox')
+            }
         }
+    })
+    //? Validar si lleva serigria 
+    $('#swSerigrafia').dxSwitch({
+        onValueChanged(e) {
+            console.log(e)
+            e.value ?
+                $('#textBoxSerigrafia').dxTextBox({
+                    readOnly: false
+                }) :
+                $('#textBoxSerigrafia').dxTextBox({
+                    readOnly: true
+                })
+        }
+    })
+
+    //?Acciones
+    $('#btnAdd').click(() => {
+        idRow = 0
+        $('#addTitle').text('Crear nuevo programa')
+        $(".nav-link").removeClass("active")
+        $(".nav-link").first().addClass("active")
+        const dataGrid = $('#dataGridPrendas').dxDataGrid('instance')
+        dataGrid.clearSelection()
+    })
+    $('#frmPrendas').on('submit', (e) => {
+        e.preventDefault()
+        guardar()
     })
 })

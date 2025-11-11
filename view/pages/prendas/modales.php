@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times</span>
                 </button>
             </div>
-            <form id="frmDesarrollos">
+            <form id="frmPrendas">
                 <div class="modal-body py-4" style="height: 600px; overflow-y: scroll;">
                     <nav class="nav nav-pills nav-justified my-2 d-flex flex-nowrap" style="overflow-x: scroll">
                         <a id="item-detalle" class="d-flex align-items-center justify-content-center nav-link active"
@@ -24,7 +24,7 @@
                     </nav>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" role="tabpanel" id="v-pills-detalle">
-                            <div class="row">
+                            <div class="row p-5">
                                 <div class="col-sm-12 col-md-8">
                                     <div class="row">
                                         <div class="form-group col-sm-12 col-md-6">
@@ -40,6 +40,10 @@
                                                 <label>Categoría</label>
                                                 <div id="lookUpCategoria"></div>
                                             </div>
+                                            <div class="form-group">
+                                                <label>Precio</label>
+                                                <div id="numberBoxPrecio"></div>
+                                            </div>
                                         </div>
                                         <div class="form-group col-sm-12 col-md-6">
                                             <div class="form-group">
@@ -54,6 +58,11 @@
                                                 <label>Genero</label>
                                                 <div id="lookUpGenero"></div>
                                             </div>
+                                            <div class="form-group">
+                                                <label>Serigrafia</label>
+                                                <div id="swSerigrafia" class="mr-2"></div>
+                                                <div id="textBoxSerigrafia"></div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -66,7 +75,7 @@
                                         <div id="searchBox"></div>
                                     </div>
                                     <div class="list-container list-selectBox border rounded p-2">
-                                        <div id="selectTextBoxTallasCantidad"></div>
+                                        <div id="selectTextBoxTallas"></div>
                                     </div>
                                 </div>
                             </div>
