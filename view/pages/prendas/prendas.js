@@ -158,6 +158,11 @@ window.addEventListener("DOMContentLoaded", () => {
                             selectedItemKeys: tallas
 
                         })
+                        $('#btnDelete').removeClass('d-none').prop('disabled', false)
+                        $('#btnUpdate').removeClass('d-none').prop('disabled', false)
+                    } else {
+                        $('#btnDelete').addClass('d-none').prop('disabled', true)
+                        $('#btnUpdate').removeClass('d-none').prop('disabled', true)
                     }
                 },
                 onRowDblClick(e) {
@@ -351,6 +356,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 })
         }
     })
+    loadButton('#btnMotivo', 'Eliminar', 'danger', false, true, false)
 
     //?Acciones
     $('#btnAdd').click(() => {
@@ -374,5 +380,68 @@ window.addEventListener("DOMContentLoaded", () => {
     $('#frmPrendas').on('submit', (e) => {
         e.preventDefault()
         guardar()
+    })
+    $('#btnUpdate').click(() => {
+        $('#add').modal('show')
+    })
+    $('#btnDelete').click(() => {
+        $('#textAreaMotivo').dxTextArea({
+            value: '',
+            placeholder: 'Motivo para eliminar',
+            height: 100
+        })
+        $('#modalDelete').modal('show')
+    })
+    $('#btnMotivo').click(() => {
+        const motivo = $('#textAreaMotivo').dxTextArea('option', 'value')
+        if (motivo === '' || motivo === null || motivo === undefined) {
+            Swal.fire({
+                title: 'Advertencia',
+                text: 'Debes ingresar un motivo para eliminar.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            })
+            return
+        } else {
+            Swal.fire({
+                icon: 'question',
+                title: 'Deseas eliminar los registros seleccionados?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'SI',
+                denyButtonText: 'NO'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const deleteSelected = arrayDataRows.map(item => {
+                        return {
+                            Id: item.Id,
+                            Motivo: motivo
+                        }
+                    })
+                    const jsonSelected = {
+                        Stored: 'PA_DAI_Prendas',
+                        Opcion: 'D',
+                        Usuario: userActive,
+                        Prendas: deleteSelected,
+                        Token: token
+                    }
+                    await loadAPI(`${url}DAIMLER`, 'POST', jsonSelected, token, true)
+                    generateGrid('CT')
+                    $('#modalDelete').modal('hide')
+                } else if (result.isDenied) {
+                    $('#modalDelete').modal('hide')
+                }
+            })
+        }
+    })
+    $('#consultar').click(() => {
+        const dataGrid = $('#dataGridPrendas').dxDataGrid('instance')
+        dataGrid.clearSelection()
+        generateGrid('C')
+    })
+    $('#consultarTodo').click(() => {
+        const dataGrid = $('#dataGridPrendas').dxDataGrid('instance')
+        dataGrid.clearSelection()
+        generateGrid('CT')
     })
 })
