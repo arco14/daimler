@@ -33,6 +33,10 @@
                                                 <div id="textBoxSKU"></div>
                                             </div>
                                             <div class="form-group">
+                                                <label>Nombre</label>
+                                                <div id="textBoxNombre"></div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Tipo Artículo</label>
                                                 <div id="lookUpTipoArticulo"></div>
                                             </div>

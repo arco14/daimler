@@ -8,6 +8,10 @@ const arrayPrendas = [{
     caption: 'SKU CRM',
     dataType: 'string',
 }, {
+    dataField: 'NOMBRE',
+    caption: 'Nombre',
+    dataType: 'string'
+}, {
     dataField: 'CATEGORIA',
     caption: 'Categoría',
     dataType: 'string',
@@ -53,6 +57,39 @@ const arrayPrendas = [{
     calculateCellValue: function (data) {
         return data.ACTIVO === 1
     }
+}, {
+    caption: 'Datos de control',
+    alignment: 'center',
+    visible: false,
+    columns: [{
+        dataField: 'FECHA_CREACION',
+        caption: 'Fecha Creación',
+        dataType: 'datetime',
+        format: 'dd/MM/yyyy HH:mm:ss',
+        allowEditing: false
+    }, {
+        dataField: 'USUARIO_CREACION',
+        caption: 'Usuario Crea',
+        dataType: 'string',
+        allowEditing: false
+    }, {
+        dataField: 'FECHA_ELIMINA',
+        caption: 'Fecha Eliminación',
+        dataType: 'datetime',
+        format: 'dd/MM/yyyy HH:mm:ss',
+        allowEditing: false
+
+    }, {
+        dataField: 'USUARIO_ELIMINA',
+        caption: 'Usuario Elimina',
+        dataType: 'string',
+        allowEditing: false
+    }, {
+        dataField: 'MOTIVO',
+        caption: 'Motivo Eliminación',
+        dataType: 'string',
+        allowEditing: false
+    }]
 }]
 const arrayTallas = [{
     dataField: 'TALLA',

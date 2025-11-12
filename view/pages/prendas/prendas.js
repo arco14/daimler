@@ -116,6 +116,9 @@ window.addEventListener("DOMContentLoaded", () => {
                         $('#textBoxSKU').dxTextBox({
                             value: data.SKU
                         })
+                        $('#textBoxNombre').dxTextBox({
+                            value: data.NOMBRE
+                        })
                         $('#lookUpTipoArticulo').dxLookup({
                             value: data.ID_TIPO_ARTICULO
                         })
@@ -234,6 +237,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     async function guardar() {
         const skuCrm = $('#textBoxSKU').dxTextBox('option', 'value')
+        const nombre = $('#textBoxNombre').dxTextBox('option', 'value')
         const tipoArticulo = $('#lookUpTipoArticulo').dxLookup('option', 'value')
         const categoria = $('#lookUpCategoria').dxLookup('option', 'value')
         const estilo = $('#lookUpEstilo').dxLookup('option', 'value')
@@ -254,6 +258,7 @@ window.addEventListener("DOMContentLoaded", () => {
             Prendas: {
                 Id: idRow,
                 SKU_CRM: skuCrm,
+                NOMBRE: nombre, 
                 TIPO_ARTICULO: tipoArticulo,
                 CATEGORIA: categoria,
                 ESTILO: estilo,
@@ -282,6 +287,7 @@ window.addEventListener("DOMContentLoaded", () => {
         valueExpr: 'Id',
     })
     loadTextBox('#textBoxSKU', '', true, 'SKU CRM', true, false)
+    loadTextBox('#textBoxNombre', '', true, 'Nombre de la prenda', true, false)
     generarCatalogos({
         idComponente: '#lookUpCategoria',
         blnVacio: true
@@ -367,6 +373,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const dataGrid = $('#dataGridPrendas').dxDataGrid('instance')
         dataGrid.clearSelection()
         $('#textBoxSKU').dxTextBox('option', 'value', '')
+        $('#textBoxNombre').dxTextBox('option', 'value', '')
         $('#lookUpTipoArticulo').dxLookup('option', 'value', '')
         $('#lookUpCategoria').dxLookup('option', 'value', '')
         $('#lookUpEstilo').dxLookup('option', 'value', '')
