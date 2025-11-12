@@ -274,7 +274,6 @@ window.addEventListener("DOMContentLoaded", () => {
                                     window.gridCargaManual = e.component
                                 },
                                 onEditorPreparing(col) {
-                                    console.log(col)
                                     if (col.parentType === 'dataRow' && col.dataField === 'PAQUETE') {
                                         col.editorOptions.onValueChanged = async (e) => {
                                             const jsonCanTallas = {
@@ -312,7 +311,6 @@ window.addEventListener("DOMContentLoaded", () => {
                                 onCellPrepared: function (e) {
                                     if (e.rowType === 'data' && e.column.dataField === 'TOTAL') {
                                         const data = e.data
-                                        console.log(data)
                                         const sumaActualizada = (data.CAN_ML || 0) + (data.CAN_MC || 0) + (data.CAN_PLY || 0) + (data.CAN_SUD || 0)
                                         e.cellElement.text(sumaActualizada)
                                     }

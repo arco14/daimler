@@ -367,7 +367,7 @@ window.addEventListener("DOMContentLoaded", () => {
     //?Acciones
     $('#btnAdd').click(() => {
         idRow = 0
-        $('#addTitle').text('Crear nuevo programa')
+        $('#addTitle').text('Crear nueva prenda')
         $(".nav-link").removeClass("active")
         $(".nav-link").first().addClass("active")
         const dataGrid = $('#dataGridPrendas').dxDataGrid('instance')
