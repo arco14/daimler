@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const url = CONFIG.API_URL
     const token = $('#userToken').val()
     const userActive = $('#userActive').val()
-    let idPrograma, estiloPrenda
+    let idPrograma, estiloPrenda, subCategoria
 
     //? VALIDAR QUE EL CONTENIDO ESTE DENTRO DEL IFRAME 🔍
     if (window.self !== window.top) {
@@ -25,6 +25,14 @@ window.addEventListener("DOMContentLoaded", () => {
     }, {
         dataField: 'ESTILO',
         caption: 'Estilo',
+        dataType: 'string'
+    }, {
+        dataField: 'CATEGORIA',
+        caption: 'Categoría',
+        dataType: 'string'
+    }, {
+        dataField: 'SUBCATEGORIA',
+        caption: 'Sub Categoría',
         dataType: 'string'
     }, {
         dataField: 'TALLA',
@@ -127,66 +135,18 @@ window.addEventListener("DOMContentLoaded", () => {
                     startEditAction: 'click',
                     confirmDelete: false
                 },
-                // async onSelectionChanged(e) {
-                //     arrayDataRows = e.selectedRowsData
-                //     const data = e.selectedRowsData[0]
-                //     if (arrayDataRows.length > 0) {
-                //         idRow = data.Id
-                //         $('#textBoxSKU').dxTextBox({
-                //             value: data.SKU
-                //         })
-                //         $('#textBoxNombre').dxTextBox({
-                //             value: data.NOMBRE
-                //         })
-                //         $('#lookUpTipoArticulo').dxLookup({
-                //             value: data.ID_TIPO_ARTICULO
-                //         })
-                //         $('#lookUpCategoria').dxLookup({
-                //             value: data.ID_CATEGORIA
-                //         })
-                //         $('#numberBoxPrecio').dxNumberBox({
-                //             value: data.PRECIO
-                //         })
-                //         $('#lookUpEstilo').dxLookup({
-                //             value: data.ID_ESTILO
-                //         })
-                //         $('#lookUpColor').dxLookup({
-                //             value: data.ID_COLOR
-                //         })
-                //         $('#lookUpGenero').dxLookup({
-                //             value: data.ID_GENERO
-                //         })
-                //         $('#swSerigrafia').dxSwitch({
-                //             value: data.SERIGRAFIA
-                //         })
-                //         $('#textBoxSerigrafia').dxTextBox({
-                //             value: data.SERIGRAFIA_LEYENDA
-                //         })
-                //         const jsonData = {
-                //             Stored: 'PA_DAI_Prendas',
-                //             Opcion: 'CI',
-                //             Usuario: userActive,
-                //             Prendas: {
-                //                 Id: idRow
-                //             }
-                //         }
-                //         const res = await loadAPI(`${url}DAIMLER`, 'POST', jsonData, token, false)
-                //         const dataTallas = res.response[1]
-                //         let tallas = []
-                //         for (i = 0; i < dataTallas.length; i++) {
-                //             tallas.push(dataTallas[i].Id)
-                //         }
-                //         $('#selectTextBoxTallas').dxList({
-                //             selectedItemKeys: tallas
-
-                //         })
-                //         $('#btnDelete').removeClass('d-none').prop('disabled', false)
-                //         $('#btnUpdate').removeClass('d-none').prop('disabled', false)
-                //     } else {
-                //         $('#btnDelete').addClass('d-none').prop('disabled', true)
-                //         $('#btnUpdate').removeClass('d-none').prop('disabled', true)
-                //     }
-                // },
+                async onSelectionChanged(e) {
+                    arrayDataRows = e.selectedRowsData
+                    const data = e.selectedRowsData[0]
+                    if (arrayDataRows.length > 0) {
+                        idRow = data.Id
+                        $('#btnDelete').removeClass('d-none').prop('disabled', false)
+                        $('#btnUpdate').removeClass('d-none').prop('disabled', false)
+                    } else {
+                        $('#btnDelete').addClass('d-none').prop('disabled', true)
+                        $('#btnUpdate').removeClass('d-none').prop('disabled', true)
+                    }
+                },
                 onRowDblClick(e) {
                     if (blnDblClickGrid) {
                         e.event.preventDefault()
@@ -276,6 +236,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 const selectedItem = items.find(item => item.Id === selectedId)
                 console.log(selectedItem)
                 estiloPrenda = selectedItem.ID_ESTILO
+                subCategoria = selectedItem.ID_SUBCATEGORIA
                 const jsonDataTallas = {
                     Stored: 'PA_CORE_CapCatalogos',
                     Opcion: 'CC',
@@ -310,6 +271,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 TIPO_MOVIMIENTO: tipoMovimiento,
                 PRENDA: prenda,
                 ESTILO: estiloPrenda,
+                SUBCATEGORIA: subCategoria,
                 Talla_Cant: selectedTallasCantidad,
                 COMENTARIOS: comentarios
             }
