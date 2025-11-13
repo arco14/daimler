@@ -45,8 +45,8 @@
                                                 <div id="lookUpCategoria"></div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Precio</label>
-                                                <div id="numberBoxPrecio"></div>
+                                                <label>Sub Categoría</label>
+                                                <div id="lookUpSubCategoria"></div>
                                             </div>
                                         </div>
                                         <div class="form-group col-sm-12 col-md-6">
@@ -61,6 +61,10 @@
                                             <div class="form-group">
                                                 <label>Genero</label>
                                                 <div id="lookUpGenero"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Precio</label>
+                                                <div id="numberBoxPrecio"></div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Serigrafia</label>

@@ -108,6 +108,16 @@ window.addEventListener("DOMContentLoaded", () => {
                     startEditAction: 'click',
                     confirmDelete: false
                 },
+                summary: {
+                    totalItems: [{
+                        column: 'Precio',
+                        summaryType: 'sum',
+                        valueFormat: 'currency',
+                        showInGroupFooter: false,
+                        alignByColumn: true,
+                        displayFormat: 'Total: {0}'
+                    }]
+                },
                 async onSelectionChanged(e) {
                     arrayDataRows = e.selectedRowsData
                     const data = e.selectedRowsData[0]
@@ -240,6 +250,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const nombre = $('#textBoxNombre').dxTextBox('option', 'value')
         const tipoArticulo = $('#lookUpTipoArticulo').dxLookup('option', 'value')
         const categoria = $('#lookUpCategoria').dxLookup('option', 'value')
+        const subCategoria = $('#lookUpSubCategoria').dxLookup('option', 'value')
         const estilo = $('#lookUpEstilo').dxLookup('option', 'value')
         const color = $('#lookUpColor').dxLookup('option', 'value')
         const genero = $('#lookUpGenero').dxLookup('option', 'value')
@@ -258,9 +269,10 @@ window.addEventListener("DOMContentLoaded", () => {
             Prendas: {
                 Id: idRow,
                 SKU_CRM: skuCrm,
-                NOMBRE: nombre, 
+                NOMBRE: nombre,
                 TIPO_ARTICULO: tipoArticulo,
                 CATEGORIA: categoria,
+                SUBCATEGORIA: subCategoria,
                 ESTILO: estilo,
                 COLOR: color,
                 GENERO: genero,
@@ -293,6 +305,10 @@ window.addEventListener("DOMContentLoaded", () => {
         blnVacio: true
     })
     generarCatalogos({
+        idComponente: '#lookUpSubCategoria',
+        blnVacio: true
+    })
+    generarCatalogos({
         idComponente: '#lookUpEstilo',
         blnVacio: true
     })
@@ -321,7 +337,9 @@ window.addEventListener("DOMContentLoaded", () => {
     $('#lookUpTipoArticulo').dxLookup({
         onValueChanged(e) {
             const idRelacion = e.value
-            if (idRelacion !== null || idRelacion !== '') {
+            if (idRelacion === "") {
+                return
+            } else {
                 generarCatalogos({
                     usarCatalogoEstandar: true,
                     claveTipoCatalogo: idRelacion === 158 ? 'TOPS' : 'PANTS',
@@ -338,6 +356,24 @@ window.addEventListener("DOMContentLoaded", () => {
                     idComponente: '#lookUpCategoria',
                     displayExpr: 'NOMBRE',
                     valueExpr: 'Id',
+                })
+                $('#lookUpCategoria').dxLookup({
+                    onValueChanged(e) {
+                        const idRelCategoria = e.value
+                        if (e.value === "") {
+                            return
+                        } else {
+                            generarCatalogos({
+                                usarCatalogoEstandar: true,
+                                IdTipo: 9,
+                                IdRelCatalogo: idRelCategoria,
+                                strEndpoint: 'DAIMLER',
+                                idComponente: '#lookUpSubCategoria',
+                                displayExpr: 'NOMBRE',
+                                valueExpr: 'Id',
+                            })
+                        }
+                    }
                 })
                 const jsonDataTallas = {
                     Stored: 'PA_CORE_CapCatalogos',
@@ -376,6 +412,7 @@ window.addEventListener("DOMContentLoaded", () => {
         $('#textBoxNombre').dxTextBox('option', 'value', '')
         $('#lookUpTipoArticulo').dxLookup('option', 'value', '')
         $('#lookUpCategoria').dxLookup('option', 'value', '')
+        $('#lookUpSubCategoria').dxLookup('option', 'value', '')
         $('#lookUpEstilo').dxLookup('option', 'value', '')
         $('#lookUpColor').dxLookup('option', 'value', '')
         $('#lookUpGenero').dxLookup('option', 'value', '')

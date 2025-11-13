@@ -17,6 +17,10 @@ const arrayPrendas = [{
     dataType: 'string',
     groupIndex: 1
 }, {
+    dataField: 'SUBCATEGORIA',
+    caption: 'Sub Categoría',
+    dataType: 'string',
+}, {
     dataField: 'ESTILO',
     caption: 'Estilo',
     dataType: 'string',
@@ -62,13 +66,13 @@ const arrayPrendas = [{
     alignment: 'center',
     visible: false,
     columns: [{
-        dataField: 'FECHA_CREACION',
+        dataField: 'FECHA_MODIFICA',
         caption: 'Fecha Creación',
         dataType: 'datetime',
         format: 'dd/MM/yyyy HH:mm:ss',
         allowEditing: false
     }, {
-        dataField: 'USUARIO_CREACION',
+        dataField: 'USUARIO_MODIFICA',
         caption: 'Usuario Crea',
         dataType: 'string',
         allowEditing: false
