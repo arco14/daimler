@@ -186,7 +186,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                     },
                                     {
                                         caption: 'TALLAS / CANTIDAD / INVENTARIO',
-                                        allowEditing: false,
+                                        allowEditing: true,
                                         alignment: 'center',
                                         columns: [{
                                                 dataField: 'CAN_ML',
@@ -203,8 +203,13 @@ window.addEventListener("DOMContentLoaded", () => {
                                                     placeholder: false,
                                                     dataSource: resTallas.response[0],
                                                     displayExpr: 'CLAVE',
-                                                    valueExpr: 'Id'
+                                                    valueExpr: 'Id',
                                                 }
+                                            }, {
+                                                dataField: 'INV_ML',
+                                                caption: 'Inventario',
+                                                alignment: 'center',
+                                                visible: false,
                                             },
                                             {
                                                 dataField: 'CAN_MC',
@@ -302,11 +307,20 @@ window.addEventListener("DOMContentLoaded", () => {
                                                 dataGrid.cellValue(rowIndex, 'CAN_SUD', canSUD)
                                                 dataGrid.cellValue(rowIndex, 'TOTAL', canML + canMC + canPLY + canSUD)
                                             }
-
                                             //? Control de visibilidad según el paquete
                                             toggleColumnsByPackage(e.value)
                                         }
                                     }
+                                    const columnasTalla = ["ESTILO", "TALLA_ML", "TALLA_MC", "TALLA_PLY", "TALLA_SUD"]
+                                    if (col.parentType === 'dataRow' && columnasTalla.includes(col.dataField)) {
+                                        const originalHandler = col.editorOptions.onValueChanged
+                                        col.editorOptions.onValueChanged = async (event) => {
+                                            if (originalHandler) originalHandler(event)
+                                            const columna = col.dataField
+                                            consultarInventario(col, event, columna)
+                                        }
+                                    }
+
                                 },
                                 onCellPrepared: function (e) {
                                     if (e.rowType === 'data' && e.column.dataField === 'TOTAL') {
@@ -314,13 +328,36 @@ window.addEventListener("DOMContentLoaded", () => {
                                         const sumaActualizada = (data.CAN_ML || 0) + (data.CAN_MC || 0) + (data.CAN_PLY || 0) + (data.CAN_SUD || 0)
                                         e.cellElement.text(sumaActualizada)
                                     }
-                                }
+
+                                },
                             }).dxDataGrid('instance')
+                            //? Función para consultar inventario (relacion ESTILO/TALLA)
+                            function consultarInventario(col, e, columChanged) {
+                                //? Saber que columna es la que esta cambiando su valor
+                                console.log(columChanged)
+                                
+                                const fila = col.row.data
+                                console.log("Data de todas la filas: ",fila)
+                                
+                                //? Mantener displayExpr de cada lookup
+                                col.setValue(e.value)
+
+                                const jsonInventario = {
+                                    Stored: 'PA_DAI_Inventario',
+                                    Opcion: 'IET',
+                                    Inventario: {
+                                        IdEstilo: fila.ESTILO,
+                                        IdTalla: e.value
+                                    },
+                                    Usuario: userActive
+                                }
+                                console.log(jsonInventario)
+                            }
 
                             //? Función para mostrar/ocultar columnas según el paquete
                             function toggleColumnsByPackage(idPaquete) {
                                 const grid = window.gridCargaManual
-                                const columnas = ['CAN_ML', 'TALLA_ML', 'CAN_MC', 'TALLA_MC', 'CAN_PLY', 'TALLA_PLY', 'CAN_SUD', 'TALLA_SUD']
+                                const columnas = ['CAN_ML', 'TALLA_ML', 'INV_ML', 'CAN_MC', 'TALLA_MC', 'CAN_PLY', 'TALLA_PLY', 'CAN_SUD', 'TALLA_SUD']
 
                                 //? Oculta todas las columnas primero
                                 columnas.forEach(c => grid.columnOption(c, 'visible', false))
@@ -341,6 +378,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                 if (tieneML) {
                                     grid.columnOption('CAN_ML', 'visible', true)
                                     grid.columnOption('TALLA_ML', 'visible', true)
+                                    grid.columnOption('INV_ML', 'visible', true)
                                 }
                                 if (tieneMC) {
                                     grid.columnOption('CAN_MC', 'visible', true)
@@ -384,6 +422,6 @@ window.addEventListener("DOMContentLoaded", () => {
     loadTextArea('#textAreaComentariosEntrega', 100, 'Comentarios Entrega', false, false)
     loadButton('#btnAgregarRenglon', '', 'normal', false, true, false, 'plus', 'Agregar Renglon')
     loadButton('#btnGuardar', 'Guardar', 'success', true, true, false)
-    
+
     //? ACCIONES
 })
