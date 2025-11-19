@@ -60,13 +60,13 @@
                 </div>
             </div>
         </div>
-        <div class="w-100 mt-3 d-flex justify-content-end">
+        <!-- <div class="w-100 mt-3 d-flex justify-content-end">
             <button class="btn btn-sm" id="btnActualizarAccesos" style="background-color: #0960AE"
                 title="Actualizar Accesos">
                 <i class="fas fa-arrows-spin text-white"></i>
             </button>
-        </div>
-        <nav>
+        </div> -->
+        <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"
                 id="menuItems">
                 <!-- Modulos cargados desde la API, solo a los que tenga acceso el usuario activo -->

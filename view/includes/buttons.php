@@ -21,6 +21,9 @@
         <button id="btnSave" class="btn btn-primary d-none" title="Guardar Resgistros" disabled>
             <i class="fas fa-save text-white"></i>
         </button>
+        <button id="btnTomatallas" class="btn btn-success d-none" title="Tomar Talla" disabled>
+            <i class="fas fa-shirt text-white"></i>
+        </button>
     </div>
     <div id="dropDownMod" class="dropdown">
         <button class="btn btn-primary dropdown-toggle text-white" type="button" id="triggerId" data-toggle="dropdown"

@@ -1,4 +1,5 @@
 //? DATAGRID 📚
+const userActive = $('#userActive').val()
 const arrayEmpleados = [{
     dataField: 'NOMBRE',
     caption: 'Nombre',
@@ -28,26 +29,17 @@ const arrayEmpleados = [{
     caption: 'Estilo',
     dataType: 'string',
 }, {
-    dataField: 'CATEGORIA',
-    caption: 'Categoría',
-    dataType: 'string',
-}, {
-    dataField: 'SUBCATEGORIA',
-    caption: 'Sub Categoría',
-    dataType: 'string',
+    dataField: 'TOMAR_TALLAS',
+    caption: 'Tomar Tallas',
+    dataType: 'boolean',
+    calculateCellValue: function (data) {
+        return data.ACTIVO === 1
+    }
 }, {
     dataField: 'FECHA_ENTREGA',
     caption: 'Fecha Entrega',
     dataType: 'datetime',
     format: "dd/mm/yyyy HH:MM:SS"
-}, {
-    dataField: 'ESTATUS',
-    caption: 'Estatus',
-    dataType: 'string',
-}, {
-    dataField: 'COMENTARIOS',
-    caption: 'Comentarios',
-    dataType: 'string',
 }, {
     dataField: 'USUARIO',
     caption: 'Usuario',
@@ -97,4 +89,19 @@ const arrayEmpleados = [{
         dataType: 'string',
         allowEditing: false
     }]
+}]
+const jsonEmpleado = {
+    Stored: 'PA_DAI_Empleados',
+    Opcion: 'C',
+    Usuario: userActive
+}
+const arrayEmpleado = [{
+    dataField: 'NUMERO_EMPLEADO',
+    caption: '# Empleado',
+    dataType: 'string',
+    width: 90
+}, {
+    dataField: 'NOMBRE',
+    caption: 'Empleado',
+    dataType: 'string'
 }]

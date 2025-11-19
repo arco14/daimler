@@ -13,11 +13,10 @@
         <script src='../../components/dataGrid.js'></script>
         <script src='../../components/textBox.js'></script>
         <script src='../../components/button.js'></script>
-        <script src='../../components/numberBox.js'></script>
         <script src='../../components/lookup.js'></script>
         <script src='../../components/textArea.js'></script>
-        <script src='../../components/switch.js'></script>
         <script src='../../components/dateBox.js'></script>
+        <script src='../../components/dropDown.js'></script>
         <script src="./arrayData.js"></script>
         <script src='./empleados.js'></script>
         <script>
