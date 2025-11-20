@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../../assets/devExtreme/css/dx.light.css">
     </span>
     <link rel="stylesheet" href="../../assets/css/app.css">
+    <link rel="stylesheet" href="../../assets/adminlt3/css/adminlte.min.css">
     <script src="../../assets/js/config.js"></script>
     <script src="../../assets/plugins/jquery/jquery.min.js"></script>
     <script src="../../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
