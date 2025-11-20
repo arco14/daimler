@@ -56,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `dai_bitacoras` (
   `BIT_Fecha` datetime DEFAULT NULL,
   PRIMARY KEY (`BIT_Id`),
   KEY `BIT_Id` (`BIT_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1271 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1326 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler26.dai_bitacoras: ~61 rows (aproximadamente)
+-- Volcando datos para la tabla daimler26.dai_bitacoras: ~116 rows (aproximadamente)
 INSERT INTO `dai_bitacoras` (`BIT_Id`, `BIT_Modulo`, `BIT_Programa`, `BIT_Accion`, `BIT_IdReferencia`, `BIT_JsonAnterior`, `BIT_JsonNuevo`, `BIT_Usuario`, `BIT_Fecha`) VALUES
 	(1210, 'jm_core', 'core_catalogoTipo', 'ErrorSQL', 17, '{"Stored":"PA_CORE_CapCatalogoTipo","Opcion":"G","Usuario":"christian.acosta","Catalogo":{"Id":0,"CLAVE":"Test","NOMBRE":"Test","DESCRIPCION":"Test"}}', '{"Error": "Table \'daimler26.core_usuarios\' doesn\'t exist"}', 'christian.acosta', '2025-10-21 12:48:09'),
 	(1211, 'jm_core', 'core_catalogoTipo', 'crear', 18, NULL, '{"Stored":"PA_CORE_CapCatalogoTipo","Opcion":"G","Usuario":"christian.acosta","Catalogo":{"Id":0,"CLAVE":"Test","NOMBRE":"Test","DESCRIPCION":"Test"}}', 'christian.acosta', '2025-10-21 12:52:18'),
@@ -120,7 +120,62 @@ INSERT INTO `dai_bitacoras` (`BIT_Id`, `BIT_Modulo`, `BIT_Programa`, `BIT_Accion
 	(1267, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 5, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"Test -05","TIPO_ARTICULO":158,"CATEGORIA":160,"ESTILO":95,"COLOR":166,"GENERO":153,"PRECIO":600,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50},{"TALLAS":51}]}}', 'christian.acosta', '2025-11-11 17:00:56'),
 	(1268, 'dai_prendas', 'dai_prendas', 'ErrorSQL', NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"D","Usuario":"christian.acosta","Prendas":[{"Id":1,"Motivo":"Test Eliminación"}],"Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyb290Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzYyODc2MTg2LCJleHAiOjE3NjMxMzUzODZ9.5C52JCYWpc6wKmJ4mh-lnOBAUlyQUlUI-EyOjX6J0cQ"}', '{"Error": "Unknown column \'PRENDAS.TAL_Id\' in \'on clause\'"}', 'christian.acosta', '2025-11-11 17:33:50'),
 	(1269, 'dai_prendas', 'dai_prendas', NULL, NULL, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"D","Usuario":"christian.acosta","Prendas":[{"Id":1,"Motivo":"Test Eliminación "}],"Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyb290Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzYyODc2MTg2LCJleHAiOjE3NjMxMzUzODZ9.5C52JCYWpc6wKmJ4mh-lnOBAUlyQUlUI-EyOjX6J0cQ"}', 'christian.acosta', '2025-11-11 17:34:46'),
-	(1270, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 6, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"Test-06","TIPO_ARTICULO":159,"CATEGORIA":163,"ESTILO":107,"COLOR":168,"GENERO":153,"PRECIO":265,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":52},{"TALLAS":53},{"TALLAS":54},{"TALLAS":55},{"TALLAS":56},{"TALLAS":58}]}}', 'christian.acosta', '2025-11-11 17:37:35');
+	(1270, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 6, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"Test-06","TIPO_ARTICULO":159,"CATEGORIA":163,"ESTILO":107,"COLOR":168,"GENERO":153,"PRECIO":265,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":52},{"TALLAS":53},{"TALLAS":54},{"TALLAS":55},{"TALLAS":56},{"TALLAS":58}]}}', 'christian.acosta', '2025-11-11 17:37:35'),
+	(1271, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 7, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"MRP-APR02L-NGST-UT","NOMBRE":"Pantalon mezclilla","TIPO_ARTICULO":159,"CATEGORIA":161,"ESTILO":103,"COLOR":164,"GENERO":153,"PRECIO":299,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":52},{"TALLAS":53},{"TALLAS":54},{"TALLAS":55},{"TALLAS":56},{"TALLAS":58}]}}', 'christian.acosta', '2025-11-12 08:51:44'),
+	(1272, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 8, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"TRK-HK01UX-154","NOMBRE":"Camisa producción ","TIPO_ARTICULO":158,"CATEGORIA":39,"ESTILO":95,"COLOR":155,"GENERO":151,"PRECIO":165.35,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Producción","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50},{"TALLAS":51}]}}', 'christian.acosta', '2025-11-12 08:53:42'),
+	(1273, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 9, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"SUD-HODI-456","NOMBRE":"Sudadera 2026","TIPO_ARTICULO":158,"CATEGORIA":160,"ESTILO":92,"COLOR":166,"GENERO":153,"PRECIO":400,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50},{"TALLAS":51}]}}', 'christian.acosta', '2025-11-12 08:54:45'),
+	(1274, 'dai_prendas', 'dai_prendas', 'ErrorSQL', 7, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":7,"SKU_CRM":"MRP-APR02L-NGST-UT","NOMBRE":"Pantalon mezclilla","TIPO_ARTICULO":159,"CATEGORIA":161,"ESTILO":103,"COLOR":164,"GENERO":153,"PRECIO":299,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":52},{"TALLAS":53},{"TALLAS":54},{"TALLAS":55},{"TALLAS":56},{"TALLAS":58},{"TALLAS":59},{"TALLAS":60}]}}', '{"Error": "Unknown column \'PRENDAS_UP.NOMBRE\' in \'field list\'"}', 'christian.acosta', '2025-11-12 09:00:30'),
+	(1275, 'dai_prendas', 'dai_prendas', 'ErrorSQL', 8, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":8,"SKU_CRM":"TRK-HK01UX-154","NOMBRE":"Camisa producción update","TIPO_ARTICULO":158,"CATEGORIA":39,"ESTILO":95,"COLOR":155,"GENERO":151,"PRECIO":165.35,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Producción update","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50},{"TALLAS":51}]}}', '{"Error": "Incorrect string value: \'\\\\xF3n \\", ...\' for column ``.``.`jsonAnterior` at row 1"}', 'christian.acosta', '2025-11-12 09:06:33'),
+	(1276, 'dai_prendas', 'dai_prendas', 'ErrorSQL', 8, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":8,"SKU_CRM":"TRK-HK01UX-154","NOMBRE":"Camisa producción","TIPO_ARTICULO":158,"CATEGORIA":39,"ESTILO":95,"COLOR":155,"GENERO":151,"PRECIO":165.35,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Producción update","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50},{"TALLAS":51}]}}', '{"Error": "Incorrect string value: \'\\\\xF3n \\", ...\' for column ``.``.`jsonAnterior` at row 1"}', 'christian.acosta', '2025-11-12 09:07:03'),
+	(1277, 'dai_prendas', 'dai_prendas', 'ErrorSQL', 8, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":8,"SKU_CRM":"TRK-HK01UX-154","NOMBRE":"Camisa producción","TIPO_ARTICULO":158,"CATEGORIA":39,"ESTILO":95,"COLOR":155,"GENERO":151,"PRECIO":165.35,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Producción","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49}]}}', '{"Error": "Incorrect string value: \'\\\\xF3n \\", ...\' for column ``.``.`jsonAnterior` at row 1"}', 'christian.acosta', '2025-11-12 09:07:09'),
+	(1278, 'dai_prendas', 'dai_prendas', 'ErrorSQL', 8, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":8,"SKU_CRM":"TRK-HK01UX-154","NOMBRE":"Camisa producción update","TIPO_ARTICULO":158,"CATEGORIA":39,"ESTILO":95,"COLOR":155,"GENERO":151,"PRECIO":165.35,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Producción","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50}]}}', '{"Error": "Unknown column \'PRENDAS_UP.NOMBRE\' in \'field list\'"}', 'christian.acosta', '2025-11-12 09:07:34'),
+	(1279, 'dai_prendas', 'dai_prendas', 'ErrorSQL', 8, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":8,"SKU_CRM":"TRK-HK01UX-154","NOMBRE":"Camisa producción update","TIPO_ARTICULO":158,"CATEGORIA":39,"ESTILO":95,"COLOR":155,"GENERO":151,"PRECIO":165.35,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Producción update","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50}]}}', '{"Error": "Incorrect string value: \'\\\\xF3n \\", ...\' for column ``.``.`jsonAnterior` at row 1"}', 'christian.acosta', '2025-11-12 09:07:59'),
+	(1280, 'dai_prendas', 'dai_prendas', 'ErrorSQL', 8, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":8,"SKU_CRM":"TRK-HK01UX-154","NOMBRE":"Camisa producción update","TIPO_ARTICULO":158,"CATEGORIA":39,"ESTILO":95,"COLOR":155,"GENERO":151,"PRECIO":165.35,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Producción update","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50},{"TALLAS":51}]}}', '{"Error": "Incorrect string value: \'\\\\xF3n \\", ...\' for column ``.``.`jsonAnterior` at row 1"}', 'christian.acosta', '2025-11-12 09:13:42'),
+	(1281, 'dai_prendas', 'dai_prendas', 'ErrorSQL', 8, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":8,"SKU_CRM":"TRK-HK01UX-154","NOMBRE":"Camisa producción","TIPO_ARTICULO":158,"CATEGORIA":39,"ESTILO":95,"COLOR":155,"GENERO":151,"PRECIO":165.35,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Producción","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49}]}}', '{"Error": "Incorrect string value: \'\\\\xF3n \\", ...\' for column ``.``.`jsonAnterior` at row 1"}', 'christian.acosta', '2025-11-12 09:20:48'),
+	(1282, 'dai_inventario', 'dai_inventario', 'ErrorSQL', 1281, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"Talla_Cant":[{"TALLA":52,"CANTIDAD":240},{"TALLA":53,"CANTIDAD":200},{"TALLA":54,"CANTIDAD":500}],"COMENTARIOS":"Test"}}', '{"Error": "Table \'daimler26.dai_invetario\' doesn\'t exist"}', 'christian.acosta', '2025-11-12 13:19:37'),
+	(1283, 'dai_inventario', 'dai_inventario', 'ErrorSQL', 1272, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"Talla_Cant":[{"TALLA":52,"CANTIDAD":200},{"TALLA":53,"CANTIDAD":100}],"COMENTARIOS":"Test"}}', '{"Error": "Table \'daimler26.dai_invetario\' doesn\'t exist"}', 'christian.acosta', '2025-11-12 13:21:34'),
+	(1284, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 2, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"Talla_Cant":[{"TALLA":52,"CANTIDAD":200},{"TALLA":53,"CANTIDAD":100}],"COMENTARIOS":"Test"}}', 'christian.acosta', '2025-11-12 13:22:19'),
+	(1285, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 4, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"Talla_Cant":[{"TALLA":52,"CANTIDAD":200},{"TALLA":53,"CANTIDAD":300},{"TALLA":54,"CANTIDAD":450}],"COMENTARIOS":"Test"}}', 'christian.acosta', '2025-11-12 13:28:15'),
+	(1286, 'dai_inventario', 'dai_inventario', 'ErrorSQL', 7, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"Talla_Cant":[{"TALLA":52,"CANTIDAD":200},{"TALLA":53,"CANTIDAD":250},{"TALLA":54,"CANTIDAD":400}],"COMENTARIOS":"Test"}}', '{"Error": "Unknown column \'INV_Cantidad\' in \'field list\'"}', 'christian.acosta', '2025-11-12 13:38:14'),
+	(1287, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 8, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"Talla_Cant":[{"TALLA":52,"CANTIDAD":200},{"TALLA":53,"CANTIDAD":250},{"TALLA":54,"CANTIDAD":400}],"COMENTARIOS":"Test"}}', 'christian.acosta', '2025-11-12 13:38:49'),
+	(1288, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 9, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"Talla_Cant":[{"TALLA":52,"CANTIDAD":200},{"TALLA":53,"CANTIDAD":250},{"TALLA":54,"CANTIDAD":255},{"TALLA":55,"CANTIDAD":300}],"COMENTARIOS":"Test"}}', 'christian.acosta', '2025-11-12 13:42:24'),
+	(1289, 'dai_inventario', 'dai_inventario', 'ErrorSQL', 10, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":8,"Talla_Cant":[{"TALLA":43,"CANTIDAD":100},{"TALLA":44,"CANTIDAD":156},{"TALLA":45,"CANTIDAD":256},{"TALLA":46,"CANTIDAD":225},{"TALLA":47,"CANTIDAD":200},{"TALLA":48,"CANTIDAD":10},{"TALLA":49,"CANTIDAD":20},{"TALLA":50,"CANTIDAD":15},{"TALLA":51,"CANTIDAD":5}],"COMENTARIOS":"Test 2"}}', '{"Error": "Column count doesn\'t match value count at row 1"}', 'christian.acosta', '2025-11-12 13:57:51'),
+	(1290, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 11, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":8,"Talla_Cant":[{"TALLA":43,"CANTIDAD":100},{"TALLA":44,"CANTIDAD":156},{"TALLA":45,"CANTIDAD":256},{"TALLA":46,"CANTIDAD":225},{"TALLA":47,"CANTIDAD":200},{"TALLA":48,"CANTIDAD":10},{"TALLA":49,"CANTIDAD":20},{"TALLA":50,"CANTIDAD":15},{"TALLA":51,"CANTIDAD":5}],"COMENTARIOS":"Test 2"}}', 'christian.acosta', '2025-11-12 13:58:38'),
+	(1291, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 12, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":8,"Talla_Cant":[{"TALLA":43,"CANTIDAD":100},{"TALLA":44,"CANTIDAD":156},{"TALLA":45,"CANTIDAD":256},{"TALLA":46,"CANTIDAD":225},{"TALLA":47,"CANTIDAD":200},{"TALLA":48,"CANTIDAD":10},{"TALLA":49,"CANTIDAD":20},{"TALLA":50,"CANTIDAD":15},{"TALLA":51,"CANTIDAD":5}],"COMENTARIOS":"Test 2"}}', 'christian.acosta', '2025-11-12 13:58:42'),
+	(1292, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 13, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":9,"Talla_Cant":[{"TALLA":43,"CANTIDAD":200},{"TALLA":44,"CANTIDAD":300}],"COMENTARIOS":"Test 3"}}', 'christian.acosta', '2025-11-12 14:01:45'),
+	(1293, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 10, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"Test-4587a-sda","NOMBRE":"Camisa Test","TIPO_ARTICULO":159,"CATEGORIA":162,"ESTILO":105,"COLOR":167,"GENERO":152,"PRECIO":265,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Test Serigrafía","Prendas_Tallas":[{"TALLAS":52},{"TALLAS":53},{"TALLAS":54}]}}', 'christian.acosta', '2025-11-12 14:27:00'),
+	(1294, 'dai_inventario', 'dai_inventario', 'ErrorSQL', 1291, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"ESTILO":103,"Talla_Cant":[{"TALLA":52,"CANTIDAD":100},{"TALLA":53,"CANTIDAD":200},{"TALLA":54,"CANTIDAD":300}],"COMENTARIOS":"Test"}}', '{"Error": "Unknown column \'INVENATRIO.ESTILO\' in \'field list\'"}', 'christian.acosta', '2025-11-12 16:29:39'),
+	(1295, 'dai_inventario', 'dai_inventario', 'ErrorSQL', 1294, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"ESTILO":103,"Talla_Cant":[{"TALLA":52,"CANTIDAD":100},{"TALLA":53,"CANTIDAD":200},{"TALLA":54,"CANTIDAD":300}],"COMENTARIOS":"Test"}}', '{"Error": "Unknown column \'INVENTARIO.PRE_Id\' in \'field list\'"}', 'christian.acosta', '2025-11-12 16:31:13'),
+	(1296, 'dai_inventario', 'dai_inventario', 'guardarInventario', 14, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"ESTILO":103,"Talla_Cant":[{"TALLA":52,"CANTIDAD":100},{"TALLA":53,"CANTIDAD":200},{"TALLA":54,"CANTIDAD":300}],"COMENTARIOS":"Test"}}', 'christian.acosta', '2025-11-12 16:32:42'),
+	(1297, 'dai_inventario', 'dai_inventario', 'guardarInventario', 15, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":8,"ESTILO":95,"Talla_Cant":[{"TALLA":43,"CANTIDAD":100},{"TALLA":44,"CANTIDAD":55},{"TALLA":45,"CANTIDAD":77},{"TALLA":46,"CANTIDAD":250}],"COMENTARIOS":"Test"}}', 'christian.acosta', '2025-11-12 16:43:56'),
+	(1298, 'dai_inventario', 'dai_inventario', 'guardarInventario', 16, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":9,"ESTILO":92,"Talla_Cant":[{"TALLA":49,"CANTIDAD":86},{"TALLA":50,"CANTIDAD":45},{"TALLA":51,"CANTIDAD":25}],"COMENTARIOS":"Test sudadera"}}', 'christian.acosta', '2025-11-12 16:49:21'),
+	(1299, 'dai_inventario', 'dai_inventario', 'guardarInventario', 16, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":9,"ESTILO":92,"Talla_Cant":[{"TALLA":49,"CANTIDAD":86},{"TALLA":50,"CANTIDAD":45},{"TALLA":51,"CANTIDAD":25}],"COMENTARIOS":"Test sudadera"}}', 'christian.acosta', '2025-11-12 16:49:21'),
+	(1300, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 17, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":9,"ESTILO":92,"Talla_Cant":[{"TALLA":43,"CANTIDAD":85},{"TALLA":44,"CANTIDAD":90},{"TALLA":45,"CANTIDAD":56},{"TALLA":50,"CANTIDAD":10}],"COMENTARIOS":"Test Sudadera"}}', 'christian.acosta', '2025-11-12 16:54:07'),
+	(1301, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 18, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":9,"ESTILO":92,"Talla_Cant":[{"TALLA":43,"CANTIDAD":56},{"TALLA":44,"CANTIDAD":1},{"TALLA":49,"CANTIDAD":13},{"TALLA":50,"CANTIDAD":10},{"TALLA":51,"CANTIDAD":20}],"COMENTARIOS":"Test Sudadera"}}', 'christian.acosta', '2025-11-12 16:56:45'),
+	(1302, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 19, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":9,"ESTILO":92,"Talla_Cant":[{"TALLA":43,"CANTIDAD":56},{"TALLA":44,"CANTIDAD":1},{"TALLA":49,"CANTIDAD":13},{"TALLA":50,"CANTIDAD":10},{"TALLA":51,"CANTIDAD":20}],"COMENTARIOS":"Test Sudadera"}}', 'christian.acosta', '2025-11-12 16:58:12'),
+	(1303, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 20, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"ESTILO":103,"Talla_Cant":[{"TALLA":52,"CANTIDAD":250},{"TALLA":53,"CANTIDAD":300},{"TALLA":54,"CANTIDAD":150}],"COMENTARIOS":"Test pantalón mezclilla"}}', 'christian.acosta', '2025-11-12 17:06:56'),
+	(1304, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 21, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":7,"ESTILO":103,"Talla_Cant":[{"TALLA":52,"CANTIDAD":100},{"TALLA":53,"CANTIDAD":200},{"TALLA":54,"CANTIDAD":300}],"COMENTARIOS":"Test pantalón mezclilla "}}', 'christian.acosta', '2025-11-12 17:09:07'),
+	(1305, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 22, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":8,"ESTILO":95,"Talla_Cant":[{"TALLA":49,"CANTIDAD":20},{"TALLA":50,"CANTIDAD":30},{"TALLA":51,"CANTIDAD":10}],"COMENTARIOS":"Test camisa producción "}}', 'christian.acosta', '2025-11-12 17:09:50'),
+	(1306, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 23, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":9,"ESTILO":92,"Talla_Cant":[{"TALLA":46,"CANTIDAD":100},{"TALLA":47,"CANTIDAD":200},{"TALLA":48,"CANTIDAD":85}],"COMENTARIOS":"Test Sudadera 2026"}}', 'christian.acosta', '2025-11-12 17:12:27'),
+	(1307, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 11, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"TEST-01","NOMBRE":"Camisa producción ","TIPO_ARTICULO":158,"CATEGORIA":39,"SUBCATEGORIA":62,"ESTILO":95,"COLOR":164,"GENERO":153,"PRECIO":299,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Team Leader Producción","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50},{"TALLAS":51}]}}', 'christian.acosta', '2025-11-13 09:14:39'),
+	(1308, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 12, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"TEST-02","NOMBRE":"Pantalon ","TIPO_ARTICULO":159,"CATEGORIA":163,"SUBCATEGORIA":68,"ESTILO":104,"COLOR":167,"GENERO":151,"PRECIO":350,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":52},{"TALLAS":53},{"TALLAS":54},{"TALLAS":55},{"TALLAS":56},{"TALLAS":58}]}}', 'christian.acosta', '2025-11-13 09:24:56'),
+	(1309, 'dai_prendas', 'dai_prendas', NULL, NULL, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"D","Usuario":"christian.acosta","Prendas":[{"Id":12,"Motivo":"Test eliminación"}],"Token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyb290Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzYyODc2MTg2LCJleHAiOjE3NjMxMzUzODZ9.5C52JCYWpc6wKmJ4mh-lnOBAUlyQUlUI-EyOjX6J0cQ"}', 'christian.acosta', '2025-11-13 09:26:11'),
+	(1310, 'dai_prendas', 'dai_prendas', 'ErrorSQL', 11, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":11,"SKU_CRM":"TEST-01","NOMBRE":"Camisa producción update","TIPO_ARTICULO":158,"CATEGORIA":39,"SUBCATEGORIA":62,"ESTILO":95,"COLOR":164,"GENERO":153,"PRECIO":299,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Team Leader Producción update","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50},{"TALLAS":51}]}}', '{"Error": "Incorrect string value: \'\\\\xF3n \\", ...\' for column ``.``.`jsonAnterior` at row 1"}', 'christian.acosta', '2025-11-13 09:31:58'),
+	(1311, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 24, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":11,"ESTILO":95,"SUBCATEGORIA":62,"Talla_Cant":[{"TALLA":43,"CANTIDAD":200},{"TALLA":44,"CANTIDAD":150},{"TALLA":45,"CANTIDAD":300}],"COMENTARIOS":"Test"}}', 'christian.acosta', '2025-11-13 09:53:36'),
+	(1312, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 13, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"TEST-03","NOMBRE":"Pantalon Mezclilla","TIPO_ARTICULO":159,"CATEGORIA":163,"SUBCATEGORIA":67,"ESTILO":103,"COLOR":164,"GENERO":151,"PRECIO":239.45,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":52},{"TALLAS":53},{"TALLAS":54},{"TALLAS":55},{"TALLAS":56},{"TALLAS":58}]}}', 'christian.acosta', '2025-11-13 10:22:05'),
+	(1313, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 14, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"TEST-04","NOMBRE":"Test 04","TIPO_ARTICULO":158,"CATEGORIA":39,"SUBCATEGORIA":62,"ESTILO":91,"COLOR":164,"GENERO":153,"PRECIO":156.58,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47}]}}', 'christian.acosta', '2025-11-18 10:31:01'),
+	(1314, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 15, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"TEST-01","NOMBRE":"Test 01","TIPO_ARTICULO":158,"CATEGORIA":39,"SUBCATEGORIA":62,"ESTILO":82,"COLOR":164,"GENERO":151,"PRECIO":185.65,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45}]}}', 'christian.acosta', '2025-11-18 10:39:28'),
+	(1315, 'dai_inventario', 'dai_inventario', 'ErrorSQL', 0, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":15,"ESTILO":82,"SUBCATEGORIA":62,"Talla_Cant":[{"TALLA":43,"CANTIDAD":100},{"TALLA":44,"CANTIDAD":200}],"COMENTARIOS":"Test 01"}}', '{"Error": "Unknown column \'CAT_Estilo\' in \'field list\'"}', 'christian.acosta', '2025-11-18 10:40:09'),
+	(1316, 'dai_inventario', 'dai_inventario', 'ErrorSQL', 1315, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":15,"ESTILO":82,"SUBCATEGORIA":62,"Talla_Cant":[{"TALLA":43,"CANTIDAD":100},{"TALLA":44,"CANTIDAD":200}],"COMENTARIOS":"Test 01"}}', '{"Error": "Unknown column \'CAT_SubCategoria\' in \'field list\'"}', 'christian.acosta', '2025-11-18 10:47:21'),
+	(1317, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 25, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":15,"ESTILO":82,"SUBCATEGORIA":62,"Talla_Cant":[{"TALLA":43,"CANTIDAD":100},{"TALLA":44,"CANTIDAD":200}],"COMENTARIOS":"Test 01"}}', 'christian.acosta', '2025-11-18 10:48:13'),
+	(1318, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 16, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"DML-PROD-AZUL-100A","NOMBRE":"Camisa Producción","TIPO_ARTICULO":158,"CATEGORIA":39,"SUBCATEGORIA":62,"ESTILO":95,"COLOR":164,"GENERO":151,"PRECIO":200,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49}]}}', 'christian.acosta', '2025-11-18 10:58:24'),
+	(1319, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 17, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"DMLR-PROD-AZUL-100B","NOMBRE":"Camisa Producción Azul","TIPO_ARTICULO":158,"CATEGORIA":39,"SUBCATEGORIA":63,"ESTILO":95,"COLOR":164,"GENERO":151,"PRECIO":0,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47},{"TALLAS":48},{"TALLAS":49},{"TALLAS":50},{"TALLAS":51}]}}', 'christian.acosta', '2025-11-18 10:59:30'),
+	(1320, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 26, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":16,"ESTILO":95,"SUBCATEGORIA":62,"Talla_Cant":[{"TALLA":45,"CANTIDAD":31},{"TALLA":46,"CANTIDAD":32},{"TALLA":47,"CANTIDAD":38},{"TALLA":48,"CANTIDAD":10},{"TALLA":49,"CANTIDAD":8}],"COMENTARIOS":"Embarque pendiente 25/08/2025"}}', 'christian.acosta', '2025-11-18 11:03:57'),
+	(1321, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 27, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":17,"ESTILO":95,"SUBCATEGORIA":63,"Talla_Cant":[{"TALLA":44,"CANTIDAD":39},{"TALLA":45,"CANTIDAD":35},{"TALLA":46,"CANTIDAD":35},{"TALLA":48,"CANTIDAD":28},{"TALLA":49,"CANTIDAD":30},{"TALLA":50,"CANTIDAD":3},{"TALLA":51,"CANTIDAD":3}],"COMENTARIOS":"Embarque pendiente 25/08/2025"}}', 'christian.acosta', '2025-11-18 11:04:47'),
+	(1322, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 18, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"DML-CAMISA-BRIGADA","NOMBRE":"Camisa Brigada Comision","TIPO_ARTICULO":158,"CATEGORIA":39,"SUBCATEGORIA":62,"ESTILO":83,"COLOR":168,"GENERO":153,"PRECIO":299,"SERIGRAFIA":true,"SERIGRAFIA_LEYENDA":"Team Leader","Prendas_Tallas":[{"TALLAS":43},{"TALLAS":44},{"TALLAS":45},{"TALLAS":46},{"TALLAS":47}]}}', 'christian.acosta', '2025-11-18 11:34:20'),
+	(1323, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 28, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":18,"ESTILO":83,"SUBCATEGORIA":62,"Talla_Cant":[{"TALLA":43,"CANTIDAD":100},{"TALLA":44,"CANTIDAD":25},{"TALLA":45,"CANTIDAD":36},{"TALLA":46,"CANTIDAD":50}],"COMENTARIOS":"Test Diferente estilo"}}', 'christian.acosta', '2025-11-18 11:34:59'),
+	(1324, 'dai_prendas', 'dai_prendas', 'guardarPrendas', 19, NULL, '{"Stored":"PA_DAI_Prendas","Opcion":"G","Usuario":"christian.acosta","Prendas":{"Id":0,"SKU_CRM":"SPEC-PANT-VAQ-100A","NOMBRE":"Pantalon Vaquero","TIPO_ARTICULO":159,"CATEGORIA":163,"SUBCATEGORIA":68,"ESTILO":104,"COLOR":164,"GENERO":151,"PRECIO":250,"SERIGRAFIA":false,"SERIGRAFIA_LEYENDA":"","Prendas_Tallas":[{"TALLAS":52},{"TALLAS":53},{"TALLAS":54},{"TALLAS":55},{"TALLAS":56},{"TALLAS":58},{"TALLAS":59},{"TALLAS":60},{"TALLAS":61}]}}', 'christian.acosta', '2025-11-20 11:45:21'),
+	(1325, 'dai_inventario', 'dai_inventario', 'guardarPrendas', 29, NULL, '{"Stored":"PA_DAI_Inventario","Opcion":"G","Usuario":"christian.acosta","Inventario":{"Id":0,"TIPO_MOVIMIENTO":182,"PRENDA":19,"ESTILO":104,"SUBCATEGORIA":68,"Talla_Cant":[{"TALLA":52,"CANTIDAD":270},{"TALLA":53,"CANTIDAD":720},{"TALLA":54,"CANTIDAD":1200},{"TALLA":55,"CANTIDAD":1280},{"TALLA":56,"CANTIDAD":800},{"TALLA":58,"CANTIDAD":360},{"TALLA":59,"CANTIDAD":280},{"TALLA":60,"CANTIDAD":55},{"TALLA":61,"CANTIDAD":35}],"COMENTARIOS":"Embarque 1 09/05/2025"}}', 'christian.acosta', '2025-11-20 11:55:21');
 
 -- Volcando estructura para tabla daimler26.dai_catalogos
 CREATE TABLE IF NOT EXISTS `dai_catalogos` (
@@ -138,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `dai_catalogos` (
   UNIQUE KEY `DAI_Id_UNIQUE` (`CAT_Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler26.dai_catalogos: ~138 rows (aproximadamente)
+-- Volcando datos para la tabla daimler26.dai_catalogos: ~135 rows (aproximadamente)
 INSERT INTO `dai_catalogos` (`CAT_Id`, `CTT_Id`, `CAT_Clave`, `CAT_Relacion`, `CAT_Orden`, `CAT_Nombre`, `CAT_Descripcion`, `CAT_Usuario`, `CAT_Fecha`, `CAT_Activo`) VALUES
 	(1, 1, 'MAN', NULL, NULL, 'Mañana', 'Mañana', 'christian.acosta', '2025-10-09 00:00:00', b'0'),
 	(2, 1, 'TAR', NULL, NULL, 'Tarde', 'Tarde', 'christian.acosta', '2025-10-09 00:00:00', b'0'),
@@ -156,10 +211,8 @@ INSERT INTO `dai_catalogos` (`CAT_Id`, `CTT_Id`, `CAT_Clave`, `CAT_Relacion`, `C
 	(36, 5, 'BGD', NULL, NULL, 'BRIGADA', 'BRIGADA', 'christian.acosta', '2025-10-09 09:54:54', b'1'),
 	(37, 5, 'COM', NULL, NULL, 'COMISION', 'COMISION', 'christian.acosta', '2025-10-09 09:54:54', b'1'),
 	(38, 5, 'GEN', NULL, NULL, 'PRODUCCION', 'PRODUCCION', 'christian.acosta', '2025-10-09 09:54:54', b'1'),
-	(39, 6, 'CAM_ML', 158, NULL, 'CAMISA M/LARGA', 'CAMISA M/LARGA', 'christian.acosta', '2025-10-09 09:58:01', b'1'),
-	(40, 6, 'CAM_MC', 158, NULL, 'CAMISA M/CORTA', 'CAMISA M/CORTA', 'christian.acosta', '2025-10-09 09:58:01', b'1'),
-	(41, 6, 'PLA_CR', 158, NULL, 'PLAYERA C/REDONDO', 'PLAYERA C/REDONDO', 'christian.acosta', '2025-10-09 09:58:01', b'1'),
-	(42, 6, 'PLA_PO', 158, NULL, 'PLAYERA POLO', 'PLAYERA POLO', 'christian.acosta', '2025-10-09 09:58:01', b'1'),
+	(39, 6, 'CAM_ML', 158, NULL, 'CAMISA', 'CAMISA', 'christian.acosta', '2025-10-09 09:58:01', b'1'),
+	(42, 6, 'PLA_PO', 158, NULL, 'PLAYERA', 'PLAYERA', 'christian.acosta', '2025-10-09 09:58:01', b'1'),
 	(43, 8, '2XS', 158, NULL, '2XS', 'DOBLE EXTRA CHICA', 'christian.acosta', '2025-10-09 10:06:22', b'1'),
 	(44, 8, 'XS', 158, NULL, 'EXTRA CHICA', 'EXTRA CHICA', 'christian.acosta', '2025-10-09 10:06:22', b'1'),
 	(45, 8, 'S', 158, NULL, 'CHICA', 'CHICA', 'christian.acosta', '2025-10-09 10:06:22', b'1'),
@@ -178,13 +231,13 @@ INSERT INTO `dai_catalogos` (`CAT_Id`, `CTT_Id`, `CAT_Clave`, `CAT_Relacion`, `C
 	(59, 8, '40', 159, NULL, '40', '40', 'christian.acosta', '2025-10-09 10:06:22', b'1'),
 	(60, 8, '42', 159, NULL, '42', '42', 'christian.acosta', '2025-10-09 10:06:22', b'1'),
 	(61, 8, '44', 159, NULL, '44', '44', 'christian.acosta', '2025-10-09 10:06:22', b'1'),
-	(62, 9, 'MANL', NULL, NULL, 'MANGA LARGA', 'MANGA LARGA', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
-	(63, 9, 'MANC', NULL, NULL, 'MANGA CORTA', 'MANGA CORTA', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
-	(64, 9, 'CAPC', NULL, NULL, 'CAPUCHA Y CIERRE', 'CAPUCHA Y CIERRE', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
-	(65, 9, 'POLO', NULL, NULL, 'POLO', 'POLO', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
-	(66, 9, 'CR', NULL, NULL, 'CUELLO REDONDO', 'CUELLO REDONDO', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
-	(67, 9, 'MEZ', NULL, NULL, 'MEZCLILLA', 'MEZCLILLA', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
-	(68, 9, 'GAB', NULL, NULL, 'GABARDINA', 'GABARDINA', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
+	(62, 9, 'MANL', 39, NULL, 'MANGA LARGA', 'MANGA LARGA', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
+	(63, 9, 'MANC', 39, NULL, 'MANGA CORTA', 'MANGA CORTA', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
+	(64, 9, 'CAPC', 160, NULL, 'CAPUCHA Y CIERRE', 'CAPUCHA Y CIERRE', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
+	(65, 9, 'POLO', 42, NULL, 'POLO', 'POLO', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
+	(66, 9, 'CR', 42, NULL, 'CUELLO REDONDO', 'CUELLO REDONDO', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
+	(67, 9, 'MEZ', 163, NULL, 'MEZCLILLA', 'MEZCLILLA', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
+	(68, 9, 'GAB', 163, NULL, 'GABARDINA', 'GABARDINA', 'christian.acosta', '2025-10-09 10:16:19', b'1'),
 	(69, 11, 'DIR', NULL, NULL, 'DIRECCION', 'DIRECCION', 'christian.acosta', '2025-10-13 13:19:48', b'1'),
 	(70, 11, 'CON', NULL, NULL, 'CONSULTA', 'CONSULTA', 'christian.acosta', '2025-10-13 13:19:48', b'1'),
 	(71, 11, 'GUA', NULL, NULL, 'GUARDA', 'GUARDA', 'christian.acosta', '2025-10-13 13:19:48', b'1'),
@@ -255,9 +308,7 @@ INSERT INTO `dai_catalogos` (`CAT_Id`, `CTT_Id`, `CAT_Clave`, `CAT_Relacion`, `C
 	(158, 23, 'TIP_TOPS', NULL, NULL, 'Tops', 'Tops', 'christian.acosta', '2025-10-21 14:30:28', b'1'),
 	(159, 23, 'TIP_PANTS', NULL, NULL, 'Pants', 'Pants', 'christian.acosta', '2025-10-21 14:30:47', b'1'),
 	(160, 6, 'SUD', 158, NULL, 'SUDADERA', 'SUDADERA', 'christian.acosta', '2025-10-21 15:52:42', b'1'),
-	(161, 6, 'CARG', 159, NULL, 'CARGO', 'CARGO', 'christian.acosta', '2025-10-21 15:52:42', b'1'),
-	(162, 6, 'VAQ_CR', 159, NULL, 'VAQUERO CORTE RECTO', 'VAQUERO CORTE RECTO', 'christian.acosta', '2025-10-21 15:52:42', b'1'),
-	(163, 6, 'VAQ_CAR', 159, NULL, 'VAQUERO CARGO', 'VAQUERO CARGO', 'christian.acosta', '2025-10-21 15:52:42', b'1'),
+	(163, 6, 'VAQ_CAR', 159, NULL, 'PANTALON', 'PANTALON', 'christian.acosta', '2025-10-21 15:52:42', b'1'),
 	(164, 21, 'COL_AZUL', NULL, NULL, 'AZUL MARINO', 'Azul Marino', 'christian.acosta', '2025-10-21 17:30:51', b'1'),
 	(165, 21, 'COL_IND', NULL, NULL, 'Indigo', 'Indigo', 'christian.acosta', '2025-10-23 09:19:34', b'1'),
 	(166, 21, 'COL_NEG', NULL, NULL, 'Negro', 'Negro', 'christian.acosta', '2025-10-23 09:19:52', b'1'),
@@ -293,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `dai_catalogos_tipo` (
   UNIQUE KEY `CTT_Id_UNIQUE` (`CTT_Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler26.dai_catalogos_tipo: ~20 rows (aproximadamente)
+-- Volcando datos para la tabla daimler26.dai_catalogos_tipo: ~19 rows (aproximadamente)
 INSERT INTO `dai_catalogos_tipo` (`CTT_Id`, `CTT_Clave`, `CTT_Nombre`, `CTT_Descripcion`, `CTT_Usuario`, `CTT_Fecha`, `CTT_Activo`) VALUES
 	(1, 'TUR', 'Turno', 'Turnos Empleados', 'christian.acosta', '2025-10-09 00:00:00', b'1'),
 	(2, 'ARE', 'Area', 'Area de trabajo', 'christian.acosta', '2025-10-09 08:45:41', b'1'),
@@ -338,9 +389,9 @@ CREATE TABLE IF NOT EXISTS `dai_empleados` (
 
 -- Volcando datos para la tabla daimler26.dai_empleados: ~4,342 rows (aproximadamente)
 INSERT INTO `dai_empleados` (`EMP_Id`, `EMP_Nombre`, `EMP_NumeroEmpleado`, `EMP_Badge`, `CAT_Turno`, `CAT_Area`, `CAT_Puesto`, `CAT_Estatus`, `EMP_TomarTallas`, `EMP_ComentariosTomaTalla`, `EMP_Activo`, `EMP_Usuario`, `EMP_Fecha`) VALUES
-	(10237, 'Alvarez Castillo, Angela', 143127, '607691987', 1, 108, 171, 178, b'1', NULL, b'1', 'christian.acosta', '2025-10-20 11:12:12'),
-	(10238, 'Alvarado Moreno, Cristhian Alexis', 165278, '615741987', NULL, NULL, NULL, NULL, b'0', NULL, b'1', 'christian.acosta', '2025-10-20 11:12:12'),
-	(10239, 'Alcocer Figueroa, Javier', 165277, '615711987', NULL, NULL, NULL, NULL, b'0', NULL, b'1', 'christian.acosta', '2025-10-20 11:12:12'),
+	(10237, 'Alvarez Castillo, Angela', 143127, '607691987', 1, 108, 171, 177, b'1', NULL, b'1', 'christian.acosta', '2025-10-20 11:12:12'),
+	(10238, 'Alvarado Moreno, Cristhian Alexis', 165278, '615741987', 2, 109, 176, 177, b'1', NULL, b'1', 'christian.acosta', '2025-10-20 11:12:12'),
+	(10239, 'Alcocer Figueroa, Javier', 165277, '615711987', NULL, NULL, NULL, 178, b'0', NULL, b'1', 'christian.acosta', '2025-10-20 11:12:12'),
 	(10240, 'Alvarado Aguillon, Victor Emanuel', 151843, '599851987', NULL, NULL, NULL, NULL, b'0', NULL, b'1', 'christian.acosta', '2025-10-20 11:12:12'),
 	(10241, 'Alvarado Barrios, Efrain', 156125, '559391987', NULL, NULL, NULL, NULL, b'0', NULL, b'1', 'christian.acosta', '2025-10-20 11:12:12'),
 	(10242, 'Alday Garcia, Jose Luis', 151752, '599041987', NULL, NULL, NULL, NULL, b'0', NULL, b'1', 'christian.acosta', '2025-10-20 11:12:12'),
@@ -4732,16 +4783,18 @@ CREATE TABLE IF NOT EXISTS `dai_empleados_tallas` (
   `DET_Usuario` varchar(45) DEFAULT NULL,
   `DET_Fecha` datetime DEFAULT NULL,
   PRIMARY KEY (`DET_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler26.dai_empleados_tallas: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla daimler26.dai_empleados_tallas: ~1 rows (aproximadamente)
 INSERT INTO `dai_empleados_tallas` (`DET_Id`, `EMP_Id`, `CAT_EstiloTops`, `DPT_PaqueteTops`, `CAT_TallaML`, `CAT_TallaMC`, `CAT_TallaPly`, `CAT_EstiloPants`, `DPT_PaquetePants`, `CAT_TallaPantalon`, `DET_Usuario`, `DET_Fecha`) VALUES
-	(1, 143127, 91, 1, 46, 0, 0, 103, 7, 54, 'christian.acosta', '2025-10-24 08:50:00');
+	(1, 143127, 95, 1, 46, 0, 0, 103, 7, 54, 'christian.acosta', '2025-10-24 08:50:00'),
+	(2, 165278, 83, 2, 47, 47, 0, 104, 8, 55, 'christian.acosta', '2025-11-18 09:41:05');
 
 -- Volcando estructura para tabla daimler26.dai_entregas
 CREATE TABLE IF NOT EXISTS `dai_entregas` (
   `ENT_Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `EMP_Nombre` varchar(45) DEFAULT NULL,
+  `EMP_NumeroEmpleado` bigint(20) unsigned DEFAULT NULL,
   `CAT_Area` bigint(20) DEFAULT 0,
   `CAT_Puesto` bigint(20) DEFAULT 0,
   `CAT_Turno` bigint(20) DEFAULT 0,
@@ -4776,18 +4829,69 @@ CREATE TABLE IF NOT EXISTS `dai_entrega_fechas` (
 INSERT INTO `dai_entrega_fechas` (`DEF_Id`, `DEF_Nombre`, `DEF_FechaInicial`, `DEF_FechaFin`, `DEF_Descripcion`) VALUES
 	(1, 'E1', '2025-10-29', '2025-10-31', 'Entrega Sudaderas');
 
--- Volcando estructura para tabla daimler26.dai_inventarios
-CREATE TABLE IF NOT EXISTS `dai_inventarios` (
+-- Volcando estructura para tabla daimler26.dai_inventario
+CREATE TABLE IF NOT EXISTS `dai_inventario` (
   `INV_Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `CAT_Prenda` bigint(20) DEFAULT NULL,
-  `CAT_Talla` bigint(20) DEFAULT NULL,
-  `INV_Cantidad` bigint(20) DEFAULT NULL,
+  `PRE_Id` bigint(20) DEFAULT NULL,
+  `CAT_TipoMovimiento` bigint(20) DEFAULT NULL,
+  `CAT_Estilo` bigint(20) DEFAULT NULL,
+  `INV_Comentarios` varchar(100) DEFAULT NULL,
   `INV_Usuario` varchar(45) DEFAULT NULL,
   `INV_Fecha` datetime DEFAULT NULL,
+  `INV_Activo` bit(1) DEFAULT NULL,
+  `INV_UsuarioModifica` varchar(30) DEFAULT NULL,
+  `INV_FechaModifica` datetime DEFAULT NULL,
+  `INV_UsuarioElimina` varchar(30) DEFAULT NULL,
+  `INV_FechaElimina` datetime DEFAULT NULL,
+  `INV_MotivoEliminacion` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`INV_Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler26.dai_inventarios: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla daimler26.dai_inventario: ~4 rows (aproximadamente)
+INSERT INTO `dai_inventario` (`INV_Id`, `PRE_Id`, `CAT_TipoMovimiento`, `CAT_Estilo`, `INV_Comentarios`, `INV_Usuario`, `INV_Fecha`, `INV_Activo`, `INV_UsuarioModifica`, `INV_FechaModifica`, `INV_UsuarioElimina`, `INV_FechaElimina`, `INV_MotivoEliminacion`) VALUES
+	(26, 16, 182, 95, 'Embarque pendiente 25/08/2025', 'christian.acosta', '2025-11-18 11:03:57', b'1', NULL, NULL, NULL, NULL, NULL),
+	(27, 17, 182, 95, 'Embarque pendiente 25/08/2025', 'christian.acosta', '2025-11-18 11:04:47', b'1', NULL, NULL, NULL, NULL, NULL),
+	(28, 18, 182, 83, 'Test Diferente estilo', 'christian.acosta', '2025-11-18 11:34:59', b'1', NULL, NULL, NULL, NULL, NULL),
+	(29, 19, 182, 104, 'Embarque 1 09/05/2025', 'christian.acosta', '2025-11-20 11:55:21', b'1', NULL, NULL, NULL, NULL, NULL);
+
+-- Volcando estructura para tabla daimler26.dai_inventario_tallacant
+CREATE TABLE IF NOT EXISTS `dai_inventario_tallacant` (
+  `ICT_Id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `INV_Id` bigint(20) DEFAULT NULL,
+  `CAT_Talla` bigint(20) DEFAULT NULL,
+  `ICT_Cantidad` bigint(20) DEFAULT 0,
+  `ICT_Usuario` varchar(45) DEFAULT NULL,
+  `ICT_Fecha` datetime DEFAULT NULL,
+  PRIMARY KEY (`ICT_Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Volcando datos para la tabla daimler26.dai_inventario_tallacant: ~25 rows (aproximadamente)
+INSERT INTO `dai_inventario_tallacant` (`ICT_Id`, `INV_Id`, `CAT_Talla`, `ICT_Cantidad`, `ICT_Usuario`, `ICT_Fecha`) VALUES
+	(74, 26, 45, 0, 'christian.acosta', '2025-11-18 11:03:57'),
+	(75, 26, 46, 32, 'christian.acosta', '2025-11-18 11:03:57'),
+	(76, 26, 47, 38, 'christian.acosta', '2025-11-18 11:03:57'),
+	(77, 26, 48, 10, 'christian.acosta', '2025-11-18 11:03:57'),
+	(78, 26, 49, 8, 'christian.acosta', '2025-11-18 11:03:57'),
+	(81, 27, 44, 39, 'christian.acosta', '2025-11-18 11:04:47'),
+	(82, 27, 45, 35, 'christian.acosta', '2025-11-18 11:04:47'),
+	(83, 27, 46, 35, 'christian.acosta', '2025-11-18 11:04:47'),
+	(84, 27, 48, 28, 'christian.acosta', '2025-11-18 11:04:47'),
+	(85, 27, 49, 30, 'christian.acosta', '2025-11-18 11:04:47'),
+	(86, 27, 50, 3, 'christian.acosta', '2025-11-18 11:04:47'),
+	(87, 27, 51, 3, 'christian.acosta', '2025-11-18 11:04:47'),
+	(88, 28, 43, 100, 'christian.acosta', '2025-11-18 11:34:59'),
+	(89, 28, 44, 25, 'christian.acosta', '2025-11-18 11:34:59'),
+	(90, 28, 45, 36, 'christian.acosta', '2025-11-18 11:34:59'),
+	(91, 28, 46, 50, 'christian.acosta', '2025-11-18 11:34:59'),
+	(95, 29, 52, 270, 'christian.acosta', '2025-11-20 11:55:21'),
+	(96, 29, 53, 720, 'christian.acosta', '2025-11-20 11:55:21'),
+	(97, 29, 54, 1200, 'christian.acosta', '2025-11-20 11:55:21'),
+	(98, 29, 55, 1280, 'christian.acosta', '2025-11-20 11:55:21'),
+	(99, 29, 56, 800, 'christian.acosta', '2025-11-20 11:55:21'),
+	(100, 29, 58, 360, 'christian.acosta', '2025-11-20 11:55:21'),
+	(101, 29, 59, 280, 'christian.acosta', '2025-11-20 11:55:21'),
+	(102, 29, 60, 55, 'christian.acosta', '2025-11-20 11:55:21'),
+	(103, 29, 61, 35, 'christian.acosta', '2025-11-20 11:55:21');
 
 -- Volcando estructura para tabla daimler26.dai_modulos
 CREATE TABLE IF NOT EXISTS `dai_modulos` (
@@ -4885,9 +4989,9 @@ CREATE TABLE IF NOT EXISTS `dai_perfiles_detalle` (
   `PER_Id` bigint(20) DEFAULT NULL,
   `CPP_Id` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`PRD_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13896 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13899 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler26.dai_perfiles_detalle: ~33 rows (aproximadamente)
+-- Volcando datos para la tabla daimler26.dai_perfiles_detalle: ~36 rows (aproximadamente)
 INSERT INTO `dai_perfiles_detalle` (`PRD_Id`, `PER_Id`, `CPP_Id`) VALUES
 	(1, 1, 1),
 	(2, 1, 2),
@@ -4921,15 +5025,20 @@ INSERT INTO `dai_perfiles_detalle` (`PRD_Id`, `PER_Id`, `CPP_Id`) VALUES
 	(13892, 1, 26),
 	(13893, 1, 27),
 	(13894, 1, 28),
-	(13895, 1, 29);
+	(13895, 1, 29),
+	(13896, 1, 30),
+	(13897, 1, 31),
+	(13898, 1, 32);
 
 -- Volcando estructura para tabla daimler26.dai_prendas
 CREATE TABLE IF NOT EXISTS `dai_prendas` (
   `PRE_Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ART_Id` bigint(20) DEFAULT NULL,
-  `PRE_SKU` varchar(45) DEFAULT NULL,
+  `PRE_SKU` varchar(100) DEFAULT NULL,
   `CAT_Tipo` bigint(20) DEFAULT NULL,
+  `PRE_Nombre` varchar(100) DEFAULT NULL,
   `CAT_Categoria` bigint(20) DEFAULT NULL,
+  `CAT_SubCategoria` bigint(20) DEFAULT NULL,
   `CAT_Estilo` bigint(20) DEFAULT NULL,
   `CAT_Color` bigint(20) DEFAULT NULL,
   `CAT_SubColor` bigint(20) DEFAULT NULL,
@@ -4947,16 +5056,14 @@ CREATE TABLE IF NOT EXISTS `dai_prendas` (
   `PRE_MotivoEliminacion` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`PRE_Id`),
   UNIQUE KEY `PRE_Id_UNIQUE` (`PRE_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler26.dai_prendas: ~6 rows (aproximadamente)
-INSERT INTO `dai_prendas` (`PRE_Id`, `ART_Id`, `PRE_SKU`, `CAT_Tipo`, `CAT_Categoria`, `CAT_Estilo`, `CAT_Color`, `CAT_SubColor`, `CAT_Genero`, `PRE_Precio`, `PRE_Serigrafia`, `PRE_SerigrafiaLeyenda`, `PRE_Usuario`, `PRE_Fecha`, `PRE_Activo`, `PRE_UsuarioModifica`, `PRE_FechaModifica`, `PRE_UsuarioElimina`, `PRE_FechaElimina`, `PRE_MotivoEliminacion`) VALUES
-	(1, 158, 'TEST-01 Update', 158, 41, 83, 168, NULL, 152, 450, b'1', 'Test Update', 'christian.acosta', '2025-11-11 09:42:48', b'0', 'christian.acosta', '2025-11-11 16:56:37', 'christian.acosta', '2025-11-11 17:34:46', 'Test Eliminación '),
-	(2, NULL, 'Test-02', 159, 162, 103, 164, NULL, 151, 399, b'0', '', 'christian.acosta', '2025-11-11 09:59:05', b'1', NULL, NULL, NULL, NULL, NULL),
-	(3, NULL, 'TEST-03', 158, 40, 83, 166, NULL, 152, 129.53, b'1', 'Test Serigrafía', 'christian.acosta', '2025-11-11 14:13:22', b'1', NULL, NULL, NULL, NULL, NULL),
-	(4, NULL, 'Test-04', 159, 161, 106, 169, NULL, 152, 200, b'0', '', 'christian.acosta', '2025-11-11 15:21:29', b'1', NULL, NULL, NULL, NULL, NULL),
-	(5, NULL, 'Test -05', 158, 160, 95, 166, NULL, 153, 600, b'0', '', 'christian.acosta', '2025-11-11 17:00:56', b'1', NULL, NULL, NULL, NULL, NULL),
-	(6, NULL, 'Test-06', 159, 163, 107, 168, NULL, 153, 265, b'0', '', 'christian.acosta', '2025-11-11 17:37:35', b'1', NULL, NULL, NULL, NULL, NULL);
+-- Volcando datos para la tabla daimler26.dai_prendas: ~4 rows (aproximadamente)
+INSERT INTO `dai_prendas` (`PRE_Id`, `ART_Id`, `PRE_SKU`, `CAT_Tipo`, `PRE_Nombre`, `CAT_Categoria`, `CAT_SubCategoria`, `CAT_Estilo`, `CAT_Color`, `CAT_SubColor`, `CAT_Genero`, `PRE_Precio`, `PRE_Serigrafia`, `PRE_SerigrafiaLeyenda`, `PRE_Usuario`, `PRE_Fecha`, `PRE_Activo`, `PRE_UsuarioModifica`, `PRE_FechaModifica`, `PRE_UsuarioElimina`, `PRE_FechaElimina`, `PRE_MotivoEliminacion`) VALUES
+	(16, NULL, 'DML-PROD-AZUL-100A', 158, 'Camisa Producción Azul ML', 39, 62, 95, 164, NULL, 151, 200, b'0', '', 'christian.acosta', '2025-11-18 10:58:24', b'1', NULL, NULL, NULL, NULL, NULL),
+	(17, NULL, 'DMLR-PROD-AZUL-100B', 158, 'Camisa Producción Azul MC', 39, 63, 95, 164, NULL, 151, 0, b'0', '', 'christian.acosta', '2025-11-18 10:59:30', b'1', NULL, NULL, NULL, NULL, NULL),
+	(18, NULL, 'DML-CAMISA-BRIGADA', 158, 'Camisa Brigada Comision', 39, 62, 83, 168, NULL, 153, 299, b'1', 'Team Leader', 'christian.acosta', '2025-11-18 11:34:20', b'1', NULL, NULL, NULL, NULL, NULL),
+	(19, NULL, 'SPEC-PANT-VAQ-100A', 159, 'Pantalon Vaquero', 163, 68, 104, 164, NULL, 151, 250, b'0', '', 'christian.acosta', '2025-11-20 11:45:21', b'1', NULL, NULL, NULL, NULL, NULL);
 
 -- Volcando estructura para tabla daimler26.dai_prendas_tallas
 CREATE TABLE IF NOT EXISTS `dai_prendas_tallas` (
@@ -4967,49 +5074,38 @@ CREATE TABLE IF NOT EXISTS `dai_prendas_tallas` (
   `PRT_Fecha` datetime DEFAULT NULL,
   `PRT_Activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`PRT_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=378 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler26.dai_prendas_tallas: ~39 rows (aproximadamente)
+-- Volcando datos para la tabla daimler26.dai_prendas_tallas: ~28 rows (aproximadamente)
 INSERT INTO `dai_prendas_tallas` (`PRT_Id`, `PRE_Id`, `CAT_Talla`, `PRT_Usuario`, `PRT_Fecha`, `PRT_Activo`) VALUES
-	(22, 2, 52, 'christian.acosta', '2025-11-11 09:59:05', b'1'),
-	(23, 2, 53, 'christian.acosta', '2025-11-11 09:59:05', b'1'),
-	(24, 2, 54, 'christian.acosta', '2025-11-11 09:59:05', b'1'),
-	(25, 2, 55, 'christian.acosta', '2025-11-11 09:59:05', b'1'),
-	(29, 3, 43, 'christian.acosta', '2025-11-11 14:13:22', b'1'),
-	(30, 3, 44, 'christian.acosta', '2025-11-11 14:13:22', b'1'),
-	(31, 3, 45, 'christian.acosta', '2025-11-11 14:13:22', b'1'),
-	(32, 3, 46, 'christian.acosta', '2025-11-11 14:13:22', b'1'),
-	(33, 3, 47, 'christian.acosta', '2025-11-11 14:13:22', b'1'),
-	(34, 3, 48, 'christian.acosta', '2025-11-11 14:13:22', b'1'),
-	(35, 3, 49, 'christian.acosta', '2025-11-11 14:13:22', b'1'),
-	(36, 3, 50, 'christian.acosta', '2025-11-11 14:13:22', b'1'),
-	(37, 3, 51, 'christian.acosta', '2025-11-11 14:13:22', b'1'),
-	(44, 4, 52, 'christian.acosta', '2025-11-11 15:21:29', b'1'),
-	(45, 4, 53, 'christian.acosta', '2025-11-11 15:21:29', b'1'),
-	(46, 4, 54, 'christian.acosta', '2025-11-11 15:21:29', b'1'),
-	(47, 4, 55, 'christian.acosta', '2025-11-11 15:21:29', b'1'),
-	(48, 4, 56, 'christian.acosta', '2025-11-11 15:21:29', b'1'),
-	(49, 4, 58, 'christian.acosta', '2025-11-11 15:21:29', b'1'),
-	(93, 1, 43, 'christian.acosta', '2025-11-11 16:56:37', b'1'),
-	(94, 1, 44, 'christian.acosta', '2025-11-11 16:56:37', b'1'),
-	(95, 1, 45, 'christian.acosta', '2025-11-11 16:56:37', b'1'),
-	(96, 1, 46, 'christian.acosta', '2025-11-11 16:56:37', b'1'),
-	(97, 1, 47, 'christian.acosta', '2025-11-11 16:56:37', b'1'),
-	(100, 5, 43, 'christian.acosta', '2025-11-11 17:00:56', b'1'),
-	(101, 5, 44, 'christian.acosta', '2025-11-11 17:00:56', b'1'),
-	(102, 5, 45, 'christian.acosta', '2025-11-11 17:00:56', b'1'),
-	(103, 5, 46, 'christian.acosta', '2025-11-11 17:00:56', b'1'),
-	(104, 5, 47, 'christian.acosta', '2025-11-11 17:00:56', b'1'),
-	(105, 5, 48, 'christian.acosta', '2025-11-11 17:00:56', b'1'),
-	(106, 5, 49, 'christian.acosta', '2025-11-11 17:00:56', b'1'),
-	(107, 5, 50, 'christian.acosta', '2025-11-11 17:00:56', b'1'),
-	(108, 5, 51, 'christian.acosta', '2025-11-11 17:00:56', b'1'),
-	(115, 6, 52, 'christian.acosta', '2025-11-11 17:37:35', b'1'),
-	(116, 6, 53, 'christian.acosta', '2025-11-11 17:37:35', b'1'),
-	(117, 6, 54, 'christian.acosta', '2025-11-11 17:37:35', b'1'),
-	(118, 6, 55, 'christian.acosta', '2025-11-11 17:37:35', b'1'),
-	(119, 6, 56, 'christian.acosta', '2025-11-11 17:37:35', b'1'),
-	(120, 6, 58, 'christian.acosta', '2025-11-11 17:37:35', b'1');
+	(334, 16, 45, 'christian.acosta', '2025-11-18 10:58:24', b'1'),
+	(335, 16, 46, 'christian.acosta', '2025-11-18 10:58:24', b'1'),
+	(336, 16, 47, 'christian.acosta', '2025-11-18 10:58:24', b'1'),
+	(337, 16, 48, 'christian.acosta', '2025-11-18 10:58:24', b'1'),
+	(338, 16, 49, 'christian.acosta', '2025-11-18 10:58:24', b'1'),
+	(341, 17, 43, 'christian.acosta', '2025-11-18 10:59:30', b'1'),
+	(342, 17, 44, 'christian.acosta', '2025-11-18 10:59:30', b'1'),
+	(343, 17, 45, 'christian.acosta', '2025-11-18 10:59:30', b'1'),
+	(344, 17, 46, 'christian.acosta', '2025-11-18 10:59:30', b'1'),
+	(345, 17, 47, 'christian.acosta', '2025-11-18 10:59:30', b'1'),
+	(346, 17, 48, 'christian.acosta', '2025-11-18 10:59:30', b'1'),
+	(347, 17, 49, 'christian.acosta', '2025-11-18 10:59:30', b'1'),
+	(348, 17, 50, 'christian.acosta', '2025-11-18 10:59:30', b'1'),
+	(349, 17, 51, 'christian.acosta', '2025-11-18 10:59:30', b'1'),
+	(356, 18, 43, 'christian.acosta', '2025-11-18 11:34:20', b'1'),
+	(357, 18, 44, 'christian.acosta', '2025-11-18 11:34:20', b'1'),
+	(358, 18, 45, 'christian.acosta', '2025-11-18 11:34:20', b'1'),
+	(359, 18, 46, 'christian.acosta', '2025-11-18 11:34:20', b'1'),
+	(360, 18, 47, 'christian.acosta', '2025-11-18 11:34:20', b'1'),
+	(363, 19, 52, 'christian.acosta', '2025-11-20 11:45:21', b'1'),
+	(364, 19, 53, 'christian.acosta', '2025-11-20 11:45:21', b'1'),
+	(365, 19, 54, 'christian.acosta', '2025-11-20 11:45:21', b'1'),
+	(366, 19, 55, 'christian.acosta', '2025-11-20 11:45:21', b'1'),
+	(367, 19, 56, 'christian.acosta', '2025-11-20 11:45:21', b'1'),
+	(368, 19, 58, 'christian.acosta', '2025-11-20 11:45:21', b'1'),
+	(369, 19, 59, 'christian.acosta', '2025-11-20 11:45:21', b'1'),
+	(370, 19, 60, 'christian.acosta', '2025-11-20 11:45:21', b'1'),
+	(371, 19, 61, 'christian.acosta', '2025-11-20 11:45:21', b'1');
 
 -- Volcando estructura para tabla daimler26.dai_programas
 CREATE TABLE IF NOT EXISTS `dai_programas` (
@@ -5028,17 +5124,16 @@ CREATE TABLE IF NOT EXISTS `dai_programas` (
   `PRO_UsuarioElimina` varchar(45) DEFAULT NULL,
   `PRO_FechaElimina` datetime DEFAULT NULL,
   PRIMARY KEY (`PRO_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=312 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=313 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Volcando datos para la tabla daimler26.dai_programas: ~7 rows (aproximadamente)
+-- Volcando datos para la tabla daimler26.dai_programas: ~6 rows (aproximadamente)
 INSERT INTO `dai_programas` (`PRO_Id`, `PRO_Clave`, `PRO_Nombre`, `PRO_Descripcion`, `MOD_Id`, `PRO_Fecha`, `PRO_Usuario`, `PRO_Ruta`, `PRO_Raiz`, `PRO_Orden`, `PRO_Activo`, `PRO_MotivoEliminacion`, `PRO_UsuarioElimina`, `PRO_FechaElimina`) VALUES
 	(1, 'EMP', 'Empleados', 'Empleados', 1, '2025-10-13 12:58:41', 'christian.acosta', '?m=DAIMLER&p=empleados', 'EMPLEADOS', 1, b'1', NULL, NULL, NULL),
 	(2, 'CAT', 'Core', 'Core Catalogos', 192, '2025-10-13 12:58:41', 'christian.acosta', 'm=DAIMLER&p=catalogos', 'Catalogos', 1, b'1', NULL, NULL, NULL),
-	(3, 'MOD', 'Modulos', 'Modulos', 1, '2025-10-13 12:58:41', 'christian.acosta', 'm=DAIMLER&p=modulos', 'Modulos', 1, b'1', NULL, NULL, NULL),
 	(4, 'ENT', 'Entregas', 'Entregas', 1, '2025-10-13 12:58:41', 'christian.acosta', 'm=DAIMLER&p=entregas', 'Entregas', 1, b'1', NULL, NULL, NULL),
 	(5, 'REP', 'Reportes', 'Reportes', 1, '2025-10-13 12:58:41', 'christian.acosta', 'm=DAIMLER&p=modulos', 'Modulos', 1, b'1', NULL, NULL, NULL),
 	(6, 'PRE', 'Prendas', 'Prendas', 192, '2025-10-21 11:35:00', 'christian.acosta', 'm=DAIMLER&p=prendas', 'Prendas', 1, b'1', NULL, NULL, NULL),
-	(7, 'INV', 'Inventarios', 'Inventarios', 1, '2025-11-10 00:00:00', 'christian.acosta', 'm=DAIMLER&p=inventarios', 'Inventarios', 1, b'1', NULL, NULL, NULL);
+	(7, 'INV', 'Inventario', 'Inventario', 1, '2025-11-10 00:00:00', 'christian.acosta', 'm=DAIMLER&p=inventario', 'Inventario', 1, b'1', NULL, NULL, NULL);
 
 -- Volcando estructura para tabla daimler26.dai_programas_permiso
 CREATE TABLE IF NOT EXISTS `dai_programas_permiso` (
@@ -5058,10 +5153,6 @@ INSERT INTO `dai_programas_permiso` (`CPP_Id`, `PRO_Id`, `CAT_Permiso`) VALUES
 	(6, 2, 70),
 	(7, 2, 71),
 	(8, 2, 72),
-	(9, 3, 69),
-	(10, 3, 70),
-	(11, 3, 71),
-	(12, 3, 72),
 	(13, 4, 69),
 	(14, 4, 70),
 	(15, 4, 71),
@@ -5077,7 +5168,11 @@ INSERT INTO `dai_programas_permiso` (`CPP_Id`, `PRO_Id`, `CAT_Permiso`) VALUES
 	(25, 7, 69),
 	(26, 7, 70),
 	(27, 7, 71),
-	(28, 7, 72);
+	(28, 7, 72),
+	(29, 8, 69),
+	(30, 8, 70),
+	(31, 8, 71),
+	(32, 8, 72);
 
 -- Volcando estructura para tabla daimler26.dai_unidades_negocio
 CREATE TABLE IF NOT EXISTS `dai_unidades_negocio` (
@@ -5124,7 +5219,7 @@ CREATE TABLE IF NOT EXISTS `dai_usuarios` (
 
 -- Volcando datos para la tabla daimler26.dai_usuarios: ~1 rows (aproximadamente)
 INSERT INTO `dai_usuarios` (`USU_Id`, `USU_Usuario`, `USU_Nombre`, `USU_NombreInterno`, `USU_FechaIngreso`, `USU_Correo`, `USU_Password`, `CAT_Area`, `CAT_Puesto`, `UNN_Id`, `EMP_Id`, `USU_UsuarioCrea`, `USU_FechaCrea`, `USU_Fecha`, `USU_Activo`, `USU_Imagen`, `USU_UsuarioModifica`, `USU_FechaModifica`, `USU_UsuarioElimina`, `USU_FechaElimina`, `USU_MotivoEliminacion`, `USU_Token`, `PER_Id`, `USU_UsuarioNuevo`) VALUES
-	(1, 'christian.acosta', 'Christian Acosta', 'Christian Acosta', '2025-10-13', 'osvaldo.arco0794@gmail.com', _binary 0x3736333139343337343538616465313239653863376138653631633139653734, 100006, 100009, NULL, NULL, 'test.test', '2025-10-13 10:38:20', NULL, b'1', 'chris.png', NULL, NULL, NULL, NULL, NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyb290Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzYyODc2MTg2LCJleHAiOjE3NjMxMzUzODZ9.5C52JCYWpc6wKmJ4mh-lnOBAUlyQUlUI-EyOjX6J0cQ', NULL, b'0');
+	(1, 'christian.acosta', 'Christian Acosta', 'Christian Acosta', '2025-10-13', 'osvaldo.arco0794@gmail.com', _binary 0x3736333139343337343538616465313239653863376138653631633139653734, 100006, 100009, NULL, NULL, 'test.test', '2025-10-13 10:38:20', NULL, b'1', 'chris.png', NULL, NULL, NULL, NULL, NULL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyb290Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzYzNTgwNzExLCJleHAiOjE3NjM4Mzk5MTF9.CY24cYIeElseEORUQAgM3NwQpTHNYntH6HsQZ42qfDM', NULL, b'0');
 
 -- Volcando estructura para tabla daimler26.dai_usuarios_perfil
 CREATE TABLE IF NOT EXISTS `dai_usuarios_perfil` (
@@ -6037,6 +6132,28 @@ BEGIN
 				On EMPLEADO_TALLAS.CAT_TallaPantalon = TALLAS_PANT.CAT_Id
 		Where EMPLEADOS.EMP_Activo = 1;
 	END IF;
+    
+    /* CONSULTA TOTAL DE EMPLEADOS ACTIVOS */
+    IF(strOpcion = 'CEA') THEN
+		Select 
+			COUNT(*) AS HEAD_COUNT
+        From dai_empleados 
+        Where EMP_Activo = 1;
+    END IF;
+    
+    /* CONSULTA ENTREGADOS POR DÍA*/
+    IF(strOpcion = 'EED') THEN
+		SELECT 
+			COUNT(EMP_NumeroEmpleado) AS HEAD_COUNT,
+			SUM(CASE WHEN CAT_Estatus = 177 THEN 1 ELSE 0 END) AS ENTREGADOS,
+            SUM(CASE WHEN CAT_Estatus = 178 THEN 1 ELSE 0 END) AS FALTANTES
+            /*SUM(CASE 
+				WHEN CAT_ESTATUS = 177 and */
+		FROM dai_empleados EMPLEADOS
+			/*Join dai_entregas ENTREGAS
+				On EMPLEADOS.EMP_Id = ENTREGAS.EMP_Id*/
+		WHERE EMP_Activo = 1;
+    END IF;
 	
     IF (strOpcion='CI') THEN
 		Select EMPLEADOS.EMP_FechaIngreso,EMPLEADOS.PAQ_Id,EMPLEADOS.EMP_Activo,EMPLEADOS.EMP_Id,EMPLEADOS.EMP_FechaEntrega FROM dai_empleados EMPLEADOS WHERE EMPLEADOS.EMP_FirmaGafete = intFirmaGafete or EMPLEADOS.EMP_Id=intIdEmpleado
@@ -6084,6 +6201,214 @@ BEGIN
 					on CATALOGO_EXTRA.CAT_Id=CATALOGO.CAT_Id and CATALOGO_EXTRA.CAX_Tipo='Division' and CATALOGO_EXTRA.CAX_Valor='Pant'
 		Where	CATALOGO_TIPO.CTT_Clave='TALL'
 		order by CATALOGO.CAT_Orden;
+    END IF;
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento daimler26.PA_DAI_Inventario
+DELIMITER //
+CREATE PROCEDURE `PA_DAI_Inventario`(IN jsonParametros JSON)
+sp:BEGIN
+    /*VARIABLES GLOBALES */
+    DECLARE 	strOpcion     varchar(10); 
+    DECLARE 	strUsuario    VARCHAR(30);
+    DECLARE 	strCodigo     varchar(10); 
+    DECLARE		strDetalle    varchar(255);	
+    DECLARE		intEstatus 	  BOOL DEFAULT 1;
+    DECLARE     strToken      Text;
+    DECLARE     strTokenUser  Text;
+    DECLARE		strAccion     varchar(30);
+    DECLARE		strModulo     varchar(30) default 'dai_inventario';
+    DECLARE		strPrograma   varchar(50)  default 'dai_inventario';
+    DECLARE		strTabla      varchar(15) ; 
+    DECLARE		jsonAnterior  JSON;
+    DECLARE		intId		  BIGINT;
+    DECLARE		blnActivo	  bit;
+    DECLARE     strMotivo     varchar(100);
+    DECLARE     intEstilo     bigint;
+    DECLARE     intTalla      bigint;
+    
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION 
+        BEGIN
+            SET intEstatus = 0;
+            GET DIAGNOSTICS CONDITION 1 strCodigo = RETURNED_SQLSTATE, strDetalle = MESSAGE_TEXT;
+        END;
+    SET  lc_time_names = 'es_ES';
+    
+    /* SETEAR VALOR DEL NODO PRINCIPAL */
+    Select JSON_UNQUOTE(JSON_EXTRACT( jsonParametros,'$.Opcion')),
+            JSON_UNQUOTE(JSON_EXTRACT( jsonParametros,'$.Usuario')),
+            JSON_UNQUOTE(JSON_EXTRACT( jsonParametros,'$.Token')),
+            JSON_UNQUOTE(JSON_EXTRACT( jsonParametros,'$.Inventario.Id')),
+            JSON_UNQUOTE(JSON_EXTRACT( jsonParametros,'$.Inventario.IdEstilo')),
+            JSON_UNQUOTE(JSON_EXTRACT( jsonParametros,'$.Inventario.IdTalla'))
+    INTO  strOpcion, strUsuario, strToken, intId, intEstilo, intTalla;
+
+    /*Select USU_Token 
+    From jm_core.core_usuarios USUARIO
+    WHERE USUARIO.USU_Usuario = strUsuario
+    Into strTokenUser;
+    
+    If (strOpcion Not IN ('VU', 'UT') And strTokenUser != strToken) Then
+		SIGNAL SQLSTATE VALUE '45000'
+		SET MESSAGE_TEXT = '¡El token no coincide!';
+		SELECT  intId,intEstatus,strCodigo,strDetalle;
+		leave sp;
+    End If;*/
+    
+    
+    /* CONSULTAS */
+    If (strOpcion in ('C', 'CT')) Then 
+        SELECT 
+			INVENTARIO.INV_Id 			  As Id,
+            INVENTARIO.PRE_Id 			  As ID_PRENDA,
+            PRENDA.PRE_Nombre 			  As PRENDA,
+            CAT_TipoMovimiento            As ID_TIPO_MOVIMIENTO,
+            TIPO_MOVIMIENTO.Nombre        As TIPO_MOVIMIENTO,
+            PRENDA.CAT_Estilo        	  As ID_ESTILO,
+            ESTILO.Nombre                 As ESTILO,
+            PRENDA.CAT_Categoria      	  As ID_CATEGORIA,
+            CATEGORIA.Nombre              As CATEGORIA,
+            SUBCATEGORIA.Nombre           As SUBCATEGORIA,
+            PRENDA.CAT_Subcategoria       As ID_SUBCATEGORIA,
+            INVENTARIO.INV_Id 			  As ID_INVENTARIO,
+            INV_TALLA_CANT.CAT_Talla      As ID_TALLA,
+            TALLA.Clave                   As TALLA,
+            INV_TALLA_CANT.ICT_Cantidad   As CANTIDAD,
+            INV_Comentarios               As COMENTARIOS,
+            INVENTARIO.INV_Usuario 		  As USUARIO,
+            INVENTARIO.INV_Fecha 		  As FECHA,
+            CAST(INV_Activo As UNSIGNED)  AS ACTIVO
+			FROM dai_inventario INVENTARIO
+				Join dai_prendas PRENDA
+					On PRENDA.PRE_Id = INVENTARIO.PRE_Id
+				Join dai_inventario_tallacant INV_TALLA_CANT
+					ON INV_TALLA_CANT.INV_Id = INVENTARIO.INV_Id
+				Left Join vwCatalogos TALLA
+					ON TALLA.Id = INV_TALLA_CANT.CAT_Talla
+				Left Join vwCatalogos TIPO_MOVIMIENTO
+					ON TIPO_MOVIMIENTO.Id = INVENTARIO.CAT_TipoMovimiento
+				Left Join vwCatalogos ESTILO 
+					ON ESTILO.Id = PRENDA.CAT_Estilo
+				Left Join vwCatalogos CATEGORIA 
+					ON CATEGORIA.Id = PRENDA.CAT_Categoria
+				Left Join vwCatalogos SUBCATEGORIA 
+					ON SUBCATEGORIA.Id = PRENDA.CAT_SubCategoria
+        WHERE INV_Activo = 1 OR strOpcion = 'CT';
+    End If; 
+    
+    /* GUARDAR O EDITAR */
+	IF (strOpcion = 'G') THEN
+        START TRANSACTION;
+        IF intId = 0 THEN
+            SET strAccion = 'guardarPrendas';
+            Insert Into dai_inventario (
+                PRE_Id,
+            	CAT_TipoMovimiento,
+                CAT_Estilo,
+                /*CAT_SubCategoria,*/
+            	INV_Comentarios,
+                INV_Usuario, 
+                INV_Fecha,
+                INV_Activo
+            ) SELECT DISTINCT
+				INVENTARIO.PRENDA            As PRE_Id,
+                INVENTARIO.TIPO_MOVIMIENTO   As CAT_TipoMovimiento,
+                INVENTARIO.ESTILO            As CAT_Estilo,
+                /*INVENTARIO.SUBCATEGORIA      As CAT_SubCategoria,*/
+                INVENTARIO.COMENTARIOS       As INV_Comentarios,
+                strUsuario        			 As INV_Usuario,
+                now()              		   	 As INV_Fecha,
+                1                  		     As INV_Activo
+            FROM JSON_TABLE (jsonParametros, '$.Inventario'
+                COLUMNS (
+						PRENDA  		 Bigint PATH '$.PRENDA',
+						TIPO_MOVIMIENTO  Bigint PATH '$.TIPO_MOVIMIENTO',
+                        ESTILO           Bigint PATH '$.ESTILO',
+                        /*SUBCATEGORIA     Bigint PATH '$.SUBCATEGORIA',*/
+                        COMENTARIOS      VARCHAR(100) PATH '$.COMENTARIOS'
+                    )
+			) AS INVENTARIO;
+            
+            Set intId = LAST_INSERT_ID();
+            
+            Insert Into dai_inventario_tallacant (
+                INV_Id,
+            	CAT_Talla,
+                ICT_Cantidad,
+                ICT_Usuario,
+                ICT_Fecha
+            ) SELECT DISTINCT
+                intId                As INV_Id,
+                TALLA_CANT.TALLA     As CAT_Talla,
+                TALLA_CANT.CANTIDAD  As ICT_Cantidad,
+                strUsuario        	 As ICT_Usuario,
+                now()              	 As ICT_Fecha
+            FROM JSON_TABLE (jsonParametros, '$.Inventario.Talla_Cant[*]'
+                COLUMNS (
+						TALLA     Bigint PATH '$.TALLA',
+						CANTIDAD  Bigint PATH '$.CANTIDAD'
+                    )
+			) AS TALLA_CANT;
+        ELSE
+            SET strAccion='actualizarPrendas';
+        END IF;
+        IF intEstatus = 0 then
+            ROLLBACK;
+            CALL PA_dai_bitacoras(strModulo, strPrograma, "ErrorSQL", intId, jsonParametros, json_object("Error", strDetalle), strUsuario);
+            SELECT  intId as Id, intEstatus, strCodigo, strDetalle;
+        ELSE 
+            CALL PA_dai_bitacoras(strModulo, strPrograma, strAccion, intId, jsonAnterior, jsonParametros, strUsuario);
+            Select 
+				INVENTARIO.INV_Id As Id
+					From dai_inventario INVENTARIO
+				Where INVENTARIO.Inv_Id = intId;
+            COMMIT;
+        END IF;
+    END IF;	
+    
+    /* CONSULTA INVENTARIO POR ESTILO Y TALLA */
+    If( strOpcion = 'IET') Then 
+		Select 
+			ICT_Cantidad As CANTIDAD
+		 From dai_inventario INVENTARIO
+			Left join dai_inventario_tallacant INVENTARIO_TALLA
+				On INVENTARIO.INV_Id = INVENTARIO_TALLA.INV_Id
+		Where INVENTARIO_TALLA.CAT_Talla = intTalla 
+			And INVENTARIO.CAT_Estilo = intEstilo
+		Group By INVENTARIO.CAT_Estilo;
+    End If; 
+    
+    /* DESACTIVAR INVENTARIO */
+    If (strOpcion = 'D') Then
+        Select JSON_UNQUOTE(JSON_EXTRACT( jsonParametros,'$.Prendas.Motivo'))
+        INTO  strMotivo;
+        START TRANSACTION;
+        Update dai_prendas PRENDAS
+                Join ( Select Id, Motivo
+                FROM JSON_TABLE(jsonParametros, 
+                    '$.Prendas[*]' COLUMNS (
+                        Id		bigint 		 PATH '$.Id',
+                        Motivo  varchar(100) PATH '$.Motivo'
+                    )
+                ) AS PRENDAS_UP ) AS PRENDAS_UP 
+                    On PRENDAS.PRE_Id = PRENDAS_UP.Id
+                SET PRENDAS.PRE_MotivoEliminacion = PRENDAS_UP.Motivo,
+                    PRENDAS.PRE_Activo            = 0,
+                    PRENDAS.PRE_UsuarioElimina    = strUsuario,
+                    PRENDAS.PRE_FechaElimina      = now();
+            IF intEstatus = 0 then
+				ROLLBACK;
+				CALL PA_dai_bitacoras(strModulo, strPrograma, "ErrorSQL", intId, jsonParametros, json_object("Error", strDetalle), strUsuario);
+				SELECT  intId as Id, intEstatus, strCodigo, strDetalle;
+			ELSE 
+				CALL PA_dai_bitacoras(strModulo, strPrograma, strAccion, intId, jsonAnterior, jsonParametros, strUsuario);
+				Select 
+					PRENDAS.PRE_Id As Id
+					From dai_prendas PRENDAS
+				Where	PRENDAS.PRE_Id = intId;
+				COMMIT;
+			END IF;
     END IF;
 END//
 DELIMITER ;
@@ -6262,10 +6587,13 @@ sp:BEGIN
         SELECT
 			PRE_Id                AS Id,
 			PRE_SKU      	      AS SKU,
+            PRE_Nombre            AS NOMBRE,
             CAT_Tipo              AS ID_TIPO_ARTICULO,
             TIPO_ART.Nombre       AS TIPO_ARTICULO,
             CAT_Categoria         AS ID_CATEGORIA,
             CATEGORIA.Nombre      AS CATEGORIA,
+            CAT_SubCategoria      AS ID_SUBCATEGORIA,
+            SUBCATEGORIA.Nombre   AS SUBCATEGORIA,
             CAT_Estilo            AS ID_ESTILO,
             ESTILO.Nombre         AS ESTILO,
             CAT_Color             AS ID_COLOR,
@@ -6277,12 +6605,19 @@ sp:BEGIN
             PRE_SerigrafiaLeyenda AS SERIGRAFIA_LEYENDA,
 			CAST(PRE_Activo       AS UNSIGNED) AS ACTIVO,
 			PRE_Usuario           AS USUARIO,
-			PRE_Fecha             AS FECHA
+			PRE_Fecha             AS FECHA,
+            PRE_UsuarioModifica   AS USUARIO_MODIFICA,
+            PRE_FechaModifica     AS FECHA_MODIFICA,
+            PRE_UsuarioElimina    AS USUARIO_ELIMINA,
+            PRE_FechaElimina      AS FECHA_ELIMINA,
+            PRE_MotivoEliminacion AS MOTIVO
         FROM dai_prendas PRENDAS
 			Left Join vwCatalogos TIPO_ART
 				On TIPO_ART.Id = PRENDAS.CAT_Tipo
 			Left Join vwCatalogos CATEGORIA
 				On CATEGORIA.Id = PRENDAS.CAT_Categoria
+			Left Join vwCatalogos SUBCATEGORIA
+				On SUBCATEGORIA.Id = PRENDAS.CAT_SubCategoria
 			Left Join vwCatalogos ESTILO
 				On ESTILO.Id = PRENDAS.CAT_Estilo
 			Left Join vwCatalogos COLOR
@@ -6320,8 +6655,10 @@ sp:BEGIN
             SET strAccion = 'guardarPrendas';
             Insert Into dai_prendas (
                 PRE_SKU,
+                PRE_Nombre,
                 CAT_Tipo,
                 CAT_Categoria,
+                CAT_SubCategoria,
                 CAT_Estilo,
                 CAT_Color, 
                 CAT_Genero,
@@ -6333,8 +6670,10 @@ sp:BEGIN
                 PRE_Activo
             ) SELECT DISTINCT
                 PRENDAS.SKU_CRM            As PRE_SKU,
+                PRENDAS.NOMBRE             As PRE_Nombre,
                 PRENDAS.TIPO_ARTICULO      As CAT_Tipo,
                 PRENDAS.CATEGORIA          As CAT_Categoria,
+                PRENDAS.SUBCATEGORIA       As CAT_SubCategoria,
                 PRENDAS.ESTILO             As CAT_Estilo,
                 PRENDAS.COLOR              As CAT_Color,
                 PRENDAS.GENERO             As CAT_Genero,
@@ -6348,7 +6687,9 @@ sp:BEGIN
                 COLUMNS (
 						TIPO_ARTICULO      Bigint PATH '$.TIPO_ARTICULO',
 						SKU_CRM            Varchar(45) PATH '$.SKU_CRM',
+                        NOMBRE             Varchar(100) PATH '$.NOMBRE',
                         CATEGORIA     	   Bigint PATH '$.CATEGORIA',
+                        SUBCATEGORIA       Bigint PATH '$.SUBCATEGORIA',
                         ESTILO     		   Bigint PATH '$.ESTILO',
                         COLOR              Bigint PATH '$.COLOR',
                         GENERO    		   Bigint PATH '$.GENERO',
@@ -6381,6 +6722,8 @@ sp:BEGIN
             SET strAccion='actualizarPrendas';
             Select json_object ("PRE_Id", PRENDAS.PRE_Id,
 				"ART_Id", PRENDAS.ART_Id,
+                "PRE_SKU", PRENDAS.PRE_SKU,
+                "PRE_Nombre", PRENDAS.PRE_Nombre,
 				"CAT_Tipo", PRENDAS.CAT_Tipo,
 				"CAT_Categoria", PRENDAS.CAT_Categoria,
 				"CAT_Estilo", PRENDAS.CAT_Estilo,
@@ -6396,13 +6739,14 @@ sp:BEGIN
             Where PRENDAS.PRE_Id = intId
             Into jsonAnterior;
             Update dai_prendas PRENDAS
-				Join (Select Id, TIPO_ARTICULO, SKU_CRM, CATEGORIA, ESTILO, COLOR, 
+				Join (Select Id, TIPO_ARTICULO, SKU_CRM, NOMBRE, CATEGORIA, ESTILO, COLOR, 
 						GENERO, PRECIO, SERIGRAFIA, SERIGRAFIA_LEYENDA
 			From JSON_TABLE (jsonParametros, '$.Prendas'
 				COLUMNS(
 					Id                 Bigint PATH '$.Id',
 					TIPO_ARTICULO      Bigint PATH '$.TIPO_ARTICULO',
 					SKU_CRM            Varchar(45) PATH '$.SKU_CRM',
+                    NOMBRE             Varchar(100) PATH '$.NOMBRE',
 					CATEGORIA     	   Bigint PATH '$.CATEGORIA',
 					ESTILO     		   Bigint PATH '$.ESTILO',
 					COLOR              Bigint PATH '$.COLOR',
@@ -6414,6 +6758,7 @@ sp:BEGIN
 					ON PRENDAS.PRE_Id = PRENDAS_UP.Id
 				SET PRENDAS.ART_Id 				  = PRENDAS_UP.TIPO_ARTICULO,
 					PRENDAS.PRE_SKU 			  = PRENDAS_UP.SKU_CRM,
+                    PRENDAS.PRE_Nombre            = PRENDAS_UP.NOMBRE,
                     PRENDAS.CAT_Categoria 		  = PRENDAS_UP.CATEGORIA,
                     PRENDAS.CAT_Estilo 			  = PRENDAS_UP.ESTILO,
                     PRENDAS.CAT_Color 			  = PRENDAS_UP.COLOR,
