@@ -12,13 +12,13 @@
                     <nav class="nav nav-pills nav-justified my-2 d-flex flex-nowrap" style="overflow-x: scroll">
                         <a id="item-detalle" class="d-flex align-items-center justify-content-center nav-link active"
                             data-toggle="pill" role="tab" href="#v-pills-detalle">
-                            <i class="fas fa-pencil-alt mr-1"></i>
-                            <p class="menuTabMovil">Detalle</p>
+                            <i class="fas fa-pencil-alt mr-2" style="color: #0385F2"></i>
+                            <p class="menuTabMovil mb-0">Detalle</p>
                         </a>
                         <a id="item-datosControl" class="d-flex align-items-center justify-content-center nav-link"
                             data-toggle="pill" role="tab" href="#v-pills-datosControl">
-                            <i class="fas fa-users mr-1"></i>
-                            <p class="menuTabMovil">Datos de control</p>
+                            <i class="fas fa-users mr-2" style="color: #0385F2"></i>
+                            <p class="menuTabMovil mb-0">Datos de control</p>
                         </a>
                     </nav>
                     <div class="tab-content">

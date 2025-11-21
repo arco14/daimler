@@ -12,18 +12,18 @@
                 <nav class="nav nav-pills nav-justified my-2 d-flex flex-nowrap" style="overflow-x: scroll;">
                     <a id="item-catalogoTipo" class="d-flex align-items-center justify-content-center nav-link active"
                         data-toggle="pill" role="tab" href="#v-pills-catalogoTipo">
-                        <i class="fas fa-list mr-1"></i>
-                        <p class="menuTabMovil">Catalogo Tipo</p>
+                        <i class="fas fa-list mr-1" style="color: #0385F2"></i>
+                        <p class="menuTabMovil mb-0">Catalogo Tipo</p>
                     </a>
                     <a id="item-catalogo" class="d-flex align-items-center justify-content-center nav-link"
                         data-toggle="pill" role="tab" href="#v-pills-catalogo">
-                        <i class="fas fa-list-check mr-1"></i>
-                        <p class="menuTabMovil">Catalogo</p>
+                        <i class="fas fa-list-check mr-1" style="color: #0385F2"></i>
+                        <p class="menuTabMovil mb-0">Catalogo</p>
                     </a>
                     <a id="item-datosControl" class="d-flex align-items-center justify-content-center nav-link"
                         data-toggle="pill" role="tab" href="#v-pills-datosControl">
-                        <i class="fas fa-users mr-1"></i>
-                        <p class="menuTabMovil">Datos de control</p>
+                        <i class="fas fa-users mr-1" style="color: #0385F2"></i>
+                        <p class="menuTabMovil mb-0">Datos de control</p>
                     </a>
                 </nav>
                 <div class="tab-content">
