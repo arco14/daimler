@@ -113,3 +113,27 @@ const jsonOrdenCompra = {
     Opcion: 'C',
     Usuario: userActive
 }
+const jsonEntregaFecha = {
+    Stored: 'PA_DAI_Entregas',
+    Opcion: 'CFE',
+    Usuario: userActive
+}
+const arrayFechaEntregas =[{
+    dataField: 'NOMBRE',
+    caption: 'Nombre',
+    dataType: 'string'
+}, {
+    dataField: 'FECHA_INICIAL',
+    caption: 'Fecha Inicio',
+    dataType: 'datetime',
+    format: 'dd/MM/yyyy HH:mm:ss'
+}, {
+    dataField: 'FECHA_FIN',
+    caption: 'Fecha FIN',
+    dataType: 'datetime',
+    format: 'dd/MM/yyyy HH:mm:ss'
+}, {
+    dataField: 'DESCRIPCION',
+    caption: 'Comentarios',
+    dataType: 'string'
+}]

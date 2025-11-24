@@ -15,7 +15,7 @@
         <button id="btnUpdate" class="btn btn-warning" title="Modificar" disabled>
             <i class="fas fa-pencil-alt text-white"></i>
         </button>
-        <button id="btnDelete" class="btn btn-danger d-none" title="Eliminar" disabled>
+        <button id="btnDelete" class="btn btn-danger bg-danger text-white d-none" title="Eliminar" disabled>
             <i class="fas fa-close text-white"></i>
         </button>
         <button id="btnSave" class="btn btn-primary d-none" title="Guardar Resgistros" disabled>
@@ -23,6 +23,9 @@
         </button>
         <button id="btnTomatallas" class="btn btn-success d-none" title="Tomar Talla" disabled>
             <i class="fas fa-shirt text-white"></i>
+        </button>
+        <button id="btnProgramarFechaEntrega" class="btn btn-success d-none" title="Programar Fecha Entrega" disabled>
+            <i class="fas fa-calendar-days text-white"></i>
         </button>
     </div>
     <div id="dropDownMod" class="dropdown">

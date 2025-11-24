@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", () => {
         window.location = '/admin-daimler26'
     }
     $('#btnAdd').addClass('d-none')
-
+    $('#btnProgramarFechaEntrega').removeClass('d-none').attr('disabled', false)
 
 
     //? FUNCIONES 
@@ -25,47 +25,21 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         return loadAPI(`${url}DAIMLER`, 'POST', baseBody, token, false)
     }
-    async function generateGrid(componente, dataJson, arrayColumnas) {
+    async function generateGrid(componente, dataJson, arrayColumnas, blnModal, intHeigth) {
         //? JSON DATA
         const resData = await loadAPI(`${url}DAIMLER`, 'POST', dataJson, token, false)
-        if (resData === undefined) {
-            loadDataGrid(
+        console.log(resData)
+        loadDataGrid(
                 componente,
-                [],
+                resData === undefined ? []: resData.response[0],
                 'single',
                 20,
                 arrayColumnas,
                 'Entregas',
-                false,
+                false,   
                 null,
-                false,
-                500,
-                true,
-                `gridEntregas-${idPrograma}`, {
-                    editing: {
-                        mode: 'popup',
-                        useIcons: true,
-                        allowAdding: true,
-                        allowUpdating: true,
-                        allowDeleting: true,
-                        selectTextOnEditStart: true,
-                        startEditAction: 'click',
-                        confirmDelete: false
-                    }
-                }
-            )
-        } else {
-            loadDataGrid(
-                componente,
-                resData.response[0],
-                'single',
-                20,
-                arrayColumnas,
-                'Entregas',
-                false,
-                null,
-                false,
-                500,
+                blnModal,
+                intHeigth,
                 true,
                 `gridEntregas-${idPrograma}`, {
                     editing: {
@@ -403,42 +377,41 @@ window.addEventListener("DOMContentLoaded", () => {
                                     startEditAction: 'click',
                                 },
                                 columns: [{
-                                        dataField: 'ESTILO',
-                                        caption: 'ESTILO',
-                                        lookup: {
-                                            placeholder: false,
-                                            dataSource: resEstiloPants.response[0],
-                                            displayExpr: 'NOMBRE',
-                                            valueExpr: 'Id',
-                                        },
-                                    }, {
-                                        caption: 'CANTIDAD / TALLA / INVENTARIO',
-                                        allowEditing: true,
+                                    dataField: 'ESTILO',
+                                    caption: 'ESTILO',
+                                    lookup: {
+                                        placeholder: false,
+                                        dataSource: resEstiloPants.response[0],
+                                        displayExpr: 'NOMBRE',
+                                        valueExpr: 'Id',
+                                    },
+                                }, {
+                                    caption: 'CANTIDAD / TALLA / INVENTARIO',
+                                    allowEditing: true,
+                                    alignment: 'center',
+                                    columns: [{
+                                        dataField: 'CAN_PANT',
+                                        caption: 'Cantidad',
                                         alignment: 'center',
-                                        columns: [{
-                                            dataField: 'CAN_PANT',
-                                            caption: 'Cantidad',
-                                            alignment: 'center',
-                                            visible: true
-                                        }, {
-                                            dataField: 'TALLA_PANT',
-                                            caption: 'TALLA',
-                                            alignment: 'center',
-                                            visible: true
-                                        }, {
-                                            dataField: 'INV_PANT',
-                                            caption: 'INVENTARIO',
-                                            alignment: 'center',
-                                            visible: true
-                                        }]
+                                        visible: true
                                     }, {
-                                        dataField: 'TOTAL_PANT',
-                                        caption: 'TOTAL',
+                                        dataField: 'TALLA_PANT',
+                                        caption: 'TALLA',
                                         alignment: 'center',
-                                        width: 100,
-                                        allowEditing: false
-                                    }
-                                ],
+                                        visible: true
+                                    }, {
+                                        dataField: 'INV_PANT',
+                                        caption: 'INVENTARIO',
+                                        alignment: 'center',
+                                        visible: true
+                                    }]
+                                }, {
+                                    dataField: 'TOTAL_PANT',
+                                    caption: 'TOTAL',
+                                    alignment: 'center',
+                                    width: 100,
+                                    allowEditing: false
+                                }],
                                 // onInitialized: function (e) {
                                 //     window.gridCargaManual = e.component
                                 // },
@@ -607,23 +580,66 @@ window.addEventListener("DOMContentLoaded", () => {
                     }
                 }
             )
-        }
     }
+
+    //? COMPONENTES
     const dataEntrega = {
         Stored: 'PA_DAI_Empleados',
         Opcion: 'C',
         Usuario: userActive
     }
-    generateGrid('#dataGridEntregas', dataEntrega, arrayEntregas)
+    generateGrid('#dataGridEntregas', dataEntrega, arrayEntregas, false, 500)
     loadSwitch("#swPredeterminada", false, false, false, false)
     loadTextArea('#textAreaComentariosEntrega', 100, 'Comentarios Entrega', false, false)
     loadButton('#btnAgregarRenglon', '', 'normal', false, true, false, 'plus', 'Agregar Renglon')
     loadButton('#btnGuardar', 'Guardar', 'success', false, true, false, '', '')
 
+    //? Programar fechas
+    loadTextBox('#textBoxNombreEntrega', '', true, 'Nombre Entrega', true, false)
+    $('#dateBoxFechaEntrega').dxDateRangeBox({
+        startDateLabel: "Inicio",
+        endDateLabel: "Fin",
+        labelMode: "floating"
+    })
+    loadTextArea('#textAreaComentariosFechaEntrega', 100, 'Comentarios', false, false)
+    loadButton('#btnGuardarFechaEntrega', 'Guardar', 'success', false, true, false, '', '')
+
     //? ACCIONES
     $('#btnGuardar').dxButton({
         onClick() {
             console.log(dataFinalTops)
+        }
+    })
+    $('#btnProgramarFechaEntrega').click(() => {
+        $('#modalFechaEntrega').modal('show')
+    })
+    generateGrid('#dataGridFechaEntregas', jsonEntregaFecha, arrayFechaEntregas, true, 350)
+    $('#btnGuardarFechaEntrega').dxButton({
+        async onClick() {
+            const nombre = $('#textBoxNombreEntrega').dxTextBox('option', 'value')
+            const fechas = $('#dateBoxFechaEntrega').dxDateRangeBox('option', 'value')
+            const comentarios = $('#textAreaComentariosFechaEntrega').dxTextArea('option', 'value')
+            const jsonFechaEntrega = {
+                Stored: 'PA_DAI_Entregas',
+                Opcion: 'GFE',
+                Usuario: userActive,
+                Entrega: {
+                    Id: 0,
+                },
+                FechaEntrega: {
+                    NOMBRE: nombre,
+                    FECHA_INICIO: fechas[0],
+                    FECHA_FIN: fechas[1],
+                    DESCRIPCION: comentarios
+                }
+            }
+            console.log(jsonFechaEntrega)
+            const resFechaEntrega = await loadAPI(`${url}DAIMLER`, 'POST', jsonFechaEntrega, token, true)
+            console.log(resFechaEntrega)
+            if (resFechaEntrega !== undefined) {
+                generateGrid('#dataGridFechaEntregas', jsonEntregaFecha, arrayFechaEntregas, true, 350)
+                $('#modalFechaEntrega').modal('hide')
+            }
         }
     })
 })

@@ -148,7 +148,7 @@
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="false">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
-            <div class="modal-header card-primary card-outline  dragable_touch">
+            <div class="modal-header card-danger card-outline  dragable_touch">
                 <p class="modal-title">Motivo de eliminiación</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times</span>

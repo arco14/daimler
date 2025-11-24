@@ -118,8 +118,58 @@
         </div>
     </div>
 </div>
-
-<!-- /Modal Delete -->
+<!-- Programar Fechas Entrega -->
+<div class="modal fade" id="modalFechaEntrega" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header card-success card-outline  dragable_touch">
+                <p class="modal-title">Programar fecha de entrega</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <nav class="nav nav-pills nav-justified my-2 d-flex flex-nowrap" style="overflow-x: scroll">
+                    <a id="item-programar" class="d-flex align-items-center justify-content-center nav-link active"
+                        data-toggle="pill" role="tab" href="#v-pills-programar">
+                        <i class="fas fa-pencil-alt mr-2" style="color: #0385F2"></i>
+                        <p class="menuTabMovil mb-0">Programar</p>
+                    </a>
+                    <a id="item-entregas" class="d-flex align-items-center justify-content-center nav-link"
+                        data-toggle="pill" role="tab" href="#v-pills-entregas">
+                        <i class="fas fa-users mr-2" style="color: #0385F2"></i>
+                        <p class="menuTabMovil mb-0">Entregas</p>
+                    </a>
+                </nav>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" role="tabpanel" id="v-pills-programar">
+                        <div class="row">
+                            <div class="form-group col-lg-4 col-12">
+                                <label>Nombre Entrega</label>
+                                <div id="textBoxNombreEntrega"></div>
+                            </div>
+                            <div class="form-group col-lg-8 col-12">
+                                <label>Días de entrega</label>
+                                <div id="dateBoxFechaEntrega" class="mt-0"></div>
+                            </div>
+                            <div class="col-12">
+                                <div id="textAreaComentariosFechaEntrega"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" role="tabpanel" id="v-pills-entregas">
+                        <div id="dataGridFechaEntregas"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="btnGuardarFechaEntrega"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Delete -->
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="false">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
