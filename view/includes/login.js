@@ -16,7 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
             Password: password
         }
         const dataLogin = await loadAPI(`${url}DAIMLER`, 'POST', login, '', false)
-        console.log(dataLogin)
         if (dataLogin === undefined) {
             return
         } else {
@@ -28,7 +27,6 @@ window.addEventListener('DOMContentLoaded', () => {
             }
             const updateToken = await loadAPI(`${url}DAIMLER`, 'POST', dataToken, dataLogin.token, false)
             const infoUser = updateToken.response[0][0]
-            console.log(infoUser)
             if(infoUser.TokenAPI === null  || infoUser.TokenAPI === '' || infoUser.TokenAPI === undefined){
                 Swal.fire({
                     title: 'Error!',

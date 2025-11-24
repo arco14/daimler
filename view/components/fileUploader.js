@@ -8,7 +8,6 @@ function loadFileUpload(strComponente, strTipoArchivo, blnMultiple, blnReadOnly)
         multiple: blnMultiple,
         readOnly: blnReadOnly,
         onUploaded: function (e) {
-            console.log(e)
         },
     })
 }

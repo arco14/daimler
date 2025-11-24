@@ -111,7 +111,6 @@ window.addEventListener("DOMContentLoaded", () => {
             Usuario: userActive
         }
         const resData = await loadAPI(`${url}DAIMLER`, 'POST', data, token, false)
-        console.log(resData)
         loadDataGrid(
             '#dataGridInventario',
             resData === undefined ? [] : resData.response[0],
@@ -234,7 +233,6 @@ window.addEventListener("DOMContentLoaded", () => {
             const dataSource = e.component.getDataSource()
             dataSource.load().then(items => {
                 const selectedItem = items.find(item => item.Id === selectedId)
-                console.log(selectedItem)
                 estiloPrenda = selectedItem.ID_ESTILO
                 subCategoria = selectedItem.ID_SUBCATEGORIA
                 const jsonDataTallas = {
@@ -276,9 +274,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 COMENTARIOS: comentarios
             }
         }
-        console.log(jsonGuardarInventario)
         const resInventario = await loadAPI(`${url}DAIMLER`, 'POST', jsonGuardarInventario, token, true)
-        console.log(resInventario)
         if (resInventario !== undefined) {
             generateGrid('C')
             $('#add').modal('hide')

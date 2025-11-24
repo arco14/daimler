@@ -22,9 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
             Opcion: option,
             Usuario: userActive
         }
-        console.log(jsonData)
         const resData = await loadAPI(`${url}DAIMLER`, 'POST', jsonData, token, false)
-        console.log(resData)
         loadDataGrid(
             '#dataGridEmpleados',
             resData === undefined ? [] : resData.response[0],

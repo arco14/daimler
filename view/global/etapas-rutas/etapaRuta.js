@@ -18,7 +18,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             }
             const res = await loadAPI(`${url}OPERACIONES`, 'POST', jsonData, token, true)
-            console.log(res)
             if (res.response !== undefined || res.response !== null) {
                 $('#add').modal('hide')
                 $('#modalEtapa').modal('hide')

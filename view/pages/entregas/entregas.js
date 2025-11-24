@@ -28,7 +28,6 @@ window.addEventListener("DOMContentLoaded", () => {
     async function generateGrid(componente, dataJson, arrayColumnas, blnModal, intHeigth) {
         //? JSON DATA
         const resData = await loadAPI(`${url}DAIMLER`, 'POST', dataJson, token, false)
-        console.log(resData)
         loadDataGrid(
                 componente,
                 resData === undefined ? []: resData.response[0],
@@ -334,7 +333,6 @@ window.addEventListener("DOMContentLoaded", () => {
                                             if (originalHandler) originalHandler(event)
 
                                             const resultadoInventario = await consultarInventario(col, event)
-                                            console.log(resultadoInventario)
 
                                             //? Obtener la columna de inventario correspondiente
                                             const columnaInventario = mapeoInventario[col.dataField]
@@ -464,7 +462,6 @@ window.addEventListener("DOMContentLoaded", () => {
                                 //             if (originalHandler) originalHandler(event)
 
                                 //             const resultadoInventario = await consultarInventario(col, event)
-                                //             console.log(resultadoInventario)
 
                                 //             //? Obtener la columna de inventario correspondiente
                                 //             const columnaInventario = mapeoInventario[col.dataField]
@@ -505,9 +502,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                     },
                                     Usuario: userActive
                                 }
-                                console.log(jsonInventario)
                                 const resInventario = await loadAPI(`${url}DAIMLER`, 'POST', jsonInventario, token, false)
-                                console.log(resInventario)
                                 if (resInventario !== undefined) {
                                     return resInventario.response[0][0].CANTIDAD
                                 } else if (resInventario === 0) {
@@ -607,7 +602,6 @@ window.addEventListener("DOMContentLoaded", () => {
     //? ACCIONES
     $('#btnGuardar').dxButton({
         onClick() {
-            console.log(dataFinalTops)
         }
     })
     $('#btnProgramarFechaEntrega').click(() => {
@@ -633,9 +627,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     DESCRIPCION: comentarios
                 }
             }
-            console.log(jsonFechaEntrega)
             const resFechaEntrega = await loadAPI(`${url}DAIMLER`, 'POST', jsonFechaEntrega, token, true)
-            console.log(resFechaEntrega)
             if (resFechaEntrega !== undefined) {
                 generateGrid('#dataGridFechaEntregas', jsonEntregaFecha, arrayFechaEntregas, true, 350)
                 $('#modalFechaEntrega').modal('hide')

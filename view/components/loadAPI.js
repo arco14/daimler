@@ -17,7 +17,6 @@ async function loadAPI(strEndpoint, strMethod, jsonData, strToken, blnAlert) {
 
         const data = await res.json();
 
-        // console.log(data.message)
 
         // 🔹 Aquí atrapamos errores enviados desde Node
         if (data.success === false || data.message?.includes('does not exist')) {

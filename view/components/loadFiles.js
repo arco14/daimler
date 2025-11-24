@@ -10,7 +10,6 @@ async function loadFiles(strEndPoint, strMethod, strCarpetaRaiz, blnSubcarpeta, 
             },
             body: formData
         })
-        console.log(response)
         if (!response.ok) {
             throw new Error(`Error en la solicitud: ${response.status}`)
         }
