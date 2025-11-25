@@ -138,8 +138,8 @@
                     </a>
                     <a id="item-entregas" class="d-flex align-items-center justify-content-center nav-link"
                         data-toggle="pill" role="tab" href="#v-pills-entregas">
-                        <i class="fas fa-users mr-2" style="color: #0385F2"></i>
-                        <p class="menuTabMovil mb-0">Entregas</p>
+                        <i class="fas fa-calendar mr-2" style="color: #0385F2"></i>
+                        <p class="menuTabMovil mb-0">Fecha Entregas</p>
                     </a>
                 </nav>
                 <div class="tab-content">

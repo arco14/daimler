@@ -25,13 +25,13 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         return loadAPI(`${url}DAIMLER`, 'POST', baseBody, token, false)
     }
-    async function generateGrid(componente, dataJson, arrayColumnas, blnModal, intHeigth) {
+    async function generateGrid(componente, dataJson, arrayColumnas, blnModal, intHeigth, strSelection) {
         //? JSON DATA
         const resData = await loadAPI(`${url}DAIMLER`, 'POST', dataJson, token, false)
         loadDataGrid(
                 componente,
                 resData === undefined ? []: resData.response[0],
-                'single',
+                strSelection,
                 20,
                 arrayColumnas,
                 'Entregas',
@@ -583,7 +583,7 @@ window.addEventListener("DOMContentLoaded", () => {
         Opcion: 'C',
         Usuario: userActive
     }
-    generateGrid('#dataGridEntregas', dataEntrega, arrayEntregas, false, 500)
+    generateGrid('#dataGridEntregas', dataEntrega, arrayEntregas, false, 500, 'single')
     loadSwitch("#swPredeterminada", false, false, false, false)
     loadTextArea('#textAreaComentariosEntrega', 100, 'Comentarios Entrega', false, false)
     loadButton('#btnAgregarRenglon', '', 'normal', false, true, false, 'plus', 'Agregar Renglon')
@@ -606,8 +606,11 @@ window.addEventListener("DOMContentLoaded", () => {
     })
     $('#btnProgramarFechaEntrega').click(() => {
         $('#modalFechaEntrega').modal('show')
+        $('#textBoxNombreEntrega').dxTextBox('option', 'value', '')
+        $('#dateBoxFechaEntrega').dxDateRangeBox('option', 'value', [])
+        $('#textAreaComentariosFechaEntrega').dxTextArea('option', 'value', '')
     })
-    generateGrid('#dataGridFechaEntregas', jsonEntregaFecha, arrayFechaEntregas, true, 350)
+    generateGrid('#dataGridFechaEntregas', jsonEntregaFecha, arrayFechaEntregas, true, 350, 'none')
     $('#btnGuardarFechaEntrega').dxButton({
         async onClick() {
             const nombre = $('#textBoxNombreEntrega').dxTextBox('option', 'value')
@@ -629,8 +632,8 @@ window.addEventListener("DOMContentLoaded", () => {
             }
             const resFechaEntrega = await loadAPI(`${url}DAIMLER`, 'POST', jsonFechaEntrega, token, true)
             if (resFechaEntrega !== undefined) {
-                generateGrid('#dataGridFechaEntregas', jsonEntregaFecha, arrayFechaEntregas, true, 350)
-                $('#modalFechaEntrega').modal('hide')
+                generateGrid('#dataGridFechaEntregas', jsonEntregaFecha, arrayFechaEntregas, true, 350, 'none')
+                // $('#modalFechaEntrega').modal('hide')
             }
         }
     })

@@ -4,7 +4,7 @@ const arrayEntregas = [{
     dataField: 'ENTREGA',
     caption: 'Entrega',
     dataType: 'string',
-},{
+}, {
     dataField: 'Id',
     caption: 'ID',
     dataType: 'number',
@@ -118,7 +118,7 @@ const jsonEntregaFecha = {
     Opcion: 'CFE',
     Usuario: userActive
 }
-const arrayFechaEntregas =[{
+const arrayFechaEntregas = [{
     dataField: 'NOMBRE',
     caption: 'Nombre',
     dataType: 'string'
@@ -136,4 +136,15 @@ const arrayFechaEntregas =[{
     dataField: 'DESCRIPCION',
     caption: 'Comentarios',
     dataType: 'string'
+}, {
+    dataField: 'USUARIO',
+    caption: 'Usuario',
+    dataType: 'string',
+    visible: false
+}, {
+    dataField: 'FECHA',
+    caption: 'Fecha Crea',
+    dataType: 'datetime',
+    format: 'dd/MM/yyyy',
+    visible: false
 }]
