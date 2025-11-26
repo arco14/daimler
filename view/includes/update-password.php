@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalUpdatePassword" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel"
+<div class="modal fade" id="modalUpdatePassword" tabindex="-1" role="dialog" data-focus="false" aria-labelledby="passwordModalLabel"
     aria-hidden="false">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

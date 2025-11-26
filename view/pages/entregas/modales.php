@@ -9,7 +9,7 @@
         overflow-x: hidden;
     }
 </style>
-<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="false"
+<div class="modal fade" id="add" tabindex="-1" role="dialog" data-focus="false" aria-labelledby="modelTitleId" aria-hidden="false"
     data-focus="false">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content card-primary card-outline">
@@ -119,7 +119,7 @@
     </div>
 </div>
 <!-- Programar Fechas Entrega -->
-<div class="modal fade" id="modalFechaEntrega" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+<div class="modal fade" id="modalFechaEntrega" tabindex="-1" role="dialog" data-focus="false" aria-labelledby="modelTitleId"
     aria-hidden="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -170,7 +170,7 @@
     </div>
 </div>
 <!-- Modal Delete -->
-<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="false">
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" data-focus="false" aria-labelledby="modelTitleId" aria-hidden="false">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header card-primary card-outline  dragable_touch">

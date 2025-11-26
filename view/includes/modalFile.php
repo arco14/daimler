@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalFile" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modalFile" tabindex="-1" role="dialog" data-focus="false" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header dragable_touch">

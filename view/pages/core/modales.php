@@ -125,7 +125,7 @@
 </div>
 
 <!-- Modal Delete Catalogo Tipo -->
-<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="false">
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" data-focus="false" aria-labelledby="modelTitleId" aria-hidden="false">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header card-primary card-outline  dragable_touch">
@@ -149,7 +149,7 @@
 </div>
 
 <!-- Modal eliminacion catalogo -->
-<div class="modal fade" id="modalDeleteCatalogo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="false">
+<div class="modal fade" id="modalDeleteCatalogo" tabindex="-1" role="dialog" data-focus="false" aria-labelledby="modelTitleId" aria-hidden="false">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header card-primary card-outline  dragable_touch">
