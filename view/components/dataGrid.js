@@ -423,4 +423,5 @@ function loadDataGrid(
         const newSummary = totalItems.filter(item => item.column !== column.dataField)
         dataGrid.option("summary.totalItems", newSummary)
     }
+    
 }

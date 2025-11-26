@@ -9,6 +9,10 @@ const arrayEmpleados = [{
     caption: 'Badge',
     dataType: 'number',
 }, {
+    dataField: 'NUMERO_EMPLEADO',
+    caption: 'Num. Empleado',
+    dataType: 'number',
+}, {
     dataField: 'AREA',
     caption: 'Area',
     dataType: 'string',
@@ -21,34 +25,32 @@ const arrayEmpleados = [{
     caption: 'Turno',
     dataType: 'number',
 }, {
+    dataField: 'FECHA_ENTREGA',
+    caption: 'Fecha Entrega',
+    dataType: 'datetime',
+    format: "dd/mm/yyyy HH:MM:SS"
+}, {
     dataField: 'ENTREGA',
     caption: 'Entrega',
-    dataType: 'string',
-}, {
-    dataField: 'ESTILO',
-    caption: 'Estilo',
     dataType: 'string',
 }, {
     dataField: 'TOMAR_TALLAS',
     caption: 'Tomar Tallas',
     dataType: 'boolean',
     calculateCellValue: function (data) {
-        return data.ACTIVO === 1
+        return data.TOMAR_TALLAS === 1
     }
-}, {
-    dataField: 'FECHA_ENTREGA',
-    caption: 'Fecha Entrega',
-    dataType: 'datetime',
-    format: "dd/mm/yyyy HH:MM:SS"
 }, {
     dataField: 'USUARIO',
     caption: 'Usuario',
     dataType: 'string',
+    visible: false
 }, {
     dataField: 'FECHA',
     caption: 'Fecha',
     dataType: 'datetime',
     format: 'dd/MM/yyyy HH:mm:ss',
+    visible: false
 }, {
     dataField: 'ACTIVO',
     caption: 'Activo',
@@ -90,6 +92,47 @@ const arrayEmpleados = [{
         allowEditing: false
     }]
 }]
+const arrayTomaTallas = [{
+    dataField: 'TIPO_PRENDA',
+    caption: 'Tipo Prenda',
+    dataType: 'string'
+}, {
+    dataField: 'PRENDA',
+    caption: 'Prenda',
+    dataType: 'string'
+}, {
+    dataField: 'ESTILO',
+    caption: 'Estilo',
+    dataType: 'string'
+}, {
+    dataField: 'PAQUETE',
+    caption: 'Paquete',
+    dataType: 'string'
+}, {
+    dataField: 'TALLA_ML',
+    caption: 'ML',
+    dataType: 'string',
+}, {
+    dataField: 'TALLA_MC',
+    caption: 'MC',
+    dataType: 'string',
+}, {
+    dataField: 'TALLA_PLY',
+    caption: 'PLY',
+    dataType: 'string',
+}, {
+    dataField: 'TALLA_SUD',
+    caption: 'SUD',
+    dataType: 'string',
+}, {
+    dataField: 'TALLA_PANT',
+    caption: 'PANT',
+    dataType: 'string',
+}, {
+    dataField: 'TOTAL',
+    caption: 'TOTAL',
+    dataType: 'number',
+}]
 const jsonEmpleado = {
     Stored: 'PA_DAI_Empleados',
     Opcion: 'C',
@@ -105,3 +148,18 @@ const arrayEmpleado = [{
     caption: 'Empleado',
     dataType: 'string'
 }]
+
+const jsonTallasTops = {
+    Stored: 'PA_CORE_CapCatalogos',
+    Opcion: 'CC',
+    Usuario: userActive,
+    IdTipoCatalogo: 8,
+    IdRelacionCatalogos: 158
+}
+const jsonTallasPants = {
+    Stored: 'PA_CORE_CapCatalogos',
+    Opcion: 'CC',
+    Usuario: userActive,
+    IdTipoCatalogo: 8,
+    IdRelacionCatalogos: 159
+}
