@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const url = CONFIG.API_URL
     const token = $('#userToken').val()
     const userActive = $('#userActive').val()
-    let idPrograma, blnDblClickGrid, arrayDataRows, dataFinalTops, gridInstance 
+    let idPrograma, blnDblClickGrid, arrayDataRows, dataFinalTops, gridInstance, resDataDetalle, dataSourceTops, dataSourcePants
 
     //? VALIDAR QUE EL CONTENIDO ESTE DENTRO DEL IFRAME 🔍
     if (window.self !== window.top) {
@@ -28,6 +28,65 @@ window.addEventListener("DOMContentLoaded", () => {
     async function generateGrid(componente, dataJson, arrayColumnas, blnModal, intHeigth, strSelection) {
         //? JSON DATA
         const resData = await loadAPI(`${url}DAIMLER`, 'POST', dataJson, token, false)
+        async function masterDetail(container, options) {
+            idTipo = options.data.Id
+            console.log(idTipo)
+            if (options.data.Id === null) {
+                return
+            } else {
+                const jsonData = {
+                    Stored: 'PA_DAI_Empleados',
+                    Opcion: 'CI',
+                    Usuario: userActive,
+                    Empleado: {
+                        EMP_Id: idTipo
+                    }
+                }
+                resDataDetalle = await loadAPI(`${url}DAIMLER`, 'POST', jsonData, token, false)
+                const tabs = $("<div>").dxTabPanel({
+                    dataSource: [{
+                        title: "Toma Tallas",
+                        template: (() => {
+                            const dataGridContainer = $("<div id='dataGridCat' class='p-4'>")
+                            loadDataGrid(
+                                dataGridContainer,
+                                resDataDetalle === undefined ? [] : resDataDetalle.response[0],
+                                'none',
+                                20,
+                                arrayTomaTallas,
+                                'Toma-Tallas',
+                                false,
+                                null,
+                                true,
+                                350,
+                                true,
+                                `gridSatateTomaTallas-${options.data.Id}`, {
+                                    editing: {
+                                        mode: 'form',
+                                        useIcons: true,
+                                        allowAdding: false,
+                                        allowUpdating: true,
+                                        allowDeleting: true,
+                                        selectTextOnEditStart: true,
+                                        startEditAction: 'click',
+                                        confirmDelete: false
+                                    },
+                                    onRowDblClick(e) {
+                                        e.event.preventDefault()
+                                        e.event.stopPropagation()
+                                    }
+                                }
+                            )
+                            return dataGridContainer
+                        })
+                    }],
+                    deferRendering: false,
+                    showNavButtons: true,
+                    loop: false
+                })
+                container.append(tabs)
+            }
+        }
         loadDataGrid(
             componente,
             resData === undefined ? [] : resData.response[0],
@@ -35,8 +94,8 @@ window.addEventListener("DOMContentLoaded", () => {
             20,
             arrayColumnas,
             'Entregas',
-            false,
-            null,
+            blnModal ? false : true,
+            blnModal ? null : masterDetail,
             blnModal,
             intHeigth,
             true,
@@ -92,6 +151,18 @@ window.addEventListener("DOMContentLoaded", () => {
                         $('#textBoxPantsTalla').dxTextBox({
                             value: data.TALLA_PANT,
                         })
+                        const jsonDataDetalle = {
+                            Stored: 'PA_DAI_Empleados',
+                            Opcion: 'CI',
+                            Usuario: userActive,
+                            Empleado: {
+                                EMP_Id: data.NUMERO_EMPLEADO
+                            }
+                        }
+                        const res = await loadAPI(`${url}DAIMLER`, 'POST', jsonDataDetalle, token, false)
+                        const dataTops = res.response[0][0]
+                        console.log(dataTops)
+                        // const dataPants = res.response[1][1]
                         const [resEstilos, resPrenda, resPaquete, resCantidad, resTallas, resEstiloPants, resPaquetePants] = await Promise.all([
                             llamadaAPI('PA_CORE_CapCatalogos', 'CC', {
                                 ClaveCatalogo: 'TOPS'
@@ -104,7 +175,7 @@ window.addEventListener("DOMContentLoaded", () => {
                             }),
                             llamadaAPI('PA_DAI_Paquetes', 'CI', {
                                 Paquetes: {
-                                    Id: data.ID_PAQUETE_TOPS
+                                    Id: dataTops.ID_PAQUETE
                                 }
                             }),
                             llamadaAPI('PA_CORE_CapCatalogos', 'CC', {
@@ -116,390 +187,398 @@ window.addEventListener("DOMContentLoaded", () => {
                                 ClaveCatalogo: 'PANTS'
                             }),
                         ])
-                        const dataSourceTops = [{
-                            ESTILO: data.ID_ESTILO_TOPS,
-                            // PRENDA: data.
-                            PAQUETE: data.ID_PAQUETE_TOPS,
-                            TALLA: data.TALLA_ML,
-                            CAN_ML: resCantidad.response[0][0].CAN_ML,
-                            CAN_MC: resCantidad.response[0][0].CAN_MC,
-                            CAN_PLY: resCantidad.response[0][0].CAN_PLY,
-                            CAN_SUD: resCantidad.response[0][0].CAN_SUD,
-                            TOTAL: resCantidad.response[0][0].TOTAL,
-                        }]
-
-                        const dataSourcePants = [{
-                            ESTILO: data.ID_ESTILO_PANTS,
-                            // PAQUETE: data.ID_PAQUETE_PANTS
-                        }]
-                        //? DATAGRID TOPS
-                        $('#dataGridTops').dxDataGrid({
-                            dataSource: dataSourceTops,
-                            showBorders: true,
-                            columnFixing: {
-                                enabled: false
-                            },
-                            paging: {
-                                enabled: false
-                            },
-                            editing: {
-                                mode: 'cell',
-                                useIcons: true,
-                                allowUpdating: true,
-                                allowAdding: true,
-                                allowDeleting: true,
-                                selectTextOnEditStart: true,
-                                startEditAction: 'click',
-                            },
-                            columns: [{
-                                    dataField: 'ESTILO',
-                                    caption: 'ESTILO',
-                                    lookup: {
-                                        placeholder: false,
-                                        dataSource: resEstilos.response[0],
-                                        displayExpr: 'NOMBRE',
-                                        valueExpr: 'Id',
-                                    },
-                                }, {
-                                    dataField: 'PRENDA',
-                                    caption: 'PRENDA',
-                                    width: 200,
-                                    lookup: {
-                                        placeholder: false,
-                                        dataSource: resPrenda.response[0],
-                                        displayExpr: 'NOMBRE',
-                                        valueExpr: 'Id',
-                                    },
+                        console.log(resCantidad)
+                        // return
+                        if (res !== undefined) {
+                            if (dataTops.TIPO_PRENDA === 'Tops') {
+                                dataSourceTops = [{
+                                    ESTILO: dataTops.ID_ESTILO,
+                                    PRENDA: dataTops.ID_PRENDA,
+                                    PAQUETE: dataTops.ID_PAQUETE,
+                                    // TALLA: data.TALLA_ML,
+                                    CAN_ML: resCantidad.response[0][0].CAN_ML,
+                                    CAN_MC: resCantidad.response[0][0].CAN_MC,
+                                    CAN_PLY: resCantidad.response[0][0].CAN_PLY,
+                                    CAN_SUD: resCantidad.response[0][0].CAN_SUD,
+                                    TOTAL: resCantidad.response[0][0].TOTAL,
+                                }]
+                            } else {
+                                dataSourcePants = [{
+                                    ESTILO: data.ID_ESTILO_PANTS,
+                                    // PAQUETE: data.ID_PAQUETE_PANTS
+                                }]
+                            }
+                            //? DATAGRID TOPS
+                            $('#dataGridTops').dxDataGrid({
+                                dataSource: dataSourceTops,
+                                showBorders: true,
+                                columnFixing: {
+                                    enabled: false
                                 },
-                                {
-                                    dataField: 'PAQUETE',
-                                    caption: 'PAQUETE',
-                                    lookup: {
-                                        placeholder: false,
-                                        dataSource: resPaquete.response[0],
-                                        displayExpr: 'NOMBRE',
-                                        valueExpr: 'Id',
+                                paging: {
+                                    enabled: false
+                                },
+                                editing: {
+                                    mode: 'cell',
+                                    useIcons: true,
+                                    allowUpdating: true,
+                                    allowAdding: true,
+                                    allowDeleting: true,
+                                    selectTextOnEditStart: true,
+                                    startEditAction: 'click',
+                                },
+                                columns: [{
+                                        dataField: 'ESTILO',
+                                        caption: 'ESTILO',
+                                        width: 150,
+                                        lookup: {
+                                            placeholder: false,
+                                            dataSource: resEstilos.response[0],
+                                            displayExpr: 'NOMBRE',
+                                            valueExpr: 'Id',
+                                        },
+                                    }, {
+                                        dataField: 'PRENDA',
+                                        caption: 'PRENDA',
+                                        width: 200,
+                                        lookup: {
+                                            placeholder: false,
+                                            dataSource: resPrenda.response[0],
+                                            displayExpr: 'NOMBRE',
+                                            valueExpr: 'Id',
+                                        },
                                     },
-                                },
-                                {
-                                    caption: 'CANTIDAD / TALLA / INVENTARIO',
-                                    allowEditing: true,
-                                    alignment: 'center',
-                                    columns: [{
-                                            dataField: 'CAN_ML',
-                                            caption: 'ML',
-                                            alignment: 'center',
-                                            visible: false
+                                    {
+                                        dataField: 'PAQUETE',
+                                        caption: 'PAQUETE',
+                                        width: 120,
+                                        lookup: {
+                                            placeholder: false,
+                                            dataSource: resPaquete.response[0],
+                                            displayExpr: 'NOMBRE',
+                                            valueExpr: 'Id',
                                         },
-                                        {
-                                            dataField: 'TALLA_ML',
-                                            caption: 'TALLA',
-                                            alignment: 'center',
-                                            visible: false,
-                                            lookup: {
-                                                placeholder: false,
-                                                dataSource: resTallas.response[0],
-                                                displayExpr: 'CLAVE',
-                                                valueExpr: 'Id',
-                                            }
-                                        }, {
-                                            dataField: 'INV_ML',
-                                            caption: 'Inventario',
-                                            alignment: 'center',
-                                            visible: false,
-                                            allowEditing: false
-                                        },
-                                        //? MANGA CORTA
-                                        {
-                                            dataField: 'CAN_MC',
-                                            caption: 'MC',
-                                            alignment: 'center',
-                                            visible: false
-                                        },
-                                        {
-                                            dataField: 'TALLA_MC',
-                                            caption: 'TALLA',
-                                            alignment: 'center',
-                                            visible: false,
-                                            lookup: {
-                                                placeholder: false,
-                                                dataSource: resTallas.response[0],
-                                                displayExpr: 'CLAVE',
-                                                valueExpr: 'Id'
-                                            }
-                                        }, {
-                                            dataField: 'INV_MC',
-                                            caption: 'Inventario',
-                                            alignment: 'center',
-                                            visible: false,
-                                            allowEditing: false
-                                        },
-                                        //? PLAYERA
-                                        {
-                                            dataField: 'CAN_PLY',
-                                            caption: 'PLY',
-                                            alignment: 'center',
-                                            visible: false
-                                        },
-                                        {
-                                            dataField: 'TALLA_PLY',
-                                            caption: 'TALLA',
-                                            alignment: 'center',
-                                            visible: false,
-                                            lookup: {
-                                                placeholder: false,
-                                                dataSource: resTallas.response[0],
-                                                displayExpr: 'CLAVE',
-                                                valueExpr: 'Id'
-                                            }
-                                        }, {
-                                            dataField: 'INV_PLY',
-                                            caption: 'Inventario',
-                                            alignment: 'center',
-                                            visible: false,
-                                            allowEditing: false
-                                        },
-                                        //? SUADADERA
-                                        {
-                                            dataField: 'CAN_SUD',
-                                            caption: 'SUD',
-                                            alignment: 'center',
-                                            visible: false
-                                        },
-                                        {
-                                            dataField: 'TALLA_SUD',
-                                            caption: 'TALLA',
-                                            alignment: 'center',
-                                            visible: false,
-                                            lookup: {
-                                                placeholder: false,
-                                                dataSource: resTallas.response[0],
-                                                displayExpr: 'CLAVE',
-                                                valueExpr: 'Id'
-                                            }
-                                        }, {
-                                            dataField: 'INV_SUD',
-                                            caption: 'Inventario',
-                                            alignment: 'center',
-                                            visible: false,
-                                            allowEditing: false
-                                        },
-                                    ]
-                                },
-                                {
-                                    dataField: 'TOTAL',
-                                    caption: 'TOTAL',
-                                    alignment: 'center',
-                                    width: 100,
-                                    allowEditing: false
-                                }
-                            ],
-                            onInitialized: function (e) {
-                                gridInstance = e.component
-                            },
-                            onEditorPreparing(col) {
-                                if (col.parentType === 'dataRow' && col.dataField === 'PAQUETE') {
-                                    col.editorOptions.onValueChanged = async (e) => {
-                                        const jsonCanTallas = {
-                                            Stored: 'PA_DAI_Paquetes',
-                                            Opcion: 'CI',
-                                            Paquetes: {
-                                                Id: e.value
+                                    },
+                                    {
+                                        caption: 'CANTIDAD / TALLA / INVENTARIO',
+                                        allowEditing: true,
+                                        alignment: 'center',
+                                        columns: [{
+                                                dataField: 'CAN_ML',
+                                                caption: 'ML',
+                                                alignment: 'center',
+                                                visible: false
                                             },
-                                            Usuario: userActive
-                                        }
-                                        const dataCanTallas = await loadAPI(`${url}DAIMLER`, 'POST', jsonCanTallas, token, false)
-                                        const canML = dataCanTallas.response[0][0].CAN_ML
-                                        const canMC = dataCanTallas.response[0][0].CAN_MC
-                                        const canPLY = dataCanTallas.response[0][0].CAN_PLY
-                                        const canSUD = dataCanTallas.response[0][0].CAN_SUD
-
-                                        const paqueteSeleccionado = resPaquete.response[0].find(paq => paq.Id === e.value)
-                                        const rowIndex = col.row.rowIndex
-                                        const dataGrid = col.component
-
-                                        if (paqueteSeleccionado) {
-                                            dataGrid.cellValue(rowIndex, 'PAQUETE', e.value)
-                                            dataGrid.cellValue(rowIndex, 'CAN_ML', canML)
-                                            dataGrid.cellValue(rowIndex, 'CAN_MC', canMC)
-                                            dataGrid.cellValue(rowIndex, 'CAN_PLY', canPLY)
-                                            dataGrid.cellValue(rowIndex, 'CAN_SUD', canSUD)
-                                            dataGrid.cellValue(rowIndex, 'TOTAL', canML + canMC + canPLY + canSUD)
-                                        }
-                                        //? Control de visibilidad según el paquete
-                                        mostrarOcultarColTops(e.value)
+                                            {
+                                                dataField: 'TALLA_ML',
+                                                caption: 'Talla',
+                                                alignment: 'center',
+                                                visible: false,
+                                                lookup: {
+                                                    placeholder: false,
+                                                    dataSource: resTallas.response[0],
+                                                    displayExpr: 'CLAVE',
+                                                    valueExpr: 'Id',
+                                                }
+                                            }, {
+                                                dataField: 'INV_ML',
+                                                caption: 'Inventario',
+                                                alignment: 'center',
+                                                visible: false,
+                                                allowEditing: false
+                                            },
+                                            //? MANGA CORTA
+                                            {
+                                                dataField: 'CAN_MC',
+                                                caption: 'MC',
+                                                alignment: 'center',
+                                                visible: false
+                                            },
+                                            {
+                                                dataField: 'TALLA_MC',
+                                                caption: 'Talla',
+                                                alignment: 'center',
+                                                visible: false,
+                                                lookup: {
+                                                    placeholder: false,
+                                                    dataSource: resTallas.response[0],
+                                                    displayExpr: 'CLAVE',
+                                                    valueExpr: 'Id'
+                                                }
+                                            }, {
+                                                dataField: 'INV_MC',
+                                                caption: 'Inventario',
+                                                alignment: 'center',
+                                                visible: false,
+                                                allowEditing: false
+                                            },
+                                            //? PLAYERA
+                                            {
+                                                dataField: 'CAN_PLY',
+                                                caption: 'PLY',
+                                                alignment: 'center',
+                                                visible: false
+                                            },
+                                            {
+                                                dataField: 'TALLA_PLY',
+                                                caption: 'TALLA',
+                                                alignment: 'center',
+                                                visible: false,
+                                                lookup: {
+                                                    placeholder: false,
+                                                    dataSource: resTallas.response[0],
+                                                    displayExpr: 'CLAVE',
+                                                    valueExpr: 'Id'
+                                                }
+                                            }, {
+                                                dataField: 'INV_PLY',
+                                                caption: 'Inventario',
+                                                alignment: 'center',
+                                                visible: false,
+                                                allowEditing: false
+                                            },
+                                            //? SUADADERA
+                                            {
+                                                dataField: 'CAN_SUD',
+                                                caption: 'SUD',
+                                                alignment: 'center',
+                                                visible: false
+                                            },
+                                            {
+                                                dataField: 'TALLA_SUD',
+                                                caption: 'TALLA',
+                                                alignment: 'center',
+                                                visible: false,
+                                                lookup: {
+                                                    placeholder: false,
+                                                    dataSource: resTallas.response[0],
+                                                    displayExpr: 'CLAVE',
+                                                    valueExpr: 'Id'
+                                                }
+                                            }, {
+                                                dataField: 'INV_SUD',
+                                                caption: 'Inventario',
+                                                alignment: 'center',
+                                                visible: false,
+                                                allowEditing: false
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        dataField: 'TOTAL',
+                                        caption: 'TOTAL',
+                                        alignment: 'center',
+                                        // width: auto,
+                                        allowEditing: false
                                     }
-                                }
-                                //? Consultar inventario al cambiar talla
-                                const columnasTalla = ["TALLA_ML", "TALLA_MC", "TALLA_PLY", "TALLA_SUD"]
+                                ],
+                                onInitialized: function (e) {
+                                    gridInstance = e.component
+                                },
+                                onEditorPreparing(col) {
+                                    if (col.parentType === 'dataRow' && col.dataField === 'PAQUETE') {
+                                        col.editorOptions.onValueChanged = async (e) => {
+                                            const jsonCanTallas = {
+                                                Stored: 'PA_DAI_Paquetes',
+                                                Opcion: 'CI',
+                                                Paquetes: {
+                                                    Id: e.value
+                                                },
+                                                Usuario: userActive
+                                            }
+                                            const dataCanTallas = await loadAPI(`${url}DAIMLER`, 'POST', jsonCanTallas, token, false)
+                                            const canML = dataCanTallas.response[0][0].CAN_ML
+                                            const canMC = dataCanTallas.response[0][0].CAN_MC
+                                            const canPLY = dataCanTallas.response[0][0].CAN_PLY
+                                            const canSUD = dataCanTallas.response[0][0].CAN_SUD
 
-                                //? Mapeo de columnas de talla a sus respectivas columnas de inventario
-                                const mapeoInventario = {
-                                    'TALLA_ML': 'INV_ML',
-                                    'TALLA_MC': 'INV_MC',
-                                    'TALLA_PLY': 'INV_PLY',
-                                    'TALLA_SUD': 'INV_SUD'
-                                }
-                                if (col.parentType === 'dataRow' && columnasTalla.includes(col.dataField)) {
-                                    const originalHandler = col.editorOptions.onValueChanged
-                                    col.editorOptions.onValueChanged = async (event) => {
-                                        if (originalHandler) originalHandler(event)
-
-                                        const resultadoInventario = await consultarInventario(col, event)
-
-                                        //? Obtener la columna de inventario correspondiente
-                                        const columnaInventario = mapeoInventario[col.dataField]
-
-                                        if (columnaInventario) {
+                                            const paqueteSeleccionado = resPaquete.response[0].find(paq => paq.Id === e.value)
                                             const rowIndex = col.row.rowIndex
                                             const dataGrid = col.component
-                                            dataGrid.cellValue(rowIndex, columnaInventario, resultadoInventario)
+
+                                            if (paqueteSeleccionado) {
+                                                dataGrid.cellValue(rowIndex, 'PAQUETE', e.value)
+                                                dataGrid.cellValue(rowIndex, 'CAN_ML', canML)
+                                                dataGrid.cellValue(rowIndex, 'CAN_MC', canMC)
+                                                dataGrid.cellValue(rowIndex, 'CAN_PLY', canPLY)
+                                                dataGrid.cellValue(rowIndex, 'CAN_SUD', canSUD)
+                                                dataGrid.cellValue(rowIndex, 'TOTAL', canML + canMC + canPLY + canSUD)
+                                            }
+                                            //? Control de visibilidad según el paquete
+                                            mostrarOcultarColTops(e.value, gridInstance)
                                         }
                                     }
-                                }
+                                    //? Consultar inventario al cambiar talla
+                                    const columnasTalla = ["TALLA_ML", "TALLA_MC", "TALLA_PLY", "TALLA_SUD"]
 
-                            },
-                            //? Actualizar total al cambiar cantidades
-                            onCellPrepared: function (e) {
-                                if (e.rowType === 'data' && e.column.dataField === 'TOTAL') {
-                                    dataFinalTops = e.data
-                                    const sumaActualizada = (dataFinalTops.CAN_ML || 0) + (dataFinalTops.CAN_MC || 0) + (dataFinalTops.CAN_PLY || 0) + (dataFinalTops.CAN_SUD || 0)
-                                    e.cellElement.text(sumaActualizada)
-                                }
-                            },
-                        }).dxDataGrid('instance')
+                                    //? Mapeo de columnas de talla a sus respectivas columnas de inventario
+                                    const mapeoInventario = {
+                                        'TALLA_ML': 'INV_ML',
+                                        'TALLA_MC': 'INV_MC',
+                                        'TALLA_PLY': 'INV_PLY',
+                                        'TALLA_SUD': 'INV_SUD'
+                                    }
+                                    if (col.parentType === 'dataRow' && columnasTalla.includes(col.dataField)) {
+                                        const originalHandler = col.editorOptions.onValueChanged
+                                        col.editorOptions.onValueChanged = async (event) => {
+                                            if (originalHandler) originalHandler(event)
 
-                        $('#dataGridPants').dxDataGrid({
-                            dataSource: dataSourcePants,
-                            showBorders: true,
-                            columnFixing: {
-                                enabled: false
-                            },
-                            paging: {
-                                enabled: false
-                            },
-                            editing: {
-                                mode: 'cell',
-                                useIcons: true,
-                                allowUpdating: true,
-                                allowAdding: true,
-                                allowDeleting: true,
-                                selectTextOnEditStart: true,
-                                startEditAction: 'click',
-                            },
-                            columns: [{
-                                dataField: 'ESTILO',
-                                caption: 'ESTILO',
-                                lookup: {
-                                    placeholder: false,
-                                    dataSource: resEstiloPants.response[0],
-                                    displayExpr: 'NOMBRE',
-                                    valueExpr: 'Id',
+                                            const resultadoInventario = await consultarInventario(col, event)
+
+                                            //? Obtener la columna de inventario correspondiente
+                                            const columnaInventario = mapeoInventario[col.dataField]
+
+                                            if (columnaInventario) {
+                                                const rowIndex = col.row.rowIndex
+                                                const dataGrid = col.component
+                                                dataGrid.cellValue(rowIndex, columnaInventario, resultadoInventario)
+                                            }
+                                        }
+                                    }
+
                                 },
-                            }, {
-                                caption: 'CANTIDAD / TALLA / INVENTARIO',
-                                allowEditing: true,
-                                alignment: 'center',
-                                columns: [{
-                                    dataField: 'CAN_PANT',
-                                    caption: 'Cantidad',
-                                    alignment: 'center',
-                                    visible: true
-                                }, {
-                                    dataField: 'TALLA_PANT',
-                                    caption: 'TALLA',
-                                    alignment: 'center',
-                                    visible: true
-                                }, {
-                                    dataField: 'INV_PANT',
-                                    caption: 'INVENTARIO',
-                                    alignment: 'center',
-                                    visible: true
-                                }]
-                            }, {
-                                dataField: 'TOTAL_PANT',
-                                caption: 'TOTAL',
-                                alignment: 'center',
-                                width: 100,
-                                allowEditing: false
-                            }],
-                            // onInitialized: function (e) {
-                            //     window.gridCargaManual = e.component
-                            // },
-                            // onEditorPreparing(col) {
-                            //     if (col.parentType === 'dataRow' && col.dataField === 'PAQUETE') {
-                            //         col.editorOptions.onValueChanged = async (e) => {
-                            //             const jsonCanTallas = {
-                            //                 Stored: 'PA_DAI_Paquetes',
-                            //                 Opcion: 'CI',
-                            //                 Paquetes: {
-                            //                     Id: e.value
-                            //                 },
-                            //                 Usuario: userActive
-                            //             }
-                            //             const dataCanTallas = await loadAPI(`${url}DAIMLER`, 'POST', jsonCanTallas, token, false)
-                            //             const canML = dataCanTallas.response[0][0].CAN_ML
-                            //             const canMC = dataCanTallas.response[0][0].CAN_MC
-                            //             const canPLY = dataCanTallas.response[0][0].CAN_PLY
-                            //             const canSUD = dataCanTallas.response[0][0].CAN_SUD
+                                //? Actualizar total al cambiar cantidades
+                                onCellPrepared: function (e) {
+                                    if (e.rowType === 'data' && e.column.dataField === 'TOTAL') {
+                                        dataFinalTops = e.data
+                                        const sumaActualizada = (dataFinalTops.CAN_ML || 0) + (dataFinalTops.CAN_MC || 0) + (dataFinalTops.CAN_PLY || 0) + (dataFinalTops.CAN_SUD || 0)
+                                        e.cellElement.text(sumaActualizada)
+                                    }
+                                },
+                            }).dxDataGrid('instance')
 
-                            //             const paqueteSeleccionado = resPaquete.response[0].find(paq => paq.Id === e.value)
-                            //             const rowIndex = col.row.rowIndex
-                            //             const dataGrid = col.component
+                            // $('#dataGridPants').dxDataGrid({
+                            //     dataSource: dataSourcePants,
+                            //     showBorders: true,
+                            //     columnFixing: {
+                            //         enabled: false
+                            //     },
+                            //     paging: {
+                            //         enabled: false
+                            //     },
+                            //     editing: {
+                            //         mode: 'cell',
+                            //         useIcons: true,
+                            //         allowUpdating: true,
+                            //         allowAdding: true,
+                            //         allowDeleting: true,
+                            //         selectTextOnEditStart: true,
+                            //         startEditAction: 'click',
+                            //     },
+                            //     columns: [{
+                            //         dataField: 'ESTILO',
+                            //         caption: 'ESTILO',
+                            //         lookup: {
+                            //             placeholder: false,
+                            //             dataSource: resEstiloPants.response[0],
+                            //             displayExpr: 'NOMBRE',
+                            //             valueExpr: 'Id',
+                            //         },
+                            //     }, {
+                            //         caption: 'CANTIDAD / TALLA / INVENTARIO',
+                            //         allowEditing: true,
+                            //         alignment: 'center',
+                            //         columns: [{
+                            //             dataField: 'CAN_PANT',
+                            //             caption: 'Cantidad',
+                            //             alignment: 'center',
+                            //             visible: true
+                            //         }, {
+                            //             dataField: 'TALLA_PANT',
+                            //             caption: 'TALLA',
+                            //             alignment: 'center',
+                            //             visible: true
+                            //         }, {
+                            //             dataField: 'INV_PANT',
+                            //             caption: 'INVENTARIO',
+                            //             alignment: 'center',
+                            //             visible: true
+                            //         }]
+                            //     }, {
+                            //         dataField: 'TOTAL_PANT',
+                            //         caption: 'TOTAL',
+                            //         alignment: 'center',
+                            //         width: 100,
+                            //         allowEditing: false
+                            //     }],
+                            //     // onInitialized: function (e) {
+                            //     //     window.gridCargaManual = e.component
+                            //     // },
+                            //     // onEditorPreparing(col) {
+                            //     //     if (col.parentType === 'dataRow' && col.dataField === 'PAQUETE') {
+                            //     //         col.editorOptions.onValueChanged = async (e) => {
+                            //     //             const jsonCanTallas = {
+                            //     //                 Stored: 'PA_DAI_Paquetes',
+                            //     //                 Opcion: 'CI',
+                            //     //                 Paquetes: {
+                            //     //                     Id: e.value
+                            //     //                 },
+                            //     //                 Usuario: userActive
+                            //     //             }
+                            //     //             const dataCanTallas = await loadAPI(`${url}DAIMLER`, 'POST', jsonCanTallas, token, false)
+                            //     //             const canML = dataCanTallas.response[0][0].CAN_ML
+                            //     //             const canMC = dataCanTallas.response[0][0].CAN_MC
+                            //     //             const canPLY = dataCanTallas.response[0][0].CAN_PLY
+                            //     //             const canSUD = dataCanTallas.response[0][0].CAN_SUD
 
-                            //             if (paqueteSeleccionado) {
-                            //                 dataGrid.cellValue(rowIndex, 'PAQUETE', e.value)
-                            //                 dataGrid.cellValue(rowIndex, 'CAN_ML', canML)
-                            //                 dataGrid.cellValue(rowIndex, 'CAN_MC', canMC)
-                            //                 dataGrid.cellValue(rowIndex, 'CAN_PLY', canPLY)
-                            //                 dataGrid.cellValue(rowIndex, 'CAN_SUD', canSUD)
-                            //                 dataGrid.cellValue(rowIndex, 'TOTAL', canML + canMC + canPLY + canSUD)
-                            //             }
-                            //             //? Control de visibilidad según el paquete
-                            //             mostrarOcultarColTops(e.value)
-                            //         }
-                            //     }
-                            //     //? Consultar inventario al cambiar talla
-                            //     const columnasTalla = ["TALLA_ML", "TALLA_MC", "TALLA_PLY", "TALLA_SUD"]
+                            //     //             const paqueteSeleccionado = resPaquete.response[0].find(paq => paq.Id === e.value)
+                            //     //             const rowIndex = col.row.rowIndex
+                            //     //             const dataGrid = col.component
 
-                            //     //? Mapeo de columnas de talla a sus respectivas columnas de inventario
-                            //     const mapeoInventario = {
-                            //         'TALLA_ML': 'INV_ML',
-                            //         'TALLA_MC': 'INV_MC',
-                            //         'TALLA_PLY': 'INV_PLY',
-                            //         'TALLA_SUD': 'INV_SUD'
-                            //     }
-                            //     if (col.parentType === 'dataRow' && columnasTalla.includes(col.dataField)) {
-                            //         const originalHandler = col.editorOptions.onValueChanged
-                            //         col.editorOptions.onValueChanged = async (event) => {
-                            //             if (originalHandler) originalHandler(event)
+                            //     //             if (paqueteSeleccionado) {
+                            //     //                 dataGrid.cellValue(rowIndex, 'PAQUETE', e.value)
+                            //     //                 dataGrid.cellValue(rowIndex, 'CAN_ML', canML)
+                            //     //                 dataGrid.cellValue(rowIndex, 'CAN_MC', canMC)
+                            //     //                 dataGrid.cellValue(rowIndex, 'CAN_PLY', canPLY)
+                            //     //                 dataGrid.cellValue(rowIndex, 'CAN_SUD', canSUD)
+                            //     //                 dataGrid.cellValue(rowIndex, 'TOTAL', canML + canMC + canPLY + canSUD)
+                            //     //             }
+                            //     //             //? Control de visibilidad según el paquete
+                            //     //             mostrarOcultarColTops(e.value)
+                            //     //         }
+                            //     //     }
+                            //     //     //? Consultar inventario al cambiar talla
+                            //     //     const columnasTalla = ["TALLA_ML", "TALLA_MC", "TALLA_PLY", "TALLA_SUD"]
 
-                            //             const resultadoInventario = await consultarInventario(col, event)
+                            //     //     //? Mapeo de columnas de talla a sus respectivas columnas de inventario
+                            //     //     const mapeoInventario = {
+                            //     //         'TALLA_ML': 'INV_ML',
+                            //     //         'TALLA_MC': 'INV_MC',
+                            //     //         'TALLA_PLY': 'INV_PLY',
+                            //     //         'TALLA_SUD': 'INV_SUD'
+                            //     //     }
+                            //     //     if (col.parentType === 'dataRow' && columnasTalla.includes(col.dataField)) {
+                            //     //         const originalHandler = col.editorOptions.onValueChanged
+                            //     //         col.editorOptions.onValueChanged = async (event) => {
+                            //     //             if (originalHandler) originalHandler(event)
 
-                            //             //? Obtener la columna de inventario correspondiente
-                            //             const columnaInventario = mapeoInventario[col.dataField]
+                            //     //             const resultadoInventario = await consultarInventario(col, event)
 
-                            //             if (columnaInventario) {
-                            //                 const rowIndex = col.row.rowIndex
-                            //                 const dataGrid = col.component
-                            //                 dataGrid.cellValue(rowIndex, columnaInventario, resultadoInventario)
-                            //             }
-                            //         }
-                            //     }
+                            //     //             //? Obtener la columna de inventario correspondiente
+                            //     //             const columnaInventario = mapeoInventario[col.dataField]
 
-                            // },
-                            // //? Actualizar total al cambiar cantidades
-                            // onCellPrepared: function (e) {
-                            //     if (e.rowType === 'data' && e.column.dataField === 'TOTAL') {
-                            //         dataFinalTops = e.data
-                            //         const sumaActualizada = (dataFinalTops.CAN_ML || 0) + (dataFinalTops.CAN_MC || 0) + (dataFinalTops.CAN_PLY || 0) + (dataFinalTops.CAN_SUD || 0)
-                            //         e.cellElement.text(sumaActualizada)
-                            //     }
-                            // },
-                        }).dxDataGrid('instance')
+                            //     //             if (columnaInventario) {
+                            //     //                 const rowIndex = col.row.rowIndex
+                            //     //                 const dataGrid = col.component
+                            //     //                 dataGrid.cellValue(rowIndex, columnaInventario, resultadoInventario)
+                            //     //             }
+                            //     //         }
+                            //     //     }
+
+                            //     // },
+                            //     // //? Actualizar total al cambiar cantidades
+                            //     // onCellPrepared: function (e) {
+                            //     //     if (e.rowType === 'data' && e.column.dataField === 'TOTAL') {
+                            //     //         dataFinalTops = e.data
+                            //     //         const sumaActualizada = (dataFinalTops.CAN_ML || 0) + (dataFinalTops.CAN_MC || 0) + (dataFinalTops.CAN_PLY || 0) + (dataFinalTops.CAN_SUD || 0)
+                            //     //         e.cellElement.text(sumaActualizada)
+                            //     //     }
+                            //     // },
+                            // }).dxDataGrid('instance')
+                        }
 
                         //? Si ya esta creado el dataGrid, se manda a llamar la función para mostrar/ocultar columnas según el paquete
-                        mostrarOcultarColTops(data.ID_PAQUETE_TOPS, gridInstance)
+                        mostrarOcultarColTops(dataTops.ID_PAQUETE, gridInstance)
 
                         //? Función para consultar inventario (relacion ESTILO/TALLA)
                         async function consultarInventario(col, e) {

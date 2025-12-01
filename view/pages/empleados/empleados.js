@@ -67,42 +67,42 @@ window.addEventListener("DOMContentLoaded", () => {
                                         startEditAction: 'click',
                                         confirmDelete: false
                                     },
-                                    async onRowUpdated(e) {
-                                        const data = e.data
-                                        const guardarCatalogo = {
-                                            Stored: 'PA_CORE_CapCatalogos',
-                                            Opcion: 'G',
-                                            Usuario: userActive,
-                                            Catalogo: {
-                                                Id: data.Id,
-                                                CLAVE: data.CLAVE,
-                                                NOMBRE: data.NOMBRE,
-                                                IdTipo: options.data.Id,
-                                                DESCRIPCION: data.DESCRIPCION,
-                                                ACTIVO: data.ACTIVO
-                                            }
-                                        }
-                                        const response = await loadAPI(`${url}DAIMLER`, 'POST', guardarCatalogo, token, true)
-                                        if (response.success) {
-                                            generateGrid('CTT')
-                                        } else {
-                                            return
-                                        }
-                                    },
-                                    async onRowRemoving(e) {
-                                        e.cancel = true
-                                        if (e.data.ACTIVO === 0) {
-                                            Swal.fire({
-                                                icon: 'warning',
-                                                text: 'No puedes eliminar un registro que no esta activo!',
-                                                showConfirmButton: true,
-                                                timer: 5000
-                                            })
-                                        } else {
-                                            arrayDataRowsCat = [e.data]
-                                            $('#modalDeleteCatalogo').modal('show')
-                                        }
-                                    },
+                                    // async onRowUpdated(e) {
+                                    //     const data = e.data
+                                    //     const guardarCatalogo = {
+                                    //         Stored: 'PA_CORE_CapCatalogos',
+                                    //         Opcion: 'G',
+                                    //         Usuario: userActive,
+                                    //         Catalogo: {
+                                    //             Id: data.Id,
+                                    //             CLAVE: data.CLAVE,
+                                    //             NOMBRE: data.NOMBRE,
+                                    //             IdTipo: options.data.Id,
+                                    //             DESCRIPCION: data.DESCRIPCION,
+                                    //             ACTIVO: data.ACTIVO
+                                    //         }
+                                    //     }
+                                    //     const response = await loadAPI(`${url}DAIMLER`, 'POST', guardarCatalogo, token, true)
+                                    //     if (response.success) {
+                                    //         generateGrid('CTT')
+                                    //     } else {
+                                    //         return
+                                    //     }
+                                    // },
+                                    // async onRowRemoving(e) {
+                                    //     e.cancel = true
+                                    //     if (e.data.ACTIVO === 0) {
+                                    //         Swal.fire({
+                                    //             icon: 'warning',
+                                    //             text: 'No puedes eliminar un registro que no esta activo!',
+                                    //             showConfirmButton: true,
+                                    //             timer: 5000
+                                    //         })
+                                    //     } else {
+                                    //         arrayDataRowsCat = [e.data]
+                                    //         $('#modalDeleteCatalogo').modal('show')
+                                    //     }
+                                    // },
                                     onRowDblClick(e) {
                                         e.event.preventDefault()
                                         e.event.stopPropagation()

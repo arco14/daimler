@@ -39,9 +39,9 @@
                 </nav>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" role="tabpanel" id="v-pills-detalle">
-                        <div class="row px-3">
+                        <div class="row">
                             <div id="cargaManual" class="form-group col-12">
-                                <fieldset class="border rounded p-4 m-0 contenedorTops">
+                                <fieldset class="border rounded px-4 m-0 contenedorTops">
                                     <legend class="float-none w-auto p-2">Tops</legend>
                                     <div class="row px-3">
                                         <div id="dataGridTops"></div>
