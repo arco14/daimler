@@ -8,11 +8,14 @@
         overflow-y: scroll;
         overflow-x: hidden;
     }
+    .modal-personalizada {
+        max-width: 1350px!important;
+    }
 </style>
 <div class="modal fade" id="add" tabindex="-1" role="dialog" data-focus="false" aria-labelledby="modelTitleId" aria-hidden="false"
     data-focus="false">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content card-primary card-outline">
+    <div class="modal-dialog modal-personalizada" role="document">
+        <div class="modal-content card-primary card-outline shadow-lg">
             <div class="modal-header dragable_touch pl-4">
                 <p id="addTitle" class="modal-title"></p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -41,7 +44,7 @@
                     <div class="tab-pane fade show active" role="tabpanel" id="v-pills-detalle">
                         <div class="row">
                             <div id="cargaManual" class="form-group col-12">
-                                <fieldset class="border rounded px-4 m-0 contenedorTops">
+                                <fieldset class="border rounded m-0 contenedorTops">
                                     <legend class="float-none w-auto p-2">Tops</legend>
                                     <div class="row px-3">
                                         <div id="dataGridTops"></div>

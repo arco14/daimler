@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
             $('#entregaTotal').text(entregaTotal)
         }
     }
-    async function generarDataGrid(strComponente, jsonDataRepo, arrayDataRepo, strNomExcel) {
+    async function generarDataGrid(strComponente, jsonDataRepo, arrayDataRepo, strNomExcel, blnModal, intHeigth) {
         const resReportes = await loadAPI(`${url}DAIMLER`, 'POST', jsonDataRepo, token, false)
         console.log(resReportes)
         loadDataGrid(
@@ -38,8 +38,8 @@ window.addEventListener("DOMContentLoaded", () => {
             strNomExcel,
             false,
             null,
-            false,
-            500,
+            blnModal,
+            intHeigth,
             true,
             `grid${strNomExcel}-${idPrograma}`,
         )
@@ -47,6 +47,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     //? COMPONENTES
     generarDashboard()
-    generarDataGrid('#dataGridResumen', jsonResumen, arrayResumen, 'resumen')
-    generarDataGrid('#dataGridFaltantes', jsonResumen, arrayFaltantes, 'faltantes')
+    generarDataGrid('#dataGridResumen', jsonResumen, arrayResumen, 'resumen', true, 500)
+    generarDataGrid('#dataGridFaltantes', jsonResumen, arrayFaltantes, 'faltantes', true, 500)
 })

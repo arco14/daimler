@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const url = CONFIG.API_URL
     const token = $('#userToken').val()
     const userActive = $('#userActive').val()
-    let idPrograma, blnDblClickGrid, arrayDataRows, dataFinalTops, gridInstance, resDataDetalle, dataSourceTops, dataSourcePants
+    let idPrograma, blnDblClickGrid, arrayDataRows, dataFinalTops, gridInstance, resDataDetalle, dataSourceTops, dataSourcePants, dataGridTops, dataGridPants
 
     //? VALIDAR QUE EL CONTENIDO ESTE DENTRO DEL IFRAME 🔍
     if (window.self !== window.top) {
@@ -160,9 +160,9 @@ window.addEventListener("DOMContentLoaded", () => {
                             }
                         }
                         const res = await loadAPI(`${url}DAIMLER`, 'POST', jsonDataDetalle, token, false)
+                        console.log(res)
                         const dataTops = res.response[0][0]
-                        console.log(dataTops)
-                        // const dataPants = res.response[1][1]
+                        const dataPants = res.response[0][1]
                         const [resEstilos, resPrenda, resPaquete, resCantidad, resTallas, resEstiloPants, resPaquetePants] = await Promise.all([
                             llamadaAPI('PA_CORE_CapCatalogos', 'CC', {
                                 ClaveCatalogo: 'TOPS'
@@ -195,7 +195,6 @@ window.addEventListener("DOMContentLoaded", () => {
                                     ESTILO: dataTops.ID_ESTILO,
                                     PRENDA: dataTops.ID_PRENDA,
                                     PAQUETE: dataTops.ID_PAQUETE,
-                                    // TALLA: data.TALLA_ML,
                                     CAN_ML: resCantidad.response[0][0].CAN_ML,
                                     CAN_MC: resCantidad.response[0][0].CAN_MC,
                                     CAN_PLY: resCantidad.response[0][0].CAN_PLY,
@@ -204,8 +203,14 @@ window.addEventListener("DOMContentLoaded", () => {
                                 }]
                             } else {
                                 dataSourcePants = [{
-                                    ESTILO: data.ID_ESTILO_PANTS,
-                                    // PAQUETE: data.ID_PAQUETE_PANTS
+                                    ESTILO: dataPants.ID_ESTILO,
+                                    PRENDA: dataPants.ID_PRENDA,
+                                    PAQUETE: dataPants.ID_PAQUETE,
+                                    CAN_ML: resCantidad.response[0][0].CAN_ML,
+                                    CAN_MC: resCantidad.response[0][0].CAN_MC,
+                                    CAN_PLY: resCantidad.response[0][0].CAN_PLY,
+                                    CAN_SUD: resCantidad.response[0][0].CAN_SUD,
+                                    TOTAL: resCantidad.response[0][0].TOTAL,
                                 }]
                             }
                             //? DATAGRID TOPS
@@ -260,45 +265,46 @@ window.addEventListener("DOMContentLoaded", () => {
                                         },
                                     },
                                     {
-                                        caption: 'CANTIDAD / TALLA / INVENTARIO',
-                                        allowEditing: true,
+                                        caption: 'Manga Larga',
                                         alignment: 'center',
                                         columns: [{
-                                                dataField: 'CAN_ML',
-                                                caption: 'ML',
-                                                alignment: 'center',
-                                                visible: false
-                                            },
-                                            {
-                                                dataField: 'TALLA_ML',
-                                                caption: 'Talla',
-                                                alignment: 'center',
-                                                visible: false,
-                                                lookup: {
-                                                    placeholder: false,
-                                                    dataSource: resTallas.response[0],
-                                                    displayExpr: 'CLAVE',
-                                                    valueExpr: 'Id',
-                                                }
-                                            }, {
-                                                dataField: 'INV_ML',
-                                                caption: 'Inventario',
-                                                alignment: 'center',
-                                                visible: false,
-                                                allowEditing: false
-                                            },
-                                            //? MANGA CORTA
-                                            {
+                                            dataField: 'CAN_ML',
+                                            caption: 'Cantidad',
+                                            alignment: 'center',
+                                            // visible: false
+                                        }, {
+                                            dataField: 'TALLA_ML',
+                                            caption: 'Talla',
+                                            alignment: 'center',
+                                            // visible: false,
+                                            lookup: {
+                                                placeholder: false,
+                                                dataSource: resTallas.response[0],
+                                                displayExpr: 'CLAVE',
+                                                valueExpr: 'Id',
+                                            }
+                                        }, {
+                                            dataField: 'INV_ML',
+                                            caption: 'Inv',
+                                            alignment: 'center',
+                                            // visible: false,
+                                            allowEditing: false
+                                        }, ]
+                                    },
+                                    {
+                                        caption: 'Manga Corta',
+                                        alignment: 'center',
+                                        columns: [{
                                                 dataField: 'CAN_MC',
-                                                caption: 'MC',
+                                                caption: 'Can',
                                                 alignment: 'center',
-                                                visible: false
+                                                // visible: false
                                             },
                                             {
                                                 dataField: 'TALLA_MC',
                                                 caption: 'Talla',
                                                 alignment: 'center',
-                                                visible: false,
+                                                // visible: false,
                                                 lookup: {
                                                     placeholder: false,
                                                     dataSource: resTallas.response[0],
@@ -307,23 +313,27 @@ window.addEventListener("DOMContentLoaded", () => {
                                                 }
                                             }, {
                                                 dataField: 'INV_MC',
-                                                caption: 'Inventario',
+                                                caption: 'Inv',
                                                 alignment: 'center',
-                                                visible: false,
+                                                // visible: false,
                                                 allowEditing: false
                                             },
-                                            //? PLAYERA
-                                            {
+                                        ]
+                                    },
+                                    {
+                                        caption: 'Playera',
+                                        alignment: 'center',
+                                        columns: [{
                                                 dataField: 'CAN_PLY',
                                                 caption: 'PLY',
                                                 alignment: 'center',
-                                                visible: false
+                                                //visible: false
                                             },
                                             {
                                                 dataField: 'TALLA_PLY',
-                                                caption: 'TALLA',
+                                                caption: 'Talla',
                                                 alignment: 'center',
-                                                visible: false,
+                                                //visible: false,
                                                 lookup: {
                                                     placeholder: false,
                                                     dataSource: resTallas.response[0],
@@ -332,23 +342,27 @@ window.addEventListener("DOMContentLoaded", () => {
                                                 }
                                             }, {
                                                 dataField: 'INV_PLY',
-                                                caption: 'Inventario',
+                                                caption: 'Inv',
                                                 alignment: 'center',
-                                                visible: false,
+                                                //visible: false,
                                                 allowEditing: false
                                             },
-                                            //? SUADADERA
-                                            {
+                                        ]
+                                    },
+                                    {
+                                        caption: 'Sudadera',
+                                        alignment: 'center',
+                                        columns: [{
                                                 dataField: 'CAN_SUD',
                                                 caption: 'SUD',
                                                 alignment: 'center',
-                                                visible: false
+                                                // visible: false
                                             },
                                             {
                                                 dataField: 'TALLA_SUD',
-                                                caption: 'TALLA',
+                                                caption: 'Talla',
                                                 alignment: 'center',
-                                                visible: false,
+                                                // visible: false,
                                                 lookup: {
                                                     placeholder: false,
                                                     dataSource: resTallas.response[0],
@@ -357,9 +371,9 @@ window.addEventListener("DOMContentLoaded", () => {
                                                 }
                                             }, {
                                                 dataField: 'INV_SUD',
-                                                caption: 'Inventario',
+                                                caption: 'Inv',
                                                 alignment: 'center',
-                                                visible: false,
+                                                // visible: false,
                                                 allowEditing: false
                                             },
                                         ]
@@ -405,7 +419,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                                 dataGrid.cellValue(rowIndex, 'TOTAL', canML + canMC + canPLY + canSUD)
                                             }
                                             //? Control de visibilidad según el paquete
-                                            mostrarOcultarColTops(e.value, gridInstance)
+                                            // mostrarOcultarColTops(e.value, gridInstance)
                                         }
                                     }
                                     //? Consultar inventario al cambiar talla
@@ -441,8 +455,10 @@ window.addEventListener("DOMContentLoaded", () => {
                                 onCellPrepared: function (e) {
                                     if (e.rowType === 'data' && e.column.dataField === 'TOTAL') {
                                         dataFinalTops = e.data
+                                        // console.log(dataFinalTops)
                                         const sumaActualizada = (dataFinalTops.CAN_ML || 0) + (dataFinalTops.CAN_MC || 0) + (dataFinalTops.CAN_PLY || 0) + (dataFinalTops.CAN_SUD || 0)
                                         e.cellElement.text(sumaActualizada)
+                                        // arrayEntrega.push(dataFinalTops)
                                     }
                                 },
                             }).dxDataGrid('instance')
@@ -490,7 +506,7 @@ window.addEventListener("DOMContentLoaded", () => {
                             //             visible: true
                             //         }, {
                             //             dataField: 'INV_PANT',
-                            //             caption: 'INVENTARIO',
+                            //             caption: 'Inv',
                             //             alignment: 'center',
                             //             visible: true
                             //         }]
@@ -578,7 +594,7 @@ window.addEventListener("DOMContentLoaded", () => {
                         }
 
                         //? Si ya esta creado el dataGrid, se manda a llamar la función para mostrar/ocultar columnas según el paquete
-                        mostrarOcultarColTops(dataTops.ID_PAQUETE, gridInstance)
+                        // mostrarOcultarColTops(dataTops.ID_PAQUETE, gridInstance)
 
                         //? Función para consultar inventario (relacion ESTILO/TALLA)
                         async function consultarInventario(col, e) {
@@ -693,7 +709,10 @@ window.addEventListener("DOMContentLoaded", () => {
     //? ACCIONES
     $('#btnGuardar').dxButton({
         onClick() {
-            console.log(dataFinalTops)
+            const data = $('#dataGridTops').dxDataGrid('instance').getDataSource().store().load()
+            data.then(res => {
+                console.log(res)
+            })
         }
     })
     $('#btnUpdate').click(() => {
