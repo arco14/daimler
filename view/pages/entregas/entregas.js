@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const url = CONFIG.API_URL
     const token = $('#userToken').val()
     const userActive = $('#userActive').val()
-    let idPrograma, blnDblClickGrid, arrayDataRows, dataFinalTops, gridInstance, resDataDetalle, dataSourceTops, dataSourcePants, dataGridTops, dataGridPants
+    let idPrograma, blnDblClickGrid, arrayDataRows, dataFinalTops, gridInstance, resDataDetalle, dataSourceTops, dataSourcePants, jsonGuardaEntregaTops, numeroEmpleado
 
     //? VALIDAR QUE EL CONTENIDO ESTE DENTRO DEL IFRAME 🔍
     if (window.self !== window.top) {
@@ -114,9 +114,10 @@ window.addEventListener("DOMContentLoaded", () => {
                     const data = e.selectedRowsData[0]
                     if (arrayDataRows.length > 0) {
                         idRow = data.ID
+                        numeroEmpleado = data.NUMERO_EMPLEADO
                         $('#addTitle').html(`<b>Entrega: </b><span class="infoEmpleado">E1</span><br>
                                                  <div class="d-flex" style="gap: 0.3rem">
-                                                    <b>Número:</b> <span class="infoEmpleado">${data.NUMERO_EMPLEADO}</span>
+                                                    <b>Número:</b> <span class="infoEmpleado">${numeroEmpleado}</span>
                                                     <b>Empleado: </b><span class="infoEmpleado">${data.NOMBRE}</span><br>
                                                  </div>
                                                  <div class="d-flex" style="gap: 0.3rem">
@@ -156,7 +157,7 @@ window.addEventListener("DOMContentLoaded", () => {
                             Opcion: 'CI',
                             Usuario: userActive,
                             Empleado: {
-                                EMP_Id: data.NUMERO_EMPLEADO
+                                EMP_Id: numeroEmpleado
                             }
                         }
                         const res = await loadAPI(`${url}DAIMLER`, 'POST', jsonDataDetalle, token, false)
@@ -269,14 +270,12 @@ window.addEventListener("DOMContentLoaded", () => {
                                         alignment: 'center',
                                         columns: [{
                                             dataField: 'CAN_ML',
-                                            caption: 'Cantidad',
+                                            caption: 'Can',
                                             alignment: 'center',
-                                            // visible: false
                                         }, {
                                             dataField: 'TALLA_ML',
                                             caption: 'Talla',
                                             alignment: 'center',
-                                            // visible: false,
                                             lookup: {
                                                 placeholder: false,
                                                 dataSource: resTallas.response[0],
@@ -287,7 +286,6 @@ window.addEventListener("DOMContentLoaded", () => {
                                             dataField: 'INV_ML',
                                             caption: 'Inv',
                                             alignment: 'center',
-                                            // visible: false,
                                             allowEditing: false
                                         }, ]
                                     },
@@ -298,13 +296,11 @@ window.addEventListener("DOMContentLoaded", () => {
                                                 dataField: 'CAN_MC',
                                                 caption: 'Can',
                                                 alignment: 'center',
-                                                // visible: false
                                             },
                                             {
                                                 dataField: 'TALLA_MC',
                                                 caption: 'Talla',
                                                 alignment: 'center',
-                                                // visible: false,
                                                 lookup: {
                                                     placeholder: false,
                                                     dataSource: resTallas.response[0],
@@ -315,7 +311,6 @@ window.addEventListener("DOMContentLoaded", () => {
                                                 dataField: 'INV_MC',
                                                 caption: 'Inv',
                                                 alignment: 'center',
-                                                // visible: false,
                                                 allowEditing: false
                                             },
                                         ]
@@ -362,7 +357,6 @@ window.addEventListener("DOMContentLoaded", () => {
                                                 dataField: 'TALLA_SUD',
                                                 caption: 'Talla',
                                                 alignment: 'center',
-                                                // visible: false,
                                                 lookup: {
                                                     placeholder: false,
                                                     dataSource: resTallas.response[0],
@@ -373,7 +367,6 @@ window.addEventListener("DOMContentLoaded", () => {
                                                 dataField: 'INV_SUD',
                                                 caption: 'Inv',
                                                 alignment: 'center',
-                                                // visible: false,
                                                 allowEditing: false
                                             },
                                         ]
@@ -382,7 +375,6 @@ window.addEventListener("DOMContentLoaded", () => {
                                         dataField: 'TOTAL',
                                         caption: 'TOTAL',
                                         alignment: 'center',
-                                        // width: auto,
                                         allowEditing: false
                                     }
                                 ],
@@ -709,9 +701,37 @@ window.addEventListener("DOMContentLoaded", () => {
     //? ACCIONES
     $('#btnGuardar').dxButton({
         onClick() {
-            const data = $('#dataGridTops').dxDataGrid('instance').getDataSource().store().load()
-            data.then(res => {
+            const dataTops = $('#dataGridTops').dxDataGrid('instance').getDataSource().store().load()
+            let x = []
+            dataTops.then(res => {
                 console.log(res)
+                for (let i = 0; i < res.length; i++) {
+                    x.push(`{
+                        ESTILO: ${res[i].ESTILO},
+                        PRENDA: ${res[i].PRENDA},
+                        PAQUETE: ${res[i].PAQUETE},
+                        CAN_ML: ${res[i].CAN_ML === undefined ? 0 : res[i].CAN_ML},
+                        TALLA_ML: ${res[i].TALLA_ML === undefined ? 0 : res[i].TALLA_ML},
+                        CAN_MC: ${res[i].CAN_MC === undefined ? 0 : res[i].CAN_MC},
+                        TALLA_MC: ${res[i].TALLA_MC === undefined ? 0 : res[i].TALLA_MC},
+                        CAN_PLY: ${res[i].CAN_PLY === undefined ? 0 : res[i].CAN_PLY},
+                        TALLA_PLY: ${res[i].TALLA_PLY === undefined ? 0 : res[i].TALLA_PLY},
+                        CAN_SUD: ${res[i].CAN_SUD === undefined ? 0 : res[i].CAN_SUD},
+                        TALLA_SUD: ${res[i].TALLA_SUD === undefined ? 0 : res[i].TALLA_SUD},
+                        TOTAL: ${res[i].TOTAL}
+                    }`)
+                }
+                // console.log(x)
+                jsonGuardaEntregaTops = {
+                    Stored: 'Test',
+                    Opcion: 'GET',
+                    Usuario: userActive,
+                    Entrega: x,
+                    Empleado: {
+                        EMP_Id: numeroEmpleado
+                    }
+                }
+                console.log(jsonGuardaEntregaTops)
             })
         }
     })
