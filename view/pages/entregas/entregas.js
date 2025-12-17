@@ -700,39 +700,41 @@ window.addEventListener("DOMContentLoaded", () => {
 
     //? ACCIONES
     $('#btnGuardar').dxButton({
-        onClick() {
+        async onClick() {
             const dataTops = $('#dataGridTops').dxDataGrid('instance').getDataSource().store().load()
-            let x = []
+            let arrayEntrega = []
             dataTops.then(res => {
-                console.log(res)
                 for (let i = 0; i < res.length; i++) {
-                    x.push(`{
-                        ESTILO: ${res[i].ESTILO},
-                        PRENDA: ${res[i].PRENDA},
-                        PAQUETE: ${res[i].PAQUETE},
-                        CAN_ML: ${res[i].CAN_ML === undefined ? 0 : res[i].CAN_ML},
-                        TALLA_ML: ${res[i].TALLA_ML === undefined ? 0 : res[i].TALLA_ML},
-                        CAN_MC: ${res[i].CAN_MC === undefined ? 0 : res[i].CAN_MC},
-                        TALLA_MC: ${res[i].TALLA_MC === undefined ? 0 : res[i].TALLA_MC},
-                        CAN_PLY: ${res[i].CAN_PLY === undefined ? 0 : res[i].CAN_PLY},
-                        TALLA_PLY: ${res[i].TALLA_PLY === undefined ? 0 : res[i].TALLA_PLY},
-                        CAN_SUD: ${res[i].CAN_SUD === undefined ? 0 : res[i].CAN_SUD},
-                        TALLA_SUD: ${res[i].TALLA_SUD === undefined ? 0 : res[i].TALLA_SUD},
-                        TOTAL: ${res[i].TOTAL}
-                    }`)
+                    arrayEntrega.push({
+                        ESTILO: res[i].ESTILO,
+                        PRENDA: res[i].PRENDA,
+                        PAQUETE: res[i].PAQUETE,
+                        CAN_ML: res[i].CAN_ML ?? 0,
+                        TALLA_ML: res[i].TALLA_ML ?? 0,
+                        CAN_MC: res[i].CAN_MC ?? 0,
+                        TALLA_MC: res[i].TALLA_MC ?? 0,
+                        CAN_PLY: res[i].CAN_PLY ?? 0,
+                        TALLA_PLY: res[i].TALLA_PLY ?? 0,
+                        CAN_SUD: res[i].CAN_SUD ?? 0,
+                        TALLA_SUD: res[i].TALLA_SUD ?? 0,
+                        TOTAL: res[i].TOTAL
+                    })
+                    console.log(arrayEntrega)
                 }
-                // console.log(x)
-                jsonGuardaEntregaTops = {
-                    Stored: 'Test',
-                    Opcion: 'GET',
-                    Usuario: userActive,
-                    Entrega: x,
-                    Empleado: {
-                        EMP_Id: numeroEmpleado
-                    }
-                }
-                console.log(jsonGuardaEntregaTops)
             })
+            jsonGuardaEntregaTops = {
+                Stored: 'PA_DAI_Empleados',
+                Opcion: 'GET',
+                Usuario: userActive,
+                Empleado: {
+                    EMP_Id: numeroEmpleado,
+                    Entrega: arrayEntrega,
+                }
+            }
+            console.log(jsonGuardaEntregaTops)
+            return
+            const test = await loadAPI(`${url}DAIMLER`, 'POST', jsonGuardaEntregaTops, token, false)
+            console.log(test)
         }
     })
     $('#btnUpdate').click(() => {
